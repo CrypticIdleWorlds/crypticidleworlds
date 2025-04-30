@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div style="background:#000;padding:10px;border-bottom:2px solid #00ff99;">
+    <span id="last-save-time">Time since last save: 0s</span>
+    <button onclick="saveProgress()" style="float:right; background:#000; color:#00ff99; border:1px solid #00ff99; padding:4px 10px; cursor:pointer;">Save</button>
+  </div>
+
   <div id="game-container">
     <aside id="skills-tab">
       <h2>Welcome, <span id="user-name"></span></h2>
@@ -69,7 +74,7 @@
   </div>
 
   <script>
-    const skillData = JSON.parse(localStorage.getItem("skillData")) || {
+    const defaultSkills = {
       melee: { xp: 0, level: 1 },
       ranged: { xp: 0, level: 1 },
       techno_magic: { xp: 0, level: 1 },
@@ -81,11 +86,14 @@
       system_hacking: { xp: 0, level: 1 }
     };
 
+    const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
     const xpTable = Array(100).fill(0).map((_, level) => {
       let xp = 0;
       for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
       return Math.floor(xp / 4);
     });
+
+    let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
 
     function updateSkillTabs() {
       const combatList = document.getElementById('combat-skills');
@@ -129,10 +137,30 @@
       localStorage.setItem("lastLogin", now);
     }
 
+    function saveProgress() {
+      localStorage.setItem("skillData", JSON.stringify(skillData));
+      localStorage.setItem("lastSave", Date.now());
+      lastSaveTimestamp = Date.now();
+      log(`[SAVE] Progress saved.`);
+    }
+
+    function updateSaveTimer() {
+      const now = Date.now();
+      const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
+      document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
+    }
+
+    function log(msg) {
+      const box = document.getElementById("terminal-log");
+      box.innerHTML += msg + "<br>";
+      box.scrollTop = box.scrollHeight;
+    }
+
     window.onload = () => {
       loadUserName();
       restoreOfflineXP();
       updateSkillTabs();
+      setInterval(updateSaveTimer, 1000);
     };
   </script>
 </body>
