@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +15,13 @@
     #combat-panel {
       padding: 20px;
     }
-    select {
+    select, button {
       background: #000;
       color: #00ff99;
       border: 1px solid #00ff99;
       font-family: 'Share Tech Mono', monospace;
-    }
-    button {
-      background: #000;
-      color: #00ff99;
-      border: 1px solid #00ff99;
-      font-family: 'Share Tech Mono', monospace;
-      padding: 5px 10px;
-      cursor: pointer;
+      padding: 5px;
+      margin: 5px 0;
     }
     #enemy-image {
       border: 1px solid #00ff99;
@@ -55,8 +48,7 @@
       <option value="wyrm">Wyrmgrave Expanse (Lv 41–60)</option>
       <option value="elder">Elder Beyond (Lv 61+)</option>
     </select>
-
-    <br><br>
+    <br>
     <label for="enemy-select">Choose Enemy:</label>
     <select id="enemy-select" onchange="selectEnemy()"></select>
 
@@ -140,7 +132,10 @@
       currentEnemy = selected;
       const cleanName = selected.replace(/_/g, ' ').replace(/\\.png/, '');
       document.getElementById('enemy-name').innerText = cleanName;
-      document.getElementById('enemy-image').src = `${selected.includes('lord') || selected.includes('god') ? 'bosses' : 'monsters'}/${selected}`;
+      document.getElementById('enemy-image').src = 
+        selected.includes('matriarch') || selected.includes('warlord') || selected.includes('lord') || selected.includes('god') || selected.includes('tyrant') || selected.includes('king') 
+        ? `bosses/${selected}` 
+        : `monsters/${selected}`;
       document.getElementById('enemy-image').style.display = 'block';
 
       // Assign sample stats
@@ -180,4 +175,5 @@
   </script>
 </body>
 </html>
+
 
