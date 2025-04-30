@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cryptic Idle Worlds - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     body {
       font-family: 'Share Tech Mono', monospace !important;
@@ -19,7 +19,6 @@
     #skills-tab,
     .skill-row,
     #terminal-log,
-    .enemy-row,
     #inventory,
     #save-bar,
     #main-panel {
@@ -67,36 +66,16 @@
 
     <main id="main-panel">
       <nav id="top-menu">
-        <button onclick="togglePanel('combat-selection')">Combat</button>
         <button onclick="togglePanel('skills')">Skills</button>
         <button onclick="togglePanel('inventory')">Inventory</button>
       </nav>
 
       <section id="content-area">
-        <div id="combat-selection" class="panel">
-          <h2>Choose Your Opponent</h2>
-          <div class="enemy-row">
-            <img src="assets/monsters/blight_rat.png" alt="Blight Rat" width="80">
-            <p>Fight: Blight Rat (Lv. 5)</p>
-            <button onclick="location.href='combat.html?enemy=melee_lv5'">Engage</button>
-          </div>
-          <div class="enemy-row">
-            <img src="assets/monsters/ashen_whelp.png" alt="Ashen Whelp" width="80">
-            <p>Fight: Ashen Whelp (Lv. 5)</p>
-            <button onclick="location.href='combat.html?enemy=melee_1v5'">Engage</button>
-          </div>
-          <div class="enemy-row">
-            <img src="assets/bosses/ashen_whelp_matriarch.png" alt="Ashen Whelp Matriarch" width="80">
-            <p>Fight: Ashen Whelp Matriarch (Lv. 15 Boss)</p>
-            <button onclick="location.href='combat.html?enemy=melee_lv15_boss'">Engage</button>
-          </div>
-        </div>
-
-        <div id="skills" class="panel hidden">
+        <div id="skills" class="panel">
           <h2>Train Your Skills</h2>
           <p>Select a skill below to begin training:</p>
-          <button onclick="location.href='skillhacking.html'">System Hacking</button>
-          <button onclick="location.href='skillwoodcutting.html'">Datafishing</button>
+          <button onclick="location.href='skills/skillhacking.html'">System Hacking</button>
+          <button onclick="location.href='skills/skillwoodcutting.html'">Datafishing</button>
         </div>
 
         <div id="inventory" class="panel hidden">
@@ -112,62 +91,18 @@
   </div>
   <div id="level-up-popup" class="level-up-message"></div>
 
+  <script src="js/enemy-data.js"></script>
+  <script src="js/combat.js"></script>
+  <script src="js/skills.js"></script>
   <script>
-    const defaultSkills = {
-      attack: { xp: 0, level: 1 },
-      strength: { xp: 0, level: 1 },
-      defense: { xp: 0, level: 1 },
-      magic: { xp: 0, level: 1 },
-      ranged: { xp: 0, level: 1 },
-      slayer: { xp: 0, level: 1 },
-      cryptomining: { xp: 0, level: 1 },
-      datafishing: { xp: 0, level: 1 },
-      codecraft: { xp: 0, level: 1 },
-      forgenetics: { xp: 0, level: 1 },
-      system_hacking: { xp: 0, level: 1 }
-    };
+    const defaultSkills = Object.fromEntries(
+      Object.keys(skillList).map(k => [k, { level: 1, xp: 0 }])
+    );
 
     const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
-    const xpTable = Array(100).fill(0).map((_, level) => {
-      let xp = 0;
-      for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-      return Math.floor(xp / 4);
-    });
+    const xpTable = Array(100).fill(0).map((_, level) => getXPForLevel(level));
 
     let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
-
-    const combatSkillNames = {
-      attack: "Striker Protocol",
-      strength: "Force Module",
-      defense: "Barrier Matrix",
-      magic: "Neurohex",
-      ranged: "Synapsis Bowline"
-    };
-
-    function updateSkillTabs() {
-      const combatList = document.getElementById("combat-skills");
-      const noncombatList = document.getElementById("noncombat-skills");
-      combatList.innerHTML = "";
-      noncombatList.innerHTML = "";
-
-      for (const skill in skillData) {
-        const data = skillData[skill];
-        const level = data.level;
-        const xp = data.xp;
-        const nextXP = xpTable[level + 1] || xpTable[99];
-        const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
-        const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
-        const li = document.createElement("li");
-        li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
-          <div class='skill-row'>
-            <div class='icon-box'><img src='assets/skills/${skill}.png' alt='${skill}' width='16'></div>
-            <span>${displayName}</span>
-            <span class='level'>Lv. ${level} (${percent}%)</span>
-          </div>
-        </a>`;
-        (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
-      }
-    }
 
     function togglePanel(id) {
       document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
@@ -189,7 +124,7 @@
           for (let i = 1; i <= 99; i++) {
             if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
               skillData.system_hacking.level = i;
-              triggerLevelUpMessage("system hacking", i);
+              triggerLevelUpMessage("system_hacking", i);
             }
           }
           localStorage.setItem("skillData", JSON.stringify(skillData));
@@ -228,9 +163,11 @@
     window.onload = () => {
       loadUserName();
       restoreOfflineXP();
-      updateSkillTabs();
+      renderSkillUI(skillData, 'combat-skills');
+      renderSkillUI(skillData, 'noncombat-skills');
       setInterval(updateSaveTimer, 1000);
     };
   </script>
 </body>
 </html>
+
