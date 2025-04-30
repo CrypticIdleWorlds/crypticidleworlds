@@ -14,7 +14,7 @@
       color: #00ff99;
       padding: 20px;
     }
-    #combat-style-panel {
+    #combat-style-panel, #skills-tab {
       margin-top: 20px;
       padding: 16px;
       border: 2px solid #00ff99;
@@ -33,11 +33,7 @@
       cursor: pointer;
       display: block;
     }
-    #save-bar,
-    #enemy-box,
-    #player-box,
-    #combat-log,
-    .btn {
+    #save-bar, #enemy-box, #player-box, #combat-log, .btn {
       background-color: rgba(0, 0, 0, 0.6);
     }
     #save-bar {
@@ -123,9 +119,7 @@
     <span id="last-save-time">Time since last save: 0s</span>
     <button onclick="saveProgress()" style="float:right; background:#000; color:#00ff99; border:1px solid #00ff99; padding:4px 10px; cursor:pointer;">💾 Save Game</button>
   </div>
-
   <h1>⚔️ Combat Mode <button onclick="window.location.href='home.html'" class="btn" style="float:right">🛑 Escape</button></h1>
-
   <div id="combat-style-panel">
     <h3>Choose Combat Style</h3>
     <div class="style-group">
@@ -137,7 +131,6 @@
     <div class="style-group">
       <strong>Ranged <img src="assets/skills/ranged.png" alt="ranged"></strong><br>
       <label class="combat-style-option"><input type="radio" name="combatStyle" value="ranged"> Rapid Fire (Trains Ranged)</label>
-      <label class="combat-style-option"><input type="radio" name="combatStyle" value="ranged"> Long Range (Trains Ranged)</label>
       <label class="combat-style-option"><input type="radio" name="combatStyle" value="ranged_defense"> Controlled (Trains Ranged + Defense)</label>
     </div>
     <div class="style-group">
@@ -146,225 +139,30 @@
       <label class="combat-style-option"><input type="radio" name="combatStyle" value="magic_defense"> Defensive Cast (Trains Magic + Defense)</label>
     </div>
   </div>
-
   <div id="combat-container">
-  <div id="enemy-box">
-    <h2 id="enemy-name">Enemy</h2>
-    <img id="enemy-image" src="" alt="Enemy" width="120" />
-    <p>HP: <span id="enemy-hp">0</span></p>
-  </div>
-  <div id="player-box">
-    <h2>You</h2>
-    <p>HP: <span id="player-hp">100</span></p>
-    <button class="btn" onclick="startBattle()">Battle</button>
-    <div id="food-box">
-      <p>Food:</p>
-      <img src="assets/items/consumables/bread.png" alt="Bread" onclick="eatFood()" />
+    <div id="enemy-box">
+      <h2 id="enemy-name">Enemy</h2>
+      <img id="enemy-image" src="" alt="Enemy" width="120" />
+      <p>HP: <span id="enemy-hp">0</span></p>
+    </div>
+    <div id="player-box">
+      <h2>You</h2>
+      <p>HP: <span id="player-hp">100</span></p>
+      <p>Combat Level: <span id="combat-level">1</span></p>
+      <button class="btn" onclick="startBattle()">Battle</button>
+      <div id="food-box">
+        <p>Food:</p>
+        <img src="assets/items/consumables/bread.png" alt="Bread" onclick="eatFood()" />
+      </div>
     </div>
   </div>
-</div>
-
-<!-- Live Skill Tracker -->
-<div id="skills-tab" style="margin-top: 40px; padding: 16px; border: 2px solid #00ff99; background-color: rgba(0,0,0,0.6);">
-  <h3>🧠 Skill Levels</h3>
-  <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
-</div>
-
-<div id="combat-log">[LOG] Combat initialized.<br /></div>
-<div id="level-up-popup" class="level-up-message"></div>
-
-<script>
-  const enemies = {
-    melee_lv5: {
-      name: "Blight Rat",
-      image: "assets/monsters/blight_rat.png",
-      hp: 30,
-      xp: 10
-    },
-    melee_1v5: {
-      name: "Ashen Whelp",
-      image: "assets/monsters/ashen_whelp.png",
-      hp: 45,
-      xp: 12
-    },
-    melee_lv15_boss: {
-      name: "Ashen Whelp Matriarch",
-      image: "assets/bosses/ashen_whelp_matriarch.png",
-      hp: 90,
-      xp: 30
-    }
-  };
-
-  const xpTable = Array(100).fill(0).map((_, level) => {
-    let xp = 0;
-    for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-    return Math.floor(xp / 4);
-  });
-
-  let skillData = JSON.parse(localStorage.getItem("skillData")) || {
-    attack: { xp: 0, level: 1 },
-    strength: { xp: 0, level: 1 },
-    defense: { xp: 0, level: 1 },
-    magic: { xp: 0, level: 1 },
-    ranged: { xp: 0, level: 1 }
-  };
-
-  let selectedStyle = 'attack';
-  document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      selectedStyle = e.target.value;
-      log(`[STYLE] Selected ${selectedStyle}`);
-    });
-  });
-
-  let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
-  let enemy = null;
-  let enemyHP = 0;
-  let playerHP = 100;
-  let isBattling = false;
-
-  function getParam(param) {
-    return new URLSearchParams(window.location.search).get(param);
-  }
-
-  function log(msg) {
-    const box = document.getElementById("combat-log");
-    box.innerHTML += msg + "<br>";
-    box.scrollTop = box.scrollHeight;
-  }
-
-  function floatText(target, text, type) {
-    const el = document.createElement("div");
-    el.className = `damage ${type}`;
-    el.innerText = text;
-    target.appendChild(el);
-    setTimeout(() => el.remove(), 1000);
-  }
-
-  function triggerLevelUpMessage(skill, level) {
-    const msg = document.getElementById("level-up-popup");
-    msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
-    msg.style.animation = 'none';
-    msg.offsetHeight;
-    msg.style.animation = null;
-  }
-
-  function initCombat() {
-    const enemyKey = getParam("enemy");
-    if (!enemyKey || !enemies[enemyKey]) return;
-    enemy = enemies[enemyKey];
-    enemyHP = enemy.hp;
-    document.getElementById("enemy-name").innerText = enemy.name;
-    document.getElementById("enemy-image").src = enemy.image;
-    document.getElementById("enemy-hp").innerText = enemyHP;
-    document.getElementById("player-hp").innerText = playerHP;
-    log(`[ENEMY] Encountered ${enemy.name} with ${enemy.hp} HP.`);
-  }
-
-  function grantXP(style, xp) {
-    if (style.includes('_')) {
-      const split = style.split('_');
-      split.forEach(s => {
-        skillData[s].xp += Math.floor(xp / split.length);
-        log(`[XP] +${Math.floor(xp / split.length)} ${s} XP`);
-        for (let lvl = 1; lvl <= 99; lvl++) {
-          if (skillData[s].xp >= xpTable[lvl] && skillData[s].level < lvl) {
-            skillData[s].level = lvl;
-            log(`[LEVEL UP] ${s} is now Lv. ${lvl}!`);
-            triggerLevelUpMessage(s, lvl);
-          }
-        }
-      });
-    } else {
-      skillData[style].xp += xp;
-      log(`[XP] +${xp} ${style} XP`);
-      for (let lvl = 1; lvl <= 99; lvl++) {
-        if (skillData[style].xp >= xpTable[lvl] && skillData[style].level < lvl) {
-          skillData[style].level = lvl;
-          log(`[LEVEL UP] ${style} is now Lv. ${lvl}!`);
-          triggerLevelUpMessage(style, lvl);
-        }
-      }
-    }
-  }
-
-  function startBattle() {
-    if (isBattling) return;
-    isBattling = true;
-    const loop = setInterval(() => {
-      if (enemyHP <= 0 || playerHP <= 0) {
-        if (playerHP <= 0) {
-          log('[DEFEAT] You died. Redirecting...');
-          clearInterval(loop);
-          isBattling = false;
-          setTimeout(() => window.location.href = 'home.html', 2000);
-          return;
-        }
-        log(`[VICTORY] ${enemy.name} defeated.`);
-        grantXP(selectedStyle, enemy.xp);
-        localStorage.setItem("skillData", JSON.stringify(skillData));
-  updateSkillTracker();
-        enemyHP = enemy.hp;
-        document.getElementById("enemy-hp").innerText = enemyHP;
-        isBattling = false;
-        startBattle();
-      } else {
-        const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
-        const dmgToPlayer = Math.floor(Math.random() * 5);
-        enemyHP -= dmgToEnemy;
-        playerHP -= dmgToPlayer;
-        document.getElementById("enemy-hp").innerText = Math.max(enemyHP, 0);
-        document.getElementById("player-hp").innerText = Math.max(playerHP, 0);
-        floatText(document.getElementById("enemy-box"), `-${dmgToEnemy}`, "enemy");
-        floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
-      }
-    }, 1000);
-  }
-
-  function eatFood() {
-    if (playerHP < 100) {
-      playerHP = Math.min(100, playerHP + 5);
-      document.getElementById("player-hp").innerText = playerHP;
-      log("[FOOD] Ate bread. Healed 5 HP.");
-    } else {
-      log("[FOOD] HP is already full.");
-    }
-  }
-
-  function saveProgress() {
-    localStorage.setItem("skillData", JSON.stringify(skillData));
-    localStorage.setItem("lastSave", Date.now());
-    lastSaveTimestamp = Date.now();
-    log("[SAVE] Progress saved.");
-  }
-
-  function updateSaveTimer() {
-    const now = Date.now();
-    const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
-    document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
-  }
-
-  function updateSkillTracker() {
-  const container = document.getElementById('combat-skill-tracker');
-  container.innerHTML = '';
-  for (const skill in skillData) {
-    const level = skillData[skill].level;
-    const xp = skillData[skill].xp;
-    const nextXP = xpTable[level + 1] || xpTable[99];
-    const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
-    const li = document.createElement('li');
-    li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
-      <img src='assets/skills/${skill}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
-      ${skill.replace('_',' ')} — Lv. ${level} (${percent}%)</a>`;
-    container.appendChild(li);
-  }
-}
-
-window.onload = () => {
-    initCombat();
-    setInterval(updateSaveTimer, 1000);
-  updateSkillTracker();
-  };
-</script>
+  <div id="skills-tab">
+    <h3>🧠 Skill Levels</h3>
+    <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
+  </div>
+  <div id="combat-log">[LOG] Combat initialized.<br /></div>
+  <div id="level-up-popup" class="level-up-message"></div>
+  <script src="scripts/enemy-data.js"></script>
+  <script src="scripts/combat.js"></script>
 </body>
 </html>
