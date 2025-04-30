@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Region - Cryptic Idle Worlds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: url('assets/backgrounds/home.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ff99;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .region-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .region-box {
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border: 2px solid #00ff99;
+      text-align: center;
+      width: 200px;
+      transition: transform 0.2s;
+    }
+    .region-box:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .region-box img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    a {
+      color: #00ff99;
+      text-decoration: none;
+    }
+    .locked {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 Select Region</h1>
+  <div class="region-container">
+    <a href="ashlands.html">
+      <div class="region-box">
+        <img src="assets/regions/ashlands.png" alt="Ashlands">
+        <strong>Ashlands</strong><br>
+        <small>Unlocked</small>
+      </div>
+    </a>
+    <a href="wraithmarsh.html" id="wraithmarsh-link">
+      <div class="region-box" id="wraithmarsh-box">
+        <img src="assets/regions/wraithmarsh.png" alt="Wraithmarsh">
+        <strong>Wraithmarsh</strong><br>
+        <small>Combat Lv. 40</small>
+      </div>
+    </a>
+    <a href="cyberspire.html" id="cyberspire-link">
+      <div class="region-box" id="cyberspire-box">
+        <img src="assets/regions/cyberspire.png" alt="Cyberspire">
+        <strong>Cyberspire</strong><br>
+        <small>Combat Lv. 85</small>
+      </div>
+    </a>
+    <a href="zerocrypt.html" id="zerocrypt-link">
+      <div class="region-box" id="zerocrypt-box">
+        <img src="assets/regions/zerocrypt.png" alt="Zerocrypt">
+        <strong>Zerocrypt</strong><br>
+        <small>Combat Lv. 126</small>
+      </div>
+    </a>
+  </div>
+
+  <script>
+    const skills = JSON.parse(localStorage.getItem("skillData")) || {};
+    const levels = skills;
+    const attack = levels.attack?.level || 1;
+    const strength = levels.strength?.level || 1;
+    const defense = levels.defense?.level || 1;
+    const magic = levels.magic?.level || 1;
+    const ranged = levels.ranged?.level || 1;
+
+    const base = 0.25 * (defense + 10 + 1);
+    const melee = 0.325 * (attack + strength);
+    const range = 0.325 * (1.5 * ranged);
+    const mage = 0.325 * (1.5 * magic);
+
+    const combatLevel = Math.floor(base + Math.max(melee, range, mage));
+
+    if (combatLevel < 40) document.getElementById('wraithmarsh-link').classList.add('locked');
+    if (combatLevel < 85) document.getElementById('cyberspire-link').classList.add('locked');
+    if (combatLevel < 126) document.getElementById('zerocrypt-link').classList.add('locked');
+  </script>
+</body>
+</html>
