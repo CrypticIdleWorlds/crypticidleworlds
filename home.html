@@ -3,33 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cryptic Idle Worlds</title>
+  <title>Cryptic Idle Worlds - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="game-container">
     <aside id="skills-tab">
-      <h2>Skills</h2>
+      <h2>Welcome, <span id="user-name"></span></h2>
+      <h3>Skills</h3>
       <div class="skill-section">
-        <h3>Combat</h3>
+        <h4>Combat</h4>
         <ul id="combat-skills"></ul>
       </div>
       <div class="skill-section">
-        <h3>Non-Combat</h3>
+        <h4>Non-Combat</h4>
         <ul id="noncombat-skills"></ul>
       </div>
     </aside>
 
     <main id="main-panel">
       <nav id="top-menu">
-        <button onclick="togglePanel('combat')">Combat</button>
+        <button onclick="location.href='combat.html'">Combat</button>
         <button onclick="togglePanel('skills')">Skills</button>
         <button onclick="togglePanel('inventory')">Inventory</button>
       </nav>
 
       <section id="content-area">
-        <div id="combat" class="panel active">
+        <div id="combat" class="panel">
           <h2>Combat Selection</h2>
           <p>Select an enemy region and encounter to begin.</p>
 
@@ -51,23 +52,24 @@
             <a href="combat.html?enemy=melee_lv15_boss" class="engage-btn">Engage</a>
           </div>
         </div>
-
-        <div id="skills" class="panel hidden">
-          <h2>Skills Panel</h2>
-          <p>This panel just mirrors the skills tab, or can be used for training interactions.</p>
+        <div id="skills" class="panel">
+          <h2>Train Your Skills</h2>
+          <p>Select a skill below to begin training:</p>
+          <button onclick="location.href='skillhacking.html'">System Hacking</button>
+          <button onclick="location.href='skillwoodcutting.html'">Datafishing</button>
+          <!-- Add more skills here -->
         </div>
 
         <div id="inventory" class="panel hidden">
           <h2>Inventory</h2>
-          <p>Inventory will appear here.</p>
+          <p>Your gear and items will be displayed here.</p>
         </div>
       </section>
     </main>
   </div>
 
   <div id="terminal-log" style="padding:10px;background:#000;border-top:2px solid #00ff99;height:120px;overflow-y:auto;font-size:12px;">
-    [LOG] Cryptic Idle Worlds loaded.<br>
-    [LOG] Welcome, Commander.
+    [LOG] Welcome to Cryptic Idle Worlds.<br>
   </div>
 
   <script>
@@ -103,22 +105,20 @@
       }
     }
 
-    function gainXP(skill, amount) {
-      skillData[skill].xp += amount;
-      for (let lvl = 1; lvl <= 99; lvl++) {
-        if (skillData[skill].xp >= xpTable[lvl] && skillData[skill].level < lvl) {
-          skillData[skill].level = lvl;
-        }
-      }
-      updateSkillTabs();
-    }
-
     function togglePanel(id) {
       document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');
     }
 
-    window.onload = updateSkillTabs;
+    function loadUserName() {
+      const name = localStorage.getItem('displayName') || 'Player';
+      document.getElementById('user-name').textContent = name;
+    }
+
+    window.onload = () => {
+      loadUserName();
+      updateSkillTabs();
+    };
   </script>
 </body>
 </html>
