@@ -164,6 +164,12 @@
   </div>
 </div>
 
+<!-- Live Skill Tracker -->
+<div id="skills-tab" style="margin-top: 40px; padding: 16px; border: 2px solid #00ff99; background-color: rgba(0,0,0,0.6);">
+  <h3>🧠 Skill Levels</h3>
+  <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
+</div>
+
 <div id="combat-log">[LOG] Combat initialized.<br /></div>
 <div id="level-up-popup" class="level-up-message"></div>
 
@@ -297,6 +303,7 @@
         log(`[VICTORY] ${enemy.name} defeated.`);
         grantXP(selectedStyle, enemy.xp);
         localStorage.setItem("skillData", JSON.stringify(skillData));
+  updateSkillTracker();
         enemyHP = enemy.hp;
         document.getElementById("enemy-hp").innerText = enemyHP;
         isBattling = false;
@@ -337,9 +344,26 @@
     document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
   }
 
-  window.onload = () => {
+  function updateSkillTracker() {
+  const container = document.getElementById('combat-skill-tracker');
+  container.innerHTML = '';
+  for (const skill in skillData) {
+    const level = skillData[skill].level;
+    const xp = skillData[skill].xp;
+    const nextXP = xpTable[level + 1] || xpTable[99];
+    const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
+    const li = document.createElement('li');
+    li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
+      <img src='assets/skills/${skill}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
+      ${skill.replace('_',' ')} — Lv. ${level} (${percent}%)</a>`;
+    container.appendChild(li);
+  }
+}
+
+window.onload = () => {
     initCombat();
     setInterval(updateSaveTimer, 1000);
+  updateSkillTracker();
   };
 </script>
 </body>
