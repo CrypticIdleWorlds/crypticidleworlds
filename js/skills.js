@@ -61,16 +61,6 @@ const skillList = {
   }
 };
 
-function getXPForLevel(level) {
-  let xp = 0;
-  for (let i = 1; i < level; i++) {
-    xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-  }
-  return Math.floor(xp / 4);
-}
-
-const xpTable = Array(100).fill(0).map((_, level) => getXPForLevel(level));
-
 function renderSkillUI(skillData, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
