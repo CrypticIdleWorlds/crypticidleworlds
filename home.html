@@ -14,7 +14,6 @@
       background-size: cover !important;
       color: #00ff99 !important;
     }
-
     #content-area,
     #top-menu,
     #skills-tab,
@@ -26,7 +25,6 @@
     #main-panel {
       background-color: rgba(0, 0, 0, 0.55) !important;
     }
-
     .level-up-message {
       position: fixed;
       top: 40%;
@@ -41,7 +39,6 @@
       opacity: 0;
       animation: flashFade 2s ease-out;
     }
-
     @keyframes flashFade {
       0% { opacity: 1; }
       100% { opacity: 0; }
@@ -148,34 +145,42 @@
     };
 
     function updateSkillTabs() {
-  const combatList = document.getElementById('combat-skills');
-  const noncombatList = document.getElementById('noncombat-skills');
-  combatList.innerHTML = '';
-  noncombatList.innerHTML = '';
+      const combatList = document.getElementById("combat-skills");
+      const noncombatList = document.getElementById("noncombat-skills");
+      combatList.innerHTML = "";
+      noncombatList.innerHTML = "";
 
-  for (const skill in skillData) {
-    const data = skillData[skill];
-    const li = document.createElement('li');
-    const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
-    li.innerHTML = `<div class="skill-row">
-      <div class="icon-box"><img src="assets/skills/${skill}.png" alt="${skill}" width="16"></div>
-      <span>${displayName}</span><span class="level">Lv. ${data.level}</span></div>`;
-    (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
-  }
-}
+      for (const skill in skillData) {
+        const data = skillData[skill];
+        const level = data.level;
+        const xp = data.xp;
+        const nextXP = xpTable[level + 1] || xpTable[99];
+        const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
+        const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
+        const li = document.createElement("li");
+        li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
+          <div class='skill-row'>
+            <div class='icon-box'><img src='assets/skills/${skill}.png' alt='${skill}' width='16'></div>
+            <span>${displayName}</span>
+            <span class='level'>Lv. ${level} (${percent}%)</span>
+          </div>
+        </a>`;
+        (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
+      }
+    }
 
     function togglePanel(id) {
-      document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+      document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
+      document.getElementById(id).classList.remove("hidden");
     }
 
     function loadUserName() {
-      const name = localStorage.getItem('displayName') || 'Player';
-      document.getElementById('user-name').textContent = name;
+      const name = localStorage.getItem("displayName") || "Player";
+      document.getElementById("user-name").textContent = name;
     }
 
     function restoreOfflineXP() {
-      const lastLogin = localStorage.getItem('lastLogin');
+      const lastLogin = localStorage.getItem("lastLogin");
       const now = Date.now();
       if (lastLogin) {
         const minutes = Math.floor((now - parseInt(lastLogin)) / 60000);
