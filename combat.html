@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combat - Cryptic Idle Worlds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #0a0a0a;
+      color: #00ff99;
+      padding: 20px;
+    }
+    #combat-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    #enemy-box, #player-box {
+      background-color: #111;
+      border: 2px solid #00ff99;
+      padding: 20px;
+      width: 45%;
+      text-align: center;
+    }
+    #combat-log {
+      background: #000;
+      border-top: 2px solid #00ff99;
+      margin-top: 30px;
+      padding: 10px;
+      height: 120px;
+      overflow-y: auto;
+      font-size: 12px;
+    }
+    .btn {
+      background: #000;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚔️ Combat Mode</h1>
+  <div id="combat-container">
+    <div id="enemy-box">
+      <h2 id="enemy-name">Enemy</h2>
+      <img id="enemy-image" src="" alt="Enemy" width="120">
+      <p>HP: <span id="enemy-hp">0</span></p>
+    </div>
+    <div id="player-box">
+      <h2>You</h2>
+      <p>HP: <span id="player-hp">100</span></p>
+      <button class="btn" onclick="attack()">Attack</button>
+    </div>
+  </div>
+
+  <div id="combat-log">
+    [LOG] Combat initialized.<br>
+  </div>
+
+  <script>
+    const enemies = {
+      melee_lv5: {
+        name: "Blight Rat",
+        image: "monsters/blight_rat.png",
+        hp: 30,
+        xp: { melee: 10 }
+      },
+      melee_lv15_boss: {
+        name: "Ashen Whelp Matriarch",
+        image: "bosses/ashen_whelp_matriarch.png",
+        hp: 90,
+        xp: { melee: 30 }
+      }
+    };
+
+    let enemy = null;
+    let enemyHP = 0;
+    let playerHP = 100;
+
+    function getParam(param) {
+      return new URLSearchParams(window.location.search).get(param);
+    }
+
+    function initCombat() {
+      const enemyKey = getParam("enemy");
+      if (!enemyKey || !enemies[enemyKey]) return;
+
+      enemy = enemies[enemyKey];
+      enemyHP = enemy.hp;
+
+      document.getElementById("enemy-name").innerText = enemy.name;
+      document.getElementById("enemy-image").src = enemy.image;
+      document.getElementById("enemy-hp").innerText = enemyHP;
+      document.getElementById("player-hp").innerText = playerHP;
+
+      log(`[ENEMY] Encountered ${enemy.name} with ${enemy.hp} HP.`);
+    }
+
+    function attack() {
+      const damageToEnemy = Math.floor(Math.random() * 10 + 5);
+      const damageToPlayer = Math.floor(Math.random() * 5);
+
+      enemyHP -= damageToEnemy;
+      playerHP -= damageToPlayer;
+
+      document.getElementById("enemy-hp").innerText = Math.max(enemyHP, 0);
+      document.getElementById("player-hp").innerText = Math.max(playerHP, 0);
+
+      log(`[COMBAT] You hit ${enemy.name} for ${damageToEnemy}. Took ${damageToPlayer} damage.`);
+
+      if (enemyHP <= 0) {
+        log(`[VICTORY] You defeated ${enemy.name}.`);
+        for (const skill in enemy.xp) {
+          log(`[XP] +${enemy.xp[skill]} ${skill} XP`);
+        }
+      }
+
+      if (playerHP <= 0) {
+        log(`[DEFEAT] You died. Reload the page to restart.`);
+      }
+    }
+
+    function log(msg) {
+      const box = document.getElementById("combat-log");
+      box.innerHTML += msg + "<br>";
+      box.scrollTop = box.scrollHeight;
+    }
+
+    window.onload = initCombat;
+  </script>
+</body>
+</html>
