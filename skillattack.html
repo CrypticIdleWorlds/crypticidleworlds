@@ -46,6 +46,10 @@
       color: #00ff99;
       text-decoration: none;
     }
+    .locked {
+      opacity: 0.4;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -54,27 +58,52 @@
     <a href="ashlands.html">
       <div class="region-box">
         <img src="assets/regions/ashlands.png" alt="Ashlands">
-        <strong>Ashlands</strong>
+        <strong>Ashlands</strong><br>
+        <small>Unlocked</small>
       </div>
     </a>
-    <a href="wraithmarsh.html">
-      <div class="region-box">
+    <a href="wraithmarsh.html" id="wraithmarsh-link">
+      <div class="region-box" id="wraithmarsh-box">
         <img src="assets/regions/wraithmarsh.png" alt="Wraithmarsh">
-        <strong>Wraithmarsh</strong>
+        <strong>Wraithmarsh</strong><br>
+        <small>Combat Lv. 40</small>
       </div>
     </a>
-    <a href="cyberspire.html">
-      <div class="region-box">
+    <a href="cyberspire.html" id="cyberspire-link">
+      <div class="region-box" id="cyberspire-box">
         <img src="assets/regions/cyberspire.png" alt="Cyberspire">
-        <strong>Cyberspire</strong>
+        <strong>Cyberspire</strong><br>
+        <small>Combat Lv. 85</small>
       </div>
     </a>
-    <a href="zerocrypt.html">
-      <div class="region-box">
+    <a href="zerocrypt.html" id="zerocrypt-link">
+      <div class="region-box" id="zerocrypt-box">
         <img src="assets/regions/zerocrypt.png" alt="Zerocrypt">
-        <strong>Zerocrypt</strong>
+        <strong>Zerocrypt</strong><br>
+        <small>Combat Lv. 126</small>
       </div>
     </a>
   </div>
+
+  <script>
+    const skills = JSON.parse(localStorage.getItem("skillData")) || {};
+    const levels = skills;
+    const attack = levels.attack?.level || 1;
+    const strength = levels.strength?.level || 1;
+    const defense = levels.defense?.level || 1;
+    const magic = levels.magic?.level || 1;
+    const ranged = levels.ranged?.level || 1;
+
+    const base = 0.25 * (defense + 10 + 1);
+    const melee = 0.325 * (attack + strength);
+    const range = 0.325 * (1.5 * ranged);
+    const mage = 0.325 * (1.5 * magic);
+
+    const combatLevel = Math.floor(base + Math.max(melee, range, mage));
+
+    if (combatLevel < 40) document.getElementById('wraithmarsh-link').classList.add('locked');
+    if (combatLevel < 85) document.getElementById('cyberspire-link').classList.add('locked');
+    if (combatLevel < 126) document.getElementById('zerocrypt-link').classList.add('locked');
+  </script>
 </body>
 </html>
