@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Region - Cryptic Idle Worlds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: url('assets/backgrounds/home.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ff99;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .region-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .region-box {
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border: 2px solid #00ff99;
+      text-align: center;
+      width: 200px;
+      transition: transform 0.2s;
+    }
+    .region-box:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .region-box img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    a {
+      color: #00ff99;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 Select Region</h1>
+  <div class="region-container">
+    <a href="ashlands.html">
+      <div class="region-box">
+        <img src="assets/regions/ashlands.png" alt="Ashlands">
+        <strong>Ashlands</strong>
+      </div>
+    </a>
+    <a href="wraithmarsh.html">
+      <div class="region-box">
+        <img src="assets/regions/wraithmarsh.png" alt="Wraithmarsh">
+        <strong>Wraithmarsh</strong>
+      </div>
+    </a>
+    <a href="cyberspire.html">
+      <div class="region-box">
+        <img src="assets/regions/cyberspire.png" alt="Cyberspire">
+        <strong>Cyberspire</strong>
+      </div>
+    </a>
+    <a href="zerocrypt.html">
+      <div class="region-box">
+        <img src="assets/regions/zerocrypt.png" alt="Zerocrypt">
+        <strong>Zerocrypt</strong>
+      </div>
+    </a>
+  </div>
+</body>
+</html>
