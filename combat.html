@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Combat - Cryptic Idle Worlds</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: 'Share Tech Mono', monospace;
@@ -47,6 +47,32 @@
       0% { opacity: 1; bottom: 10px; }
       100% { opacity: 0; bottom: 50px; }
     }
+    .btn {
+      background: #000;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .level-up-message {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border: 2px solid #00ff99;
+      z-index: 9999;
+      opacity: 0;
+      animation: flashFade 2s ease-out;
+    }
+    @keyframes flashFade {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
     #combat-log {
       background: #000;
       border-top: 2px solid #00ff99;
@@ -56,22 +82,15 @@
       overflow-y: auto;
       font-size: 12px;
     }
-    .btn {
-      background: #000;
-      color: #00ff99;
-      border: 1px solid #00ff99;
-      padding: 10px 20px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
   </style>
 </head>
 <body>
-  <h1>⚔️ Combat Mode</h1>
+  <h1>⚔️ Combat Mode <button onclick="window.location.href='home.html'" class="btn" style="float:right">🛑 Escape</button></h1>
+
   <div id="combat-container">
     <div id="enemy-box">
       <h2 id="enemy-name">Enemy</h2>
-      <img id="enemy-image" src="" alt="Enemy" width="120">
+      <img id="enemy-image" src="" alt="Enemy" width="120" />
       <p>HP: <span id="enemy-hp">0</span></p>
     </div>
     <div id="player-box">
@@ -80,14 +99,13 @@
       <button class="btn" onclick="startBattle()">Battle</button>
       <div id="food-box">
         <p>Food:</p>
-        <img src="assets/items/consumables/bread.png" alt="Bread" onclick="eatFood()">
+        <img src="assets/items/consumables/bread.png" alt="Bread" onclick="eatFood()" />
       </div>
     </div>
   </div>
 
-  <div id="combat-log">
-    [LOG] Combat initialized.<br>
-  </div>
+  <div id="combat-log">[LOG] Combat initialized.<br /></div>
+  <div id="level-up-popup" class="level-up-message"></div>
 
   <script>
     const enemies = {
@@ -111,7 +129,9 @@
       return Math.floor(xp / 4);
     });
 
-    let skillData = JSON.parse(localStorage.getItem("skillData")) || { melee: { xp: 0, level: 1 } };
+    let skillData = JSON.parse(localStorage.getItem("skillData")) || {
+      melee: { xp: 0, level: 1 }
+    };
     let enemy = null;
     let enemyHP = 0;
     let playerHP = 100;
@@ -135,6 +155,14 @@
       setTimeout(() => el.remove(), 1000);
     }
 
+    function triggerLevelUpMessage(skill, level) {
+      const msg = document.getElementById("level-up-popup");
+      msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
+      msg.style.animation = 'none';
+      msg.offsetHeight; // reset animation
+      msg.style.animation = null;
+    }
+
     function initCombat() {
       const enemyKey = getParam("enemy");
       if (!enemyKey || !enemies[enemyKey]) return;
@@ -152,10 +180,10 @@
       isBattling = true;
       const loop = setInterval(() => {
         if (enemyHP <= 0 || playerHP <= 0) {
-          clearInterval(loop);
-          isBattling = false;
           if (playerHP <= 0) {
             log(`[DEFEAT] You died. Reload the page to restart.`);
+            clearInterval(loop);
+            isBattling = false;
             return;
           }
           log(`[VICTORY] ${enemy.name} defeated.`);
@@ -166,12 +194,15 @@
               if (skillData[skill].xp >= xpTable[lvl] && skillData[skill].level < lvl) {
                 skillData[skill].level = lvl;
                 log(`[LEVEL UP] ${skill} is now Lv. ${lvl}!`);
+                triggerLevelUpMessage(skill, lvl);
               }
             }
           }
           localStorage.setItem("skillData", JSON.stringify(skillData));
           enemyHP = enemy.hp;
           document.getElementById("enemy-hp").innerText = enemyHP;
+          isBattling = false;
+          startBattle(); // Auto-restart
         } else {
           const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
           const dmgToPlayer = Math.floor(Math.random() * 5);
