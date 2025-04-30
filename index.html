@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryptic Idle Worlds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #0a0a0a;
+      color: #00ff99;
+    }
+    #combat-panel {
+      padding: 20px;
+    }
+    select {
+      background: #000;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    button {
+      background: #000;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      font-family: 'Share Tech Mono', monospace;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    #enemy-image {
+      border: 1px solid #00ff99;
+      margin: 10px 0;
+    }
+    #terminal-log {
+      background: #000;
+      padding: 10px;
+      border-top: 2px solid #00ff99;
+      height: 120px;
+      overflow-y: auto;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="combat-panel">
+    <h2>Combat Interface</h2>
+    <label for="region-select">Select Region:</label>
+    <select id="region-select" onchange="updateEnemyDropdown()">
+      <option value="ashen">Ashen Hollows (Lv 1–10)</option>
+      <option value="crypt">Crypt Mire (Lv 11–25)</option>
+      <option value="dread" selected>Dreadreach Caverns (Lv 26–40)</option>
+      <option value="wyrm">Wyrmgrave Expanse (Lv 41–60)</option>
+      <option value="elder">Elder Beyond (Lv 61+)</option>
+    </select>
+
+    <br><br>
+    <label for="enemy-select">Choose Enemy:</label>
+    <select id="enemy-select" onchange="selectEnemy()"></select>
+
+    <div id="enemy-display">
+      <p>Current Enemy: <strong id="enemy-name">None</strong></p>
+      <img id="enemy-image" src="" alt="Enemy Image" style="max-width: 120px; display: none;">
+      <p>HP: <span id="player-hp">100</span> / 100</p>
+      <p>Enemy HP: <span id="enemy-hp">0</span> / 0</p>
+      <p>Status: <span id="combat-status">Idle</span></p>
+      <button onclick="startCombat()">Engage</button>
+    </div>
+  </div>
+
+  <div id="terminal-log">
+    [LOG] Cryptic Idle Worlds loaded.<br />
+    [LOG] Welcome, Commander.
+  </div>
+
+  <script>
+    const combatLevel = 30;
+    const regions = {
+      ashen: {
+        level: 1,
+        unlocked: combatLevel >= 1,
+        enemies: ["blight_rat.png", "ashen_whelp.png"],
+        bosses: ["ashen_whelp_matriarch.png"]
+      },
+      crypt: {
+        level: 11,
+        unlocked: combatLevel >= 11,
+        enemies: ["crypt_darter.png", "crypt_ghast.png"],
+        bosses: ["crypt_ghast_lord.png"]
+      },
+      dread: {
+        level: 26,
+        unlocked: combatLevel >= 26,
+        enemies: ["rotfiend.png", "smolderfang.png"],
+        bosses: ["rotlash_creeper_warlord.png"]
+      },
+      wyrm: {
+        level: 41,
+        unlocked: combatLevel >= 41,
+        enemies: ["gravecoil.png", "duskwither.png"],
+        bosses: ["gravemarrow_ancient.png"]
+      },
+      elder: {
+        level: 61,
+        unlocked: combatLevel >= 61,
+        enemies: ["soul_leech.png"],
+        bosses: ["Xal'Zurath, Shattered God.png"]
+      }
+    };
+    let currentEnemy = null;
+
+    function updateEnemyDropdown() {
+      const region = document.getElementById('region-select').value;
+      const enemySelect = document.getElementById('enemy-select');
+      const area = regions[region];
+
+      enemySelect.innerHTML = "";
+
+      if (!area.unlocked) {
+        enemySelect.innerHTML = `<option disabled>🔒 Locked - Reach Level ${area.level}</option>`;
+        return;
+      }
+
+      enemySelect.innerHTML += `<optgroup label='Monsters'>`;
+      area.enemies.forEach(name => {
+        enemySelect.innerHTML += `<option value='${name}'>${name.replace(/_/g, ' ').replace(/\\.png/, '')}</option>`;
+      });
+      enemySelect.innerHTML += `</optgroup><optgroup label='Bosses'>`;
+      area.bosses.forEach(name => {
+        enemySelect.innerHTML += `<option value='${name}'>${name.replace(/_/g, ' ').replace(/\\.png/, '')}</option>`;
+      });
+      enemySelect.innerHTML += `</optgroup>`;
+      selectEnemy();
+    }
+
+    function selectEnemy() {
+      const selected = document.getElementById('enemy-select').value;
+      currentEnemy = selected;
+      const cleanName = selected.replace(/_/g, ' ').replace(/\\.png/, '');
+      document.getElementById('enemy-name').innerText = cleanName;
+      document.getElementById('enemy-image').src = `${selected.includes('lord') || selected.includes('god') ? 'bosses' : 'monsters'}/${selected}`;
+      document.getElementById('enemy-image').style.display = 'block';
+
+      // Assign sample stats
+      let stats = {
+        hp: selected.includes('lord') || selected.includes('god') ? 200 : 60,
+        atk: selected.includes('lord') || selected.includes('god') ? 12 : 6,
+        def: selected.includes('lord') || selected.includes('god') ? 8 : 3
+      };
+
+      document.getElementById('enemy-hp').innerText = stats.hp;
+      document.getElementById('combat-status').innerText = `ATK: ${stats.atk} | DEF: ${stats.def}`;
+    }
+
+    function startCombat() {
+      if (!currentEnemy) return;
+      document.getElementById('combat-status').innerText = 'Fighting...';
+      let playerHP = 100;
+      let enemyHP = 60;
+      const interval = setInterval(() => {
+        if (playerHP <= 0 || enemyHP <= 0) {
+          clearInterval(interval);
+          const status = playerHP <= 0 ? 'You died.' : 'Enemy defeated!';
+          document.getElementById('combat-status').innerText = status;
+          const log = document.getElementById('terminal-log');
+          log.innerHTML += `[COMBAT] ${status}<br />`;
+          log.scrollTop = log.scrollHeight;
+          return;
+        }
+        playerHP -= Math.floor(Math.random() * 5);
+        enemyHP -= Math.floor(Math.random() * 10);
+        document.getElementById('player-hp').innerText = Math.max(playerHP, 0);
+        document.getElementById('enemy-hp').innerText = Math.max(enemyHP, 0);
+      }, 1000);
+    }
+
+    window.onload = updateEnemyDropdown;
+  </script>
+</body>
+</html>
+
