@@ -119,125 +119,95 @@
   <div id="level-up-popup" class="level-up-message"></div>
 
   <script src="js/skills.js"></script>
-  <script>
-    const defaultSkills = {
-      attack: { xp: 0, level: 1 },
-      strength: { xp: 0, level: 1 },
-      defense: { xp: 0, level: 1 },
-      magic: { xp: 0, level: 1 },
-      ranged: { xp: 0, level: 1 },
-      slayer: { xp: 0, level: 1 },
-      cryptomining: { xp: 0, level: 1 },
-      datafishing: { xp: 0, level: 1 },
-      codecraft: { xp: 0, level: 1 },
-      forgenetics: { xp: 0, level: 1 },
-      system_hacking: { xp: 0, level: 1 }
-    };
+  <script src="js/skills.js"></script>
+<script>
+  const defaultSkills = {
+    attack: { xp: 0, level: 1 },
+    strength: { xp: 0, level: 1 },
+    defense: { xp: 0, level: 1 },
+    magic: { xp: 0, level: 1 },
+    ranged: { xp: 0, level: 1 },
+    slayer: { xp: 0, level: 1 },
+    cryptomining: { xp: 0, level: 1 },
+    datafishing: { xp: 0, level: 1 },
+    codecraft: { xp: 0, level: 1 },
+    forgenetics: { xp: 0, level: 1 },
+    system_hacking: { xp: 0, level: 1 }
+  };
 
-    const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
-    const xpTable = Array(100).fill(0).map((_, level) => {
-      let xp = 0;
-      for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-      return Math.floor(xp / 4);
-    });
+  const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
+  const xpTable = Array(100).fill(0).map((_, level) => {
+    let xp = 0;
+    for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
+    return Math.floor(xp / 4);
+  });
 
-    let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
+  let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
 
-    const combatSkillNames = {
-      attack: "Striker Protocol",
-      strength: "Force Module",
-      defense: "Barrier Matrix",
-      magic: "Neurohex",
-      ranged: "Synapsis Bowline"
-    };
+  function togglePanel(id) {
+    document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
+    document.getElementById(id).classList.remove("hidden");
+  }
 
-    function updateSkillTabs() {
-      const combatList = document.getElementById("combat-skills");
-      const noncombatList = document.getElementById("noncombat-skills");
-      combatList.innerHTML = "";
-      noncombatList.innerHTML = "";
+  function loadUserName() {
+    const name = localStorage.getItem("displayName") || "Player";
+    document.getElementById("user-name").textContent = name;
+  }
 
-      for (const skill in skillData) {
-        const data = skillData[skill];
-        const level = data.level;
-        const xp = data.xp;
-        const nextXP = xpTable[level + 1] || xpTable[99];
-        const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
-        const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
-        const li = document.createElement("li");
-        li.innerHTML = `<a href='skills/skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
-          <div class='skill-row'>
-            <div class='icon-box'><img src='assets/skills/${skill}.png' alt='${skill}' width='16'></div>
-            <span>${displayName}</span>
-            <span class='level'>Lv. ${level} (${percent}%)</span>
-          </div>
-        </a>`;
-        (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
-      }
-    }
-
-    function togglePanel(id) {
-      document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
-      document.getElementById(id).classList.remove("hidden");
-    }
-
-    function loadUserName() {
-      const name = localStorage.getItem("displayName") || "Player";
-      document.getElementById("user-name").textContent = name;
-    }
-
-    function restoreOfflineXP() {
-      const lastLogin = localStorage.getItem("lastLogin");
-      const now = Date.now();
-      if (lastLogin) {
-        const minutes = Math.floor((now - parseInt(lastLogin)) / 60000);
-        if (minutes > 0) {
-          skillData.system_hacking.xp += minutes;
-          for (let i = 1; i <= 99; i++) {
-            if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
-              skillData.system_hacking.level = i;
-              triggerLevelUpMessage("system hacking", i);
-            }
+  function restoreOfflineXP() {
+    const lastLogin = localStorage.getItem("lastLogin");
+    const now = Date.now();
+    if (lastLogin) {
+      const minutes = Math.floor((now - parseInt(lastLogin)) / 60000);
+      if (minutes > 0) {
+        skillData.system_hacking.xp += minutes;
+        for (let i = 1; i <= 99; i++) {
+          if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
+            skillData.system_hacking.level = i;
+            triggerLevelUpMessage("system hacking", i);
           }
-          localStorage.setItem("skillData", JSON.stringify(skillData));
         }
+        localStorage.setItem("skillData", JSON.stringify(skillData));
       }
-      localStorage.setItem("lastLogin", now);
     }
+    localStorage.setItem("lastLogin", now);
+  }
 
-    function triggerLevelUpMessage(skill, level) {
-      const msg = document.getElementById("level-up-popup");
-      msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
-      msg.style.animation = 'none';
-      msg.offsetHeight;
-      msg.style.animation = null;
-    }
+  function triggerLevelUpMessage(skill, level) {
+    const msg = document.getElementById("level-up-popup");
+    msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
+    msg.style.animation = 'none';
+    msg.offsetHeight;
+    msg.style.animation = null;
+  }
 
-    function saveProgress() {
-      localStorage.setItem("skillData", JSON.stringify(skillData));
-      localStorage.setItem("lastSave", Date.now());
-      lastSaveTimestamp = Date.now();
-      log("[SAVE] Progress saved.");
-    }
+  function saveProgress() {
+    localStorage.setItem("skillData", JSON.stringify(skillData));
+    localStorage.setItem("lastSave", Date.now());
+    lastSaveTimestamp = Date.now();
+    log("[SAVE] Progress saved.");
+  }
 
-    function updateSaveTimer() {
-      const now = Date.now();
-      const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
-      document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
-    }
+  function updateSaveTimer() {
+    const now = Date.now();
+    const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
+    document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
+  }
 
-    function log(msg) {
-      const box = document.getElementById("terminal-log");
-      box.innerHTML += msg + "<br>";
-      box.scrollTop = box.scrollHeight;
-    }
+  function log(msg) {
+    const box = document.getElementById("terminal-log");
+    box.innerHTML += msg + "<br>";
+    box.scrollTop = box.scrollHeight;
+  }
 
-    window.onload = () => {
-      loadUserName();
-      restoreOfflineXP();
-      updateSkillTabs();
-      setInterval(updateSaveTimer, 1000);
-    };
-  </script>
+  window.onload = () => {
+    loadUserName();
+    restoreOfflineXP();
+    renderSkillUI(skillData, "combat-skills");
+    renderSkillUI(skillData, "noncombat-skills");
+    setInterval(updateSaveTimer, 1000);
+  };
+</script>
+
 </body>
 </html>
