@@ -1,48 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cryptic Idle Worlds - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: 'Share Tech Mono', monospace !important;
-      margin: 0 !important;
-      background: url('assets/backgrounds/home.png') no-repeat center center fixed !important;
-      background-size: cover !important;
-      color: #00ff99 !important;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      background: url('assets/backgrounds/home.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ff99;
     }
     #content-area,
     #top-menu,
     #skills-tab,
     .skill-row,
     #terminal-log,
-    .enemy-row,
     #inventory,
     #save-bar,
     #main-panel {
-      background-color: rgba(0, 0, 0, 0.55) !important;
-    }
-    .bank-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-    .bank-slot {
-      width: 64px;
-      height: 64px;
-      background-color: rgba(0, 0, 0, 0.3);
-      border: 1px solid #00ff99;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .bank-slot img {
-      width: 48px;
-      height: auto;
+      background-color: rgba(0, 0, 0, 0.55);
     }
     .level-up-message {
       position: fixed;
@@ -65,9 +45,9 @@
   </style>
 </head>
 <body>
-  <div style="background:#000;padding:10px;border-bottom:2px solid #00ff99;">
+  <div id="save-bar" style="background:#000;padding:10px;border-bottom:2px solid #00ff99;">
     <span id="last-save-time">Time since last save: 0s</span>
-    <button onclick="saveProgress()" style="float:right; background:#000; color:#00ff99; border:1px solid #00ff99; padding:4px 10px; cursor:pointer;">Save</button>
+    <button onclick="saveProgress()" style="float:right; background:#000; color:#00ff99; border:1px solid #00ff99; padding:4px 10px; cursor:pointer;">💾 Save</button>
   </div>
 
   <div id="game-container">
@@ -93,16 +73,8 @@
 
       <section id="content-area">
         <div id="bank" class="panel">
-          <h2>🏦 Bank</h2>
-          <p>Your stored items will appear here.</p>
-          <div class="bank-grid">
-            <div class="bank-slot"><img src="assets/items/consumables/bread.png" alt="Bread"></div>
-            <div class="bank-slot"></div>
-            <div class="bank-slot"></div>
-            <div class="bank-slot"></div>
-            <div class="bank-slot"></div>
-            <div class="bank-slot"></div>
-          </div>
+          <h2>🪙 Your Bank</h2>
+          <p>This area will later contain your stored gear, coins, items, and tabs.</p>
         </div>
 
         <div id="skills" class="panel hidden">
@@ -125,125 +97,7 @@
   </div>
   <div id="level-up-popup" class="level-up-message"></div>
 
-  <script>
-    const defaultSkills = {
-      attack: { xp: 0, level: 1 },
-      strength: { xp: 0, level: 1 },
-      defense: { xp: 0, level: 1 },
-      magic: { xp: 0, level: 1 },
-      ranged: { xp: 0, level: 1 },
-      slayer: { xp: 0, level: 1 },
-      cryptomining: { xp: 0, level: 1 },
-      datafishing: { xp: 0, level: 1 },
-      codecraft: { xp: 0, level: 1 },
-      forgenetics: { xp: 0, level: 1 },
-      system_hacking: { xp: 0, level: 1 }
-    };
-
-    const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
-    const xpTable = Array(100).fill(0).map((_, level) => {
-      let xp = 0;
-      for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-      return Math.floor(xp / 4);
-    });
-
-    let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
-
-    const combatSkillNames = {
-      attack: "Striker Protocol",
-      strength: "Force Module",
-      defense: "Barrier Matrix",
-      magic: "Neurohex",
-      ranged: "Synapsis Bowline"
-    };
-
-    function updateSkillTabs() {
-      const combatList = document.getElementById("combat-skills");
-      const noncombatList = document.getElementById("noncombat-skills");
-      combatList.innerHTML = "";
-      noncombatList.innerHTML = "";
-
-      for (const skill in skillData) {
-        const data = skillData[skill];
-        const level = data.level;
-        const xp = data.xp;
-        const nextXP = xpTable[level + 1] || xpTable[99];
-        const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
-        const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
-        const li = document.createElement("li");
-        li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
-          <div class='skill-row'>
-            <div class='icon-box'><img src='assets/skills/${skill}.png' alt='${skill}' width='16'></div>
-            <span>${displayName}</span>
-            <span class='level'>Lv. ${level} (${percent}%)</span>
-          </div>
-        </a>`;
-        (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
-      }
-    }
-
-    function togglePanel(id) {
-      document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
-      document.getElementById(id).classList.remove("hidden");
-    }
-
-    function loadUserName() {
-      const name = localStorage.getItem("displayName") || "Player";
-      document.getElementById("user-name").textContent = name;
-    }
-
-    function restoreOfflineXP() {
-      const lastLogin = localStorage.getItem("lastLogin");
-      const now = Date.now();
-      if (lastLogin) {
-        const minutes = Math.floor((now - parseInt(lastLogin)) / 60000);
-        if (minutes > 0) {
-          skillData.system_hacking.xp += minutes;
-          for (let i = 1; i <= 99; i++) {
-            if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
-              skillData.system_hacking.level = i;
-              triggerLevelUpMessage("system hacking", i);
-            }
-          }
-          localStorage.setItem("skillData", JSON.stringify(skillData));
-        }
-      }
-      localStorage.setItem("lastLogin", now);
-    }
-
-    function triggerLevelUpMessage(skill, level) {
-      const msg = document.getElementById("level-up-popup");
-      msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
-      msg.style.animation = 'none';
-      msg.offsetHeight;
-      msg.style.animation = null;
-    }
-
-    function saveProgress() {
-      localStorage.setItem("skillData", JSON.stringify(skillData));
-      localStorage.setItem("lastSave", Date.now());
-      lastSaveTimestamp = Date.now();
-      log("[SAVE] Progress saved.");
-    }
-
-    function updateSaveTimer() {
-      const now = Date.now();
-      const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
-      document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
-    }
-
-    function log(msg) {
-      const box = document.getElementById("terminal-log");
-      box.innerHTML += msg + "<br>";
-      box.scrollTop = box.scrollHeight;
-    }
-
-    window.onload = () => {
-      loadUserName();
-      restoreOfflineXP();
-      updateSkillTabs();
-      setInterval(updateSaveTimer, 1000);
-    };
-  </script>
+  <script src="scripts/enemy-data.js"></script>
+  <script src="scripts/combat.js"></script>
 </body>
 </html>
