@@ -6,33 +6,40 @@
   <title>Cryptic Idle Worlds - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: 'Share Tech Mono', monospace !important;
-      margin: 0 !important;
-      background: url('assets/backgrounds/home.png') no-repeat center center fixed !important;
-      background-size: cover !important;
-      color: #00ff99 !important;
-    }
-    .level-up-message {
-      position: fixed;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
-      background: #00ff99;
-      color: #000;
-      padding: 10px 20px;
-      border: 2px solid #00ff99;
-      z-index: 9999;
-      opacity: 0;
-      animation: flashFade 2s ease-out;
-    }
-    @keyframes flashFade {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-  </style>
+ <style>
+  body {
+    font-family: 'Share Tech Mono', monospace !important;
+    margin: 0 !important;
+    background: url('assets/backgrounds/home.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+    color: #00ff99 !important;
+  }
+
+  #content-area {
+    background-color: transparent !important;
+  }
+
+  .level-up-message {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    background: #00ff99;
+    color: #000;
+    padding: 10px 20px;
+    border: 2px solid #00ff99;
+    z-index: 9999;
+    opacity: 0;
+    animation: flashFade 2s ease-out;
+  }
+
+  @keyframes flashFade {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>
+
 </head>
 <body>
   <div style="background:#000;padding:10px;border-bottom:2px solid #00ff99;">
