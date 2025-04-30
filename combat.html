@@ -130,19 +130,19 @@
         name: "Blight Rat",
         image: "assets/monsters/blight_rat.png",
         hp: 30,
-        xp: { melee: 10 }
+        xp: { attack: 10 }
       },
       melee_1v5: {
-  name: "Ashen Whelp",
-  image: "assets/monsters/ashen_whelp.png",
-  hp: 45,
-  xp: { melee: 10 }
+        name: "Ashen Whelp",
+        image: "assets/monsters/ashen_whelp.png",
+        hp: 45,
+        xp: { strength: 12 }
       },
       melee_lv15_boss: {
         name: "Ashen Whelp Matriarch",
         image: "assets/bosses/ashen_whelp_matriarch.png",
         hp: 90,
-        xp: { melee: 30 }
+        xp: { defense: 30 }
       }
     };
 
@@ -152,7 +152,13 @@
       return Math.floor(xp / 4);
     });
 
-    let skillData = JSON.parse(localStorage.getItem("skillData")) || { melee: { xp: 0, level: 1 } };
+    let skillData = JSON.parse(localStorage.getItem("skillData")) || {
+      attack: { xp: 0, level: 1 },
+      strength: { xp: 0, level: 1 },
+      defense: { xp: 0, level: 1 },
+      magic: { xp: 0, level: 1 },
+      ranged: { xp: 0, level: 1 }
+    };
     let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
     let enemy = null;
     let enemyHP = 0;
@@ -203,9 +209,10 @@
       const loop = setInterval(() => {
         if (enemyHP <= 0 || playerHP <= 0) {
           if (playerHP <= 0) {
-            log(`[DEFEAT] You died. Reload the page to restart.`);
+            log('[DEFEAT] You died. Redirecting...');
             clearInterval(loop);
             isBattling = false;
+            setTimeout(() => window.location.href = 'home.html', 2000);
             return;
           }
           log(`[VICTORY] ${enemy.name} defeated.`);
@@ -224,7 +231,7 @@
           enemyHP = enemy.hp;
           document.getElementById("enemy-hp").innerText = enemyHP;
           isBattling = false;
-          startBattle(); // Auto-restart
+          startBattle();
         } else {
           const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
           const dmgToPlayer = Math.floor(Math.random() * 5);
@@ -242,9 +249,9 @@
       if (playerHP < 100) {
         playerHP = Math.min(100, playerHP + 5);
         document.getElementById("player-hp").innerText = playerHP;
-        log(`[FOOD] Ate bread. Healed 5 HP.`);
+        log("[FOOD] Ate bread. Healed 5 HP.");
       } else {
-        log(`[FOOD] HP is already full.`);
+        log("[FOOD] HP is already full.");
       }
     }
 
@@ -252,7 +259,7 @@
       localStorage.setItem("skillData", JSON.stringify(skillData));
       localStorage.setItem("lastSave", Date.now());
       lastSaveTimestamp = Date.now();
-      log(`[SAVE] Progress saved.`);
+      log("[SAVE] Progress saved.");
     }
 
     function updateSaveTimer() {
