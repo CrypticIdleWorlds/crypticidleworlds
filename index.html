@@ -26,7 +26,7 @@
       text-align: center;
       margin-bottom: 30px;
     }
-    input {
+    input, button {
       width: 100%;
       margin: 10px 0;
       padding: 10px;
@@ -35,13 +35,7 @@
       border: 1px solid #00ff99;
     }
     button {
-      width: 100%;
-      padding: 10px;
-      background-color: #000;
-      color: #00ff99;
-      border: 1px solid #00ff99;
       cursor: pointer;
-      margin-top: 15px;
     }
     p {
       font-size: 12px;
@@ -56,21 +50,65 @@
     <input type="email" id="email" placeholder="Email" required />
     <input type="password" id="password" placeholder="Password" required />
     <button onclick="handleLogin()">Login / Signup</button>
-    <p>Accounts save to cloud using Firebase</p>
+    <p>Accounts are synced using Firebase</p>
   </div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
+
   <script>
-    function handleLogin() {
-      const displayName = document.getElementById('displayName').value;
+    const firebaseConfig = {
+      apiKey: "AIzaSyD9fP6lTlv8296s6_mEsk-TzHDiH65xyr8",
+      authDomain: "cryptic-idle-worlds.firebaseapp.com",
+      projectId: "cryptic-idle-worlds",
+      storageBucket: "cryptic-idle-worlds.firebasestorage.app",
+      messagingSenderId: "928017554816",
+      appId: "1:928017554816:web:4a04342652080fa61cf565",
+      measurementId: "G-E6KBPYG34M"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    async function handleLogin() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
+      const displayName = document.getElementById('displayName').value;
 
-      // TODO: Replace with Firebase auth
-      if (displayName && email && password) {
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
         localStorage.setItem('displayName', displayName);
+        await loadFromCloud(user.uid);
         window.location.href = 'home.html';
-      } else {
-        alert("Please fill out all fields");
+      } catch (err) {
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        await user.updateProfile({ displayName });
+        localStorage.setItem('displayName', displayName);
+        await saveToCloud(user.uid);
+        window.location.href = 'home.html';
+      }
+    }
+
+    async function saveToCloud(uid) {
+      const skillData = JSON.parse(localStorage.getItem('skillData')) || {};
+      await db.collection("users").doc(uid).set({
+        displayName: localStorage.getItem("displayName"),
+        skillData: skillData,
+        timestamp: Date.now()
+      });
+    }
+
+    async function loadFromCloud(uid) {
+      const doc = await db.collection("users").doc(uid).get();
+      if (doc.exists) {
+        const data = doc.data();
+        localStorage.setItem("skillData", JSON.stringify(data.skillData));
+        localStorage.setItem("displayName", data.displayName);
       }
     }
   </script>
