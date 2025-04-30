@@ -67,29 +67,15 @@
 
     <main id="main-panel">
       <nav id="top-menu">
-        <button onclick="togglePanel('combat-selection')">Combat</button>
+        <button onclick="togglePanel('bank')">Bank</button>
         <button onclick="togglePanel('skills')">Skills</button>
         <button onclick="togglePanel('inventory')">Inventory</button>
       </nav>
 
       <section id="content-area">
-        <div id="combat-selection" class="panel">
-          <h2>Choose Your Opponent</h2>
-          <div class="enemy-row">
-            <img src="assets/monsters/blight_rat.png" alt="Blight Rat" width="80">
-            <p>Fight: Blight Rat (Lv. 5)</p>
-            <button onclick="location.href='combat.html?enemy=melee_lv5'">Engage</button>
-          </div>
-          <div class="enemy-row">
-            <img src="assets/monsters/ashen_whelp.png" alt="Ashen Whelp" width="80">
-            <p>Fight: Ashen Whelp (Lv. 5)</p>
-            <button onclick="location.href='combat.html?enemy=melee_1v5'">Engage</button>
-          </div>
-          <div class="enemy-row">
-            <img src="assets/bosses/ashen_whelp_matriarch.png" alt="Ashen Whelp Matriarch" width="80">
-            <p>Fight: Ashen Whelp Matriarch (Lv. 15 Boss)</p>
-            <button onclick="location.href='combat.html?enemy=melee_lv15_boss'">Engage</button>
-          </div>
+        <div id="bank" class="panel">
+          <h2>🏦 Bank</h2>
+          <p>This will be your bank tab. Gear, currency, materials and items will appear here in the future.</p>
         </div>
 
         <div id="skills" class="panel hidden">
