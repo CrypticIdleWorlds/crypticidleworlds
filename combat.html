@@ -80,13 +80,40 @@
       }
     };
 
-    let enemy = null;
-    let enemyHP = 0;
-    let playerHP = 100;
+    const xpTable = Array(100).fill(0).map((_, level) => {
+      let xp = 0;
+      for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
+      return Math.floor(xp / 4);
+    });
 
     function getParam(param) {
       return new URLSearchParams(window.location.search).get(param);
     }
+
+    function log(msg) {
+      const box = document.getElementById("combat-log");
+      box.innerHTML += msg + "<br>";
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function loadSkillData() {
+      const saved = localStorage.getItem('skillData');
+      return saved ? JSON.parse(saved) : {
+        melee: { xp: 0, level: 1 },
+        ranged: { xp: 0, level: 1 },
+        techno_magic: { xp: 0, level: 1 },
+        slayer: { xp: 0, level: 1 },
+      };
+    }
+
+    function saveSkillData(data) {
+      localStorage.setItem('skillData', JSON.stringify(data));
+    }
+
+    let skillData = loadSkillData();
+    let enemy = null;
+    let enemyHP = 0;
+    let playerHP = 100;
 
     function initCombat() {
       const enemyKey = getParam("enemy");
@@ -118,19 +145,22 @@
       if (enemyHP <= 0) {
         log(`[VICTORY] You defeated ${enemy.name}.`);
         for (const skill in enemy.xp) {
-          log(`[XP] +${enemy.xp[skill]} ${skill} XP`);
+          const gained = enemy.xp[skill];
+          skillData[skill].xp += gained;
+          log(`[XP] +${gained} ${skill} XP`);
+          for (let lvl = 1; lvl <= 99; lvl++) {
+            if (skillData[skill].xp >= xpTable[lvl] && skillData[skill].level < lvl) {
+              skillData[skill].level = lvl;
+              log(`[LEVEL UP] ${skill} is now Lv. ${lvl}!`);
+            }
+          }
         }
+        saveSkillData(skillData);
       }
 
       if (playerHP <= 0) {
         log(`[DEFEAT] You died. Reload the page to restart.`);
       }
-    }
-
-    function log(msg) {
-      const box = document.getElementById("combat-log");
-      box.innerHTML += msg + "<br>";
-      box.scrollTop = box.scrollHeight;
     }
 
     window.onload = initCombat;
