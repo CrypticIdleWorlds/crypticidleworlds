@@ -148,21 +148,21 @@
     };
 
     function updateSkillTabs() {
-      const combatList = document.getElementById('combat-skills');
-      const noncombatList = document.getElementById('noncombat-skills');
-      combatList.innerHTML = '';
-      noncombatList.innerHTML = '';
+  const combatList = document.getElementById('combat-skills');
+  const noncombatList = document.getElementById('noncombat-skills');
+  combatList.innerHTML = '';
+  noncombatList.innerHTML = '';
 
-      for (const skill in skillData) {
-        const data = skillData[skill];
-        const li = document.createElement('li');
-        const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
-        li.innerHTML = `<div class="skill-row">
-          <div class="icon-box"><img src="assets/icons/${skill}.png" alt="${skill}" width="16"></div>
-          <span>${displayName}</span><span class="level">Lv. ${data.level}</span></div>`;
-        (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
-      }
-    }
+  for (const skill in skillData) {
+    const data = skillData[skill];
+    const li = document.createElement('li');
+    const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
+    li.innerHTML = `<div class="skill-row">
+      <div class="icon-box"><img src="assets/skills/${skill}.png" alt="${skill}" width="16"></div>
+      <span>${displayName}</span><span class="level">Lv. ${data.level}</span></div>`;
+    (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
+  }
+}
 
     function togglePanel(id) {
       document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
