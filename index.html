@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cryptic Idle Worlds - Start</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     body {
       background-color: #0a0a0a;
@@ -64,9 +65,11 @@
       localStorage.setItem('displayName', name);
       if (!localStorage.getItem('skillData')) {
         localStorage.setItem('skillData', JSON.stringify({
-          melee: { xp: 0, level: 1 },
+          attack: { xp: 0, level: 1 },
+          strength: { xp: 0, level: 1 },
+          defense: { xp: 0, level: 1 },
+          magic: { xp: 0, level: 1 },
           ranged: { xp: 0, level: 1 },
-          techno_magic: { xp: 0, level: 1 },
           slayer: { xp: 0, level: 1 },
           cryptomining: { xp: 0, level: 1 },
           datafishing: { xp: 0, level: 1 },
