@@ -36,19 +36,19 @@
           <div class="enemy-row">
             <img src="monsters/blight_rat.png" alt="Blight Rat" width="100">
             <p>Fight: Blight Rat (Lv. 5 Monster)</p>
-            <button onclick="defeatEnemy('melee', 5)">Engage</button>
+            <a href="combat.html?enemy=melee_lv5" class="engage-btn">Engage</a>
           </div>
 
           <div class="enemy-row">
             <img src="monsters/ashen_whelp.png" alt="Ashen Whelp" width="100">
             <p>Fight: Ashen Whelp (Lv. 5 Monster)</p>
-            <button onclick="defeatEnemy('melee', 5)">Engage</button>
+            <a href="combat.html?enemy=melee_lv5" class="engage-btn">Engage</a>
           </div>
 
           <div class="enemy-row">
             <img src="bosses/ashen_whelp_matriarch.png" alt="Ashen Whelp Matriarch" width="100">
             <p>Fight: Ashen Whelp Matriarch (Lv. 15 Boss)</p>
-            <button onclick="defeatEnemy('melee', 15)">Engage</button>
+            <a href="combat.html?enemy=melee_lv15_boss" class="engage-btn">Engage</a>
           </div>
         </div>
 
@@ -118,19 +118,7 @@
       document.getElementById(id).classList.remove('hidden');
     }
 
-    function defeatEnemy(skill, level) {
-      const xpGain = Math.floor(level * 2); // Lv 5 = 10 XP, Lv 15 = 30 XP
-      gainXP(skill, xpGain);
-      const log = document.getElementById('terminal-log');
-      if (log) {
-        log.innerHTML += `[COMBAT] Defeated Lv. ${level} enemy. +${xpGain} ${skill} XP.<br />`;
-        log.scrollTop = log.scrollHeight;
-      }
-    }
-
     window.onload = updateSkillTabs;
   </script>
 </body>
 </html>
-
-
