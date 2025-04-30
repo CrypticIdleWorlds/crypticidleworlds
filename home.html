@@ -6,6 +6,26 @@
   <title>Cryptic Idle Worlds - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .level-up-message {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border: 2px solid #00ff99;
+      z-index: 9999;
+      opacity: 0;
+      animation: flashFade 2s ease-out;
+    }
+    @keyframes flashFade {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <div style="background:#000;padding:10px;border-bottom:2px solid #00ff99;">
@@ -72,6 +92,7 @@
   <div id="terminal-log" style="padding:10px;background:#000;border-top:2px solid #00ff99;height:120px;overflow-y:auto;font-size:12px;">
     [LOG] Welcome to Cryptic Idle Worlds.<br>
   </div>
+  <div id="level-up-popup" class="level-up-message"></div>
 
   <script>
     const defaultSkills = {
@@ -127,14 +148,23 @@
         if (minutes > 0) {
           skillData.system_hacking.xp += minutes;
           for (let i = 1; i <= 99; i++) {
-            if (skillData.system_hacking.xp >= xpTable[i]) {
+            if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
               skillData.system_hacking.level = i;
+              triggerLevelUpMessage("system hacking", i);
             }
           }
           localStorage.setItem("skillData", JSON.stringify(skillData));
         }
       }
       localStorage.setItem("lastLogin", now);
+    }
+
+    function triggerLevelUpMessage(skill, level) {
+      const msg = document.getElementById("level-up-popup");
+      msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
+      msg.style.animation = 'none';
+      msg.offsetHeight; // reflow trick to restart animation
+      msg.style.animation = null;
     }
 
     function saveProgress() {
