@@ -72,7 +72,7 @@
           <div class="enemy-row">
             <img src="assets/monsters/ashen_whelp.png" alt="Ashen Whelp" width="80">
             <p>Fight: Ashen Whelp (Lv. 5)</p>
-            <button onclick="location.href='combat.html?enemy=melee_lv5'">Engage</button>
+            <button onclick="location.href='combat.html?enemy=melee_1v5'">Engage</button>
           </div>
           <div class="enemy-row">
             <img src="assets/bosses/ashen_whelp_matriarch.png" alt="Ashen Whelp Matriarch" width="80">
@@ -103,9 +103,11 @@
 
   <script>
     const defaultSkills = {
-      melee: { xp: 0, level: 1 },
+      attack: { xp: 0, level: 1 },
+      strength: { xp: 0, level: 1 },
+      defense: { xp: 0, level: 1 },
+      magic: { xp: 0, level: 1 },
       ranged: { xp: 0, level: 1 },
-      techno_magic: { xp: 0, level: 1 },
       slayer: { xp: 0, level: 1 },
       cryptomining: { xp: 0, level: 1 },
       datafishing: { xp: 0, level: 1 },
@@ -123,6 +125,14 @@
 
     let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
 
+    const combatSkillNames = {
+      attack: "Striker Protocol",
+      strength: "Force Module",
+      defense: "Barrier Matrix",
+      magic: "Neurohex",
+      ranged: "Synapsis Bowline"
+    };
+
     function updateSkillTabs() {
       const combatList = document.getElementById('combat-skills');
       const noncombatList = document.getElementById('noncombat-skills');
@@ -132,8 +142,11 @@
       for (const skill in skillData) {
         const data = skillData[skill];
         const li = document.createElement('li');
-        li.innerHTML = `<div class="skill-row"><div class="icon-box"><img src="assets/icons/${skill}.png" alt="${skill}" width="16"></div><span>${skill.replace('_', ' ')}</span><span class="level">Lv. ${data.level}</span></div>`;
-        (['melee', 'ranged', 'techno_magic', 'slayer'].includes(skill) ? combatList : noncombatList).appendChild(li);
+        const displayName = combatSkillNames[skill] || skill.replace('_', ' ');
+        li.innerHTML = `<div class="skill-row">
+          <div class="icon-box"><img src="assets/icons/${skill}.png" alt="${skill}" width="16"></div>
+          <span>${displayName}</span><span class="level">Lv. ${data.level}</span></div>`;
+        (['attack', 'strength', 'defense', 'magic', 'ranged'].includes(skill) ? combatList : noncombatList).appendChild(li);
       }
     }
 
@@ -170,7 +183,7 @@
       const msg = document.getElementById("level-up-popup");
       msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
       msg.style.animation = 'none';
-      msg.offsetHeight; // reflow trick to restart animation
+      msg.offsetHeight;
       msg.style.animation = null;
     }
 
@@ -178,7 +191,7 @@
       localStorage.setItem("skillData", JSON.stringify(skillData));
       localStorage.setItem("lastSave", Date.now());
       lastSaveTimestamp = Date.now();
-      log(`[SAVE] Progress saved.`);
+      log("[SAVE] Progress saved.");
     }
 
     function updateSaveTimer() {
