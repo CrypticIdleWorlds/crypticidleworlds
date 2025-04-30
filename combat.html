@@ -25,6 +25,27 @@
       padding: 20px;
       width: 45%;
       text-align: center;
+      position: relative;
+    }
+    #food-box {
+      text-align: center;
+      margin-top: 10px;
+    }
+    #food-box img {
+      width: 48px;
+      cursor: pointer;
+      border: 1px solid #00ff99;
+    }
+    .damage {
+      position: absolute;
+      font-weight: bold;
+      animation: floatUp 1s ease-out forwards;
+    }
+    .damage.player { color: yellow; left: 20px; }
+    .damage.enemy { color: red; right: 20px; }
+    @keyframes floatUp {
+      0% { opacity: 1; bottom: 10px; }
+      100% { opacity: 0; bottom: 50px; }
     }
     #combat-log {
       background: #000;
@@ -56,7 +77,11 @@
     <div id="player-box">
       <h2>You</h2>
       <p>HP: <span id="player-hp">100</span></p>
-      <button class="btn" onclick="attack()">Attack</button>
+      <button class="btn" onclick="startBattle()">Battle</button>
+      <div id="food-box">
+        <p>Food:</p>
+        <img src="assets/assets/items/consumables/bread.png" alt="Bread" onclick="eatFood()">
+      </div>
     </div>
   </div>
 
@@ -68,13 +93,13 @@
     const enemies = {
       melee_lv5: {
         name: "Blight Rat",
-        image: "monsters/blight_rat.png",
+        image: "assets/assets/monsters/blight_rat.png",
         hp: 30,
         xp: { melee: 10 }
       },
       melee_lv15_boss: {
         name: "Ashen Whelp Matriarch",
-        image: "bosses/ashen_whelp_matriarch.png",
+        image: "assets/assets/bosses/ashen_whelp_matriarch.png",
         hp: 90,
         xp: { melee: 30 }
       }
@@ -86,6 +111,14 @@
       return Math.floor(xp / 4);
     });
 
+    let skillData = JSON.parse(localStorage.getItem("skillData")) || {
+      melee: { xp: 0, level: 1 }
+    };
+    let enemy = null;
+    let enemyHP = 0;
+    let playerHP = 100;
+    let isBattling = false;
+
     function getParam(param) {
       return new URLSearchParams(window.location.search).get(param);
     }
@@ -96,70 +129,71 @@
       box.scrollTop = box.scrollHeight;
     }
 
-    function loadSkillData() {
-      const saved = localStorage.getItem('skillData');
-      return saved ? JSON.parse(saved) : {
-        melee: { xp: 0, level: 1 },
-        ranged: { xp: 0, level: 1 },
-        techno_magic: { xp: 0, level: 1 },
-        slayer: { xp: 0, level: 1 },
-      };
+    function floatText(target, text, type) {
+      const el = document.createElement("div");
+      el.className = `damage ${type}`;
+      el.innerText = text;
+      target.appendChild(el);
+      setTimeout(() => el.remove(), 1000);
     }
-
-    function saveSkillData(data) {
-      localStorage.setItem('skillData', JSON.stringify(data));
-    }
-
-    let skillData = loadSkillData();
-    let enemy = null;
-    let enemyHP = 0;
-    let playerHP = 100;
 
     function initCombat() {
       const enemyKey = getParam("enemy");
       if (!enemyKey || !enemies[enemyKey]) return;
-
       enemy = enemies[enemyKey];
       enemyHP = enemy.hp;
-
       document.getElementById("enemy-name").innerText = enemy.name;
       document.getElementById("enemy-image").src = enemy.image;
       document.getElementById("enemy-hp").innerText = enemyHP;
       document.getElementById("player-hp").innerText = playerHP;
-
       log(`[ENEMY] Encountered ${enemy.name} with ${enemy.hp} HP.`);
     }
 
-    function attack() {
-      const damageToEnemy = Math.floor(Math.random() * 10 + 5);
-      const damageToPlayer = Math.floor(Math.random() * 5);
-
-      enemyHP -= damageToEnemy;
-      playerHP -= damageToPlayer;
-
-      document.getElementById("enemy-hp").innerText = Math.max(enemyHP, 0);
-      document.getElementById("player-hp").innerText = Math.max(playerHP, 0);
-
-      log(`[COMBAT] You hit ${enemy.name} for ${damageToEnemy}. Took ${damageToPlayer} damage.`);
-
-      if (enemyHP <= 0) {
-        log(`[VICTORY] You defeated ${enemy.name}.`);
-        for (const skill in enemy.xp) {
-          const gained = enemy.xp[skill];
-          skillData[skill].xp += gained;
-          log(`[XP] +${gained} ${skill} XP`);
-          for (let lvl = 1; lvl <= 99; lvl++) {
-            if (skillData[skill].xp >= xpTable[lvl] && skillData[skill].level < lvl) {
-              skillData[skill].level = lvl;
-              log(`[LEVEL UP] ${skill} is now Lv. ${lvl}!`);
+    function startBattle() {
+      if (isBattling) return;
+      isBattling = true;
+      const loop = setInterval(() => {
+        if (enemyHP <= 0 || playerHP <= 0) {
+          clearInterval(loop);
+          isBattling = false;
+          if (playerHP <= 0) {
+            log(`[DEFEAT] You died. Reload the page to restart.`);
+            return;
+          }
+          log(`[VICTORY] ${enemy.name} defeated.`);
+          for (const skill in enemy.xp) {
+            skillData[skill].xp += enemy.xp[skill];
+            log(`[XP] +${enemy.xp[skill]} ${skill} XP`);
+            for (let lvl = 1; lvl <= 99; lvl++) {
+              if (skillData[skill].xp >= xpTable[lvl] && skillData[skill].level < lvl) {
+                skillData[skill].level = lvl;
+                log(`[LEVEL UP] ${skill} is now Lv. ${lvl}!`);
+              }
             }
           }
+          localStorage.setItem("skillData", JSON.stringify(skillData));
+          enemyHP = enemy.hp;
+          document.getElementById("enemy-hp").innerText = enemyHP;
+        } else {
+          const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
+          const dmgToPlayer = Math.floor(Math.random() * 5);
+          enemyHP -= dmgToEnemy;
+          playerHP -= dmgToPlayer;
+          document.getElementById("enemy-hp").innerText = Math.max(enemyHP, 0);
+          document.getElementById("player-hp").innerText = Math.max(playerHP, 0);
+          floatText(document.getElementById("enemy-box"), `-${dmgToEnemy}`, "enemy");
+          floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
         }
-        saveSkillData(skillData);
-      }
+      }, 1000);
+    }
 
-      if (playerHP <= 0) {
-        log(`[DEFEAT] You died. Reload the page to restart.`);
+    function eatFood() {
+      if (playerHP < 100) {
+        playerHP = Math.min(100, playerHP + 5);
+        document.getElementById("player-hp").innerText = playerHP;
+        log(`[FOOD] Ate bread. Healed 5 HP.`);
+      } else {
+        log(`[FOOD] HP is already full.`);
       }
     }
 
