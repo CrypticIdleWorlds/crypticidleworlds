@@ -1,109 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Region - Cryptic Idle Worlds</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Train: Striker Protocol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
   <style>
     body {
-      font-family: 'Share Tech Mono', monospace;
-      background: url('assets/backgrounds/home.png') no-repeat center center fixed;
+      background: url('../assets/backgrounds/home.png') no-repeat center center fixed;
       background-size: cover;
+      font-family: 'Share Tech Mono', monospace;
       color: #00ff99;
-      margin: 0;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-    }
-    .region-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-top: 40px;
-    }
-    .region-box {
-      background-color: rgba(0,0,0,0.6);
-      padding: 20px;
+    .region-card {
       border: 2px solid #00ff99;
-      text-align: center;
-      width: 200px;
-      transition: transform 0.2s;
-    }
-    .region-box:hover {
-      transform: scale(1.05);
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 16px;
+      margin-bottom: 20px;
       cursor: pointer;
     }
-    .region-box img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    a {
-      color: #00ff99;
-      text-decoration: none;
-    }
-    .locked {
+    .region-card.locked {
       opacity: 0.4;
       pointer-events: none;
+    }
+    .region-card h3 {
+      margin-top: 0;
+    }
+    .btn {
+      background-color: #000;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>🌍 Select Region</h1>
-  <div class="region-container">
-    <a href="ashlands.html">
-      <div class="region-box">
-        <img src="assets/regions/ashlands.png" alt="Ashlands">
-        <strong>Ashlands</strong><br>
-        <small>Unlocked</small>
-      </div>
-    </a>
-    <a href="wraithmarsh.html" id="wraithmarsh-link">
-      <div class="region-box" id="wraithmarsh-box">
-        <img src="assets/regions/wraithmarsh.png" alt="Wraithmarsh">
-        <strong>Wraithmarsh</strong><br>
-        <small>Combat Lv. 40</small>
-      </div>
-    </a>
-    <a href="cyberspire.html" id="cyberspire-link">
-      <div class="region-box" id="cyberspire-box">
-        <img src="assets/regions/cyberspire.png" alt="Cyberspire">
-        <strong>Cyberspire</strong><br>
-        <small>Combat Lv. 85</small>
-      </div>
-    </a>
-    <a href="zerocrypt.html" id="zerocrypt-link">
-      <div class="region-box" id="zerocrypt-box">
-        <img src="assets/regions/zerocrypt.png" alt="Zerocrypt">
-        <strong>Zerocrypt</strong><br>
-        <small>Combat Lv. 126</small>
-      </div>
-    </a>
+  <h1>🧠 Train: Striker Protocol (Attack)</h1>
+  <p>Select a region to begin training. Higher regions require higher combat levels.</p>
+
+  <div class="region-card" id="ashlands" onclick="startCombat('blight_rat')">
+    <h3>🌋 Ashlands</h3>
+    <p>Beginner area. Weak monsters for early training.</p>
   </div>
 
+  <div class="region-card" id="wraithmarsh" onclick="startCombat('ashen_whelp')">
+    <h3>💀 Wraithmarsh</h3>
+    <p>Unlocked at combat level 30.</p>
+  </div>
+
+  <div class="region-card" id="cyberspire" onclick="startCombat('crypt_ghast')">
+    <h3>🧠 Cyberspire</h3>
+    <p>Unlocked at combat level 70.</p>
+  </div>
+
+  <div class="region-card" id="zerocrypt" onclick="startCombat('noxmire_spawn_broodking')">
+    <h3>🧊 Zerocrypt</h3>
+    <p>Unlocked at combat level 100.</p>
+  </div>
+
+  <button class="btn" onclick="window.location.href='../home.html'">🏠 Return to Home</button>
+
   <script>
-    const skills = JSON.parse(localStorage.getItem("skillData")) || {};
-    const levels = skills;
-    const attack = levels.attack?.level || 1;
-    const strength = levels.strength?.level || 1;
-    const defense = levels.defense?.level || 1;
-    const magic = levels.magic?.level || 1;
-    const ranged = levels.ranged?.level || 1;
+    function getCombatLevel(skillData) {
+      const atk = skillData.attack.level || 1;
+      const str = skillData.strength.level || 1;
+      const def = skillData.defense.level || 1;
+      const magic = skillData.magic.level || 1;
+      const ranged = skillData.ranged.level || 1;
 
-    const base = 0.25 * (defense + 10 + 1);
-    const melee = 0.325 * (attack + strength);
-    const range = 0.325 * (1.5 * ranged);
-    const mage = 0.325 * (1.5 * magic);
+      const base = 0.25 * (def + Math.max(magic, ranged));
+      const melee = 0.325 * (atk + str);
+      return Math.floor(base + melee);
+    }
 
-    const combatLevel = Math.floor(base + Math.max(melee, range, mage));
+    function startCombat(enemyKey) {
+      window.location.href = `../combat.html?enemy=${enemyKey}`;
+    }
 
-    if (combatLevel < 40) document.getElementById('wraithmarsh-link').classList.add('locked');
-    if (combatLevel < 85) document.getElementById('cyberspire-link').classList.add('locked');
-    if (combatLevel < 126) document.getElementById('zerocrypt-link').classList.add('locked');
+    function lockRegions() {
+      const skillData = JSON.parse(localStorage.getItem("skillData"));
+      const level = getCombatLevel(skillData);
+
+      if (level < 30) document.getElementById("wraithmarsh").classList.add("locked");
+      if (level < 70) document.getElementById("cyberspire").classList.add("locked");
+      if (level < 100) document.getElementById("zerocrypt").classList.add("locked");
+    }
+
+    window.onload = () => {
+      lockRegions();
+    };
   </script>
 </body>
 </html>
