@@ -25,6 +25,25 @@
     #main-panel {
       background-color: rgba(0, 0, 0, 0.55) !important;
     }
+    .bank-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .bank-slot {
+      width: 64px;
+      height: 64px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid #00ff99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .bank-slot img {
+      width: 48px;
+      height: auto;
+    }
     .level-up-message {
       position: fixed;
       top: 40%;
@@ -75,7 +94,15 @@
       <section id="content-area">
         <div id="bank" class="panel">
           <h2>🏦 Bank</h2>
-          <p>This will be your bank tab. Gear, currency, materials and items will appear here in the future.</p>
+          <p>Your stored items will appear here.</p>
+          <div class="bank-grid">
+            <div class="bank-slot"><img src="assets/items/consumables/bread.png" alt="Bread"></div>
+            <div class="bank-slot"></div>
+            <div class="bank-slot"></div>
+            <div class="bank-slot"></div>
+            <div class="bank-slot"></div>
+            <div class="bank-slot"></div>
+          </div>
         </div>
 
         <div id="skills" class="panel hidden">
