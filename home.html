@@ -35,7 +35,6 @@
           <p>Select a skill below to begin training:</p>
           <button onclick="location.href='skillhacking.html'">System Hacking</button>
           <button onclick="location.href='skillwoodcutting.html'">Datafishing</button>
-          <!-- Add more skills here -->
         </div>
 
         <div id="inventory" class="panel hidden">
@@ -50,7 +49,26 @@
     [LOG] Welcome to Cryptic Idle Worlds.<br>
   </div>
 
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
+
   <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD9fP6lTlv8296s6_mEsk-TzHDiH65xyr8",
+      authDomain: "cryptic-idle-worlds.firebaseapp.com",
+      projectId: "cryptic-idle-worlds",
+      storageBucket: "cryptic-idle-worlds.firebasestorage.app",
+      messagingSenderId: "928017554816",
+      appId: "1:928017554816:web:4a04342652080fa61cf565",
+      measurementId: "G-E6KBPYG34M"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
     const skillData = JSON.parse(localStorage.getItem("skillData")) || {
       melee: { xp: 0, level: 1 },
       ranged: { xp: 0, level: 1 },
@@ -100,17 +118,45 @@
         const minutes = Math.floor((now - parseInt(lastLogin)) / 60000);
         if (minutes > 0) {
           skillData.system_hacking.xp += minutes;
-          const lvl = skillData.system_hacking.level;
-          for (let i = lvl; i <= 99; i++) {
+          for (let i = 1; i <= 99; i++) {
             if (skillData.system_hacking.xp >= xpTable[i]) {
               skillData.system_hacking.level = i;
             }
           }
-          localStorage.setItem('skillData', JSON.stringify(skillData));
+          localStorage.setItem("skillData", JSON.stringify(skillData));
         }
       }
-      localStorage.setItem('lastLogin', now);
+      localStorage.setItem("lastLogin", now);
     }
+
+    async function saveToCloud() {
+      const user = auth.currentUser;
+      if (!user) return;
+      await db.collection("users").doc(user.uid).set({
+        displayName: localStorage.getItem("displayName"),
+        skillData,
+        timestamp: Date.now()
+      });
+    }
+
+    async function loadFromCloud() {
+      const user = auth.currentUser;
+      if (!user) return;
+      const doc = await db.collection("users").doc(user.uid).get();
+      if (doc.exists) {
+        const data = doc.data();
+        localStorage.setItem("skillData", JSON.stringify(data.skillData));
+        localStorage.setItem("displayName", data.displayName);
+      }
+    }
+
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        await loadFromCloud();
+        updateSkillTabs();
+        saveToCloud(); // save back after sync
+      }
+    });
 
     window.onload = () => {
       loadUserName();
