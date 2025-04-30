@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cryptic Idle Worlds - Login</title>
+  <title>Cryptic Idle Worlds - Start</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
@@ -20,7 +20,7 @@
       background-color: #111;
       padding: 40px;
       border: 2px solid #00ff99;
-      width: 300px;
+      width: 320px;
     }
     h1 {
       text-align: center;
@@ -40,76 +40,71 @@
     p {
       font-size: 12px;
       text-align: center;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
     <h1>Cryptic Idle Worlds</h1>
-    <input type="text" id="displayName" placeholder="Display Name" required />
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Password" required />
-    <button onclick="handleLogin()">Login / Signup</button>
-    <p>Accounts are synced using Firebase</p>
+    <input type="text" id="displayName" placeholder="Enter Display Name" />
+    <button onclick="startGame()">Start Game</button>
+    <button onclick="exportSave()">Download Save</button>
+    <input type="file" id="importSave" onchange="importSave(event)" />
+    <p>Progress is saved locally on your device.</p>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
-
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyD9fP6lTlv8296s6_mEsk-TzHDiH65xyr8",
-      authDomain: "cryptic-idle-worlds.firebaseapp.com",
-      projectId: "cryptic-idle-worlds",
-      storageBucket: "cryptic-idle-worlds.firebasestorage.app",
-      messagingSenderId: "928017554816",
-      appId: "1:928017554816:web:4a04342652080fa61cf565",
-      measurementId: "G-E6KBPYG34M"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-
-    async function handleLogin() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const displayName = document.getElementById('displayName').value;
-
-      try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-        localStorage.setItem('displayName', displayName);
-        await loadFromCloud(user.uid);
-        window.location.href = 'home.html';
-      } catch (err) {
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-        await user.updateProfile({ displayName });
-        localStorage.setItem('displayName', displayName);
-        await saveToCloud(user.uid);
-        window.location.href = 'home.html';
+    function startGame() {
+      const name = document.getElementById('displayName').value.trim();
+      if (!name) {
+        alert('Please enter a display name.');
+        return;
       }
+      localStorage.setItem('displayName', name);
+      if (!localStorage.getItem('skillData')) {
+        localStorage.setItem('skillData', JSON.stringify({
+          melee: { xp: 0, level: 1 },
+          ranged: { xp: 0, level: 1 },
+          techno_magic: { xp: 0, level: 1 },
+          slayer: { xp: 0, level: 1 },
+          cryptomining: { xp: 0, level: 1 },
+          datafishing: { xp: 0, level: 1 },
+          codecraft: { xp: 0, level: 1 },
+          forgenetics: { xp: 0, level: 1 },
+          system_hacking: { xp: 0, level: 1 }
+        }));
+      }
+      window.location.href = 'home.html';
     }
 
-    async function saveToCloud(uid) {
-      const skillData = JSON.parse(localStorage.getItem('skillData')) || {};
-      await db.collection("users").doc(uid).set({
-        displayName: localStorage.getItem("displayName"),
-        skillData: skillData,
-        timestamp: Date.now()
-      });
+    function exportSave() {
+      const skillData = localStorage.getItem('skillData');
+      const displayName = localStorage.getItem('displayName');
+      const save = JSON.stringify({ skillData, displayName });
+      const blob = new Blob([save], { type: 'application/json' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'cryptic_save.json';
+      link.click();
     }
 
-    async function loadFromCloud(uid) {
-      const doc = await db.collection("users").doc(uid).get();
-      if (doc.exists) {
-        const data = doc.data();
-        localStorage.setItem("skillData", JSON.stringify(data.skillData));
-        localStorage.setItem("displayName", data.displayName);
-      }
+    function importSave(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data.skillData) localStorage.setItem('skillData', data.skillData);
+          if (data.displayName) localStorage.setItem('displayName', data.displayName);
+          alert('Save loaded! Reloading...');
+          window.location.href = 'home.html';
+        } catch {
+          alert('Invalid save file.');
+        }
+      };
+      reader.readAsText(file);
     }
   </script>
 </body>
