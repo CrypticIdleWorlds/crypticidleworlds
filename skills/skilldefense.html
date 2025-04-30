@@ -42,22 +42,22 @@
   <h1>🧠 Train: Striker Protocol (Attack)</h1>
   <p>Select a region to begin training. Higher regions require higher combat levels.</p>
 
-  <div class="region-card" id="ashlands" onclick="startCombat('blight_rat')">
+  <div class="region-card" id="ashlands" onclick="goToRegion('ashlands')">
     <h3>🌋 Ashlands</h3>
     <p>Beginner area. Weak monsters for early training.</p>
   </div>
 
-  <div class="region-card" id="wraithmarsh" onclick="startCombat('ashen_whelp')">
+  <div class="region-card" id="wraithmarsh" onclick="goToRegion('wraithmarsh')">
     <h3>💀 Wraithmarsh</h3>
     <p>Unlocked at combat level 30.</p>
   </div>
 
-  <div class="region-card" id="cyberspire" onclick="startCombat('crypt_ghast')">
+  <div class="region-card" id="cyberspire" onclick="goToRegion('cyberspire')">
     <h3>🧠 Cyberspire</h3>
     <p>Unlocked at combat level 70.</p>
   </div>
 
-  <div class="region-card" id="zerocrypt" onclick="startCombat('noxmire_spawn_broodking')">
+  <div class="region-card" id="zerocrypt" onclick="goToRegion('zerocrypt')">
     <h3>🧊 Zerocrypt</h3>
     <p>Unlocked at combat level 100.</p>
   </div>
@@ -66,25 +66,23 @@
 
   <script>
     function getCombatLevel(skillData) {
-      const atk = skillData.attack.level || 1;
-      const str = skillData.strength.level || 1;
-      const def = skillData.defense.level || 1;
-      const magic = skillData.magic.level || 1;
-      const ranged = skillData.ranged.level || 1;
-
+      const atk = skillData.attack?.level || 1;
+      const str = skillData.strength?.level || 1;
+      const def = skillData.defense?.level || 1;
+      const magic = skillData.magic?.level || 1;
+      const ranged = skillData.ranged?.level || 1;
       const base = 0.25 * (def + Math.max(magic, ranged));
       const melee = 0.325 * (atk + str);
       return Math.floor(base + melee);
     }
 
-    function startCombat(enemyKey) {
-      window.location.href = `../combat.html?enemy=${enemyKey}`;
+    function goToRegion(regionName) {
+      window.location.href = `../regions/${regionName}.html`;
     }
 
     function lockRegions() {
-      const skillData = JSON.parse(localStorage.getItem("skillData"));
+      const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
       const level = getCombatLevel(skillData);
-
       if (level < 30) document.getElementById("wraithmarsh").classList.add("locked");
       if (level < 70) document.getElementById("cyberspire").classList.add("locked");
       if (level < 100) document.getElementById("zerocrypt").classList.add("locked");
