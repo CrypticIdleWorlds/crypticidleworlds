@@ -141,7 +141,22 @@
     }
 
     function lockRegions() {
-      const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
+  const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
+  const level = getCombatLevel(skillData);
+  if (level < 30) disableRegion("wraithmarsh");
+  if (level < 70) disableRegion("cyberspire");
+  if (level < 100) disableRegion("zerocrypt");
+}
+
+function disableRegion(name) {
+  const link = document.querySelector(`a[href*="${name}"]`);
+  if (link) {
+    link.classList.add("locked");
+    link.onclick = (e) => e.preventDefault();
+    link.style.pointerEvents = "none";
+    link.style.opacity = "0.4";
+  }
+};
       const level = getCombatLevel(skillData);
       if (level < 30) document.querySelector('a[href*="wraithmarsh"]').classList.add("locked");
       if (level < 70) document.querySelector('a[href*="cyberspire"]').classList.add("locked");
@@ -159,9 +174,9 @@
     }
 
     window.onload = () => {
-      lockRegions();
-      updateSkillLevels();
-    };
+  lockRegions();
+  updateSkillLevels();
+};
   </script>
 </body>
 </html>
