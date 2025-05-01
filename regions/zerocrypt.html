@@ -71,24 +71,48 @@
   <div class="section">
     <h2>Monsters</h2>
     <div class="grid">
-      <a href="../combat.html?enemy=nocturn_husk"><div class="card"><img src="../assets/monsters/nocturn_husk.png"><div>Nocturn Husk<br>Lv. 90</div></div></a>
-      <a href="../combat.html?enemy=crypt_darter"><div class="card"><img src="../assets/monsters/crypt_darter.png"><div>Crypt Darter<br>Lv. 93</div></div></a>
-      <a href="../combat.html?enemy=rotlash_creeper"><div class="card"><img src="../assets/monsters/rotlash_creeper.png"><div>Rotlash Creeper<br>Lv. 95</div></div></a>
-      <a href="../combat.html?enemy=venomspire_widow"><div class="card"><img src="../assets/monsters/venomspire_widow.png"><div>Venomspire Widow<br>Lv. 96</div></div></a>
-      <a href="../combat.html?enemy=nightmaw_leech"><div class="card"><img src="../assets/monsters/nightmaw_leech.png"><div>Nightmaw Leech<br>Lv. 97</div></div></a>
-      <a href="../combat.html?enemy=tomb_viper"><div class="card"><img src="../assets/monsters/tomb_viper.png"><div>Tomb Viper<br>Lv. 98</div></div></a>
-      <a href="../combat.html?enemy=tomb_widow"><div class="card"><img src="../assets/monsters/tomb_widow.png"><div>Tomb Widow<br>Lv. 99</div></div></a>
-      <a href="../combat.html?enemy=shard_imp"><div class="card"><img src="../assets/monsters/shard_imp.png"><div>Shard Imp<br>Lv. 100</div></div></a>
+      <a href="../combat.html?enemy=nocturn_husk" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/nocturn_husk.png"><div>Nocturn Husk<br>Lv. 90</div></div>
+      </a>
+      <a href="../combat.html?enemy=crypt_darter" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/crypt_darter.png"><div>Crypt Darter<br>Lv. 93</div></div>
+      </a>
+      <a href="../combat.html?enemy=rotlash_creeper" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/rotlash_creeper.png"><div>Rotlash Creeper<br>Lv. 95</div></div>
+      </a>
+      <a href="../combat.html?enemy=venomspire_widow" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/venomspire_widow.png"><div>Venomspire Widow<br>Lv. 96</div></div>
+      </a>
+      <a href="../combat.html?enemy=nightmaw_leech" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/nightmaw_leech.png"><div>Nightmaw Leech<br>Lv. 97</div></div>
+      </a>
+      <a href="../combat.html?enemy=tomb_viper" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/tomb_viper.png"><div>Tomb Viper<br>Lv. 98</div></div>
+      </a>
+      <a href="../combat.html?enemy=tomb_widow" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/tomb_widow.png"><div>Tomb Widow<br>Lv. 99</div></div>
+      </a>
+      <a href="../combat.html?enemy=shard_imp" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/monsters/shard_imp.png"><div>Shard Imp<br>Lv. 100</div></div>
+      </a>
     </div>
   </div>
 
   <div class="section">
     <h2>Bosses</h2>
     <div class="grid">
-      <a href="../combat.html?enemy=shard_imp_tyrant"><div class="card"><img src="../assets/bosses/shard_imp_tyrant.png"><div>Shard Imp Tyrant<br>Lv. 105</div></div></a>
-      <a href="../combat.html?enemy=smolderstalk_warlord"><div class="card"><img src="../assets/bosses/smolderstalk_warlord.png"><div>Smolderstalk Warlord<br>Lv. 110</div></div></a>
-      <a href="../combat.html?enemy=soul_leech_king"><div class="card"><img src="../assets/bosses/soul_leech_king.png"><div>Soul Leech King<br>Lv. 115</div></div></a>
-      <a href="../combat.html?enemy=yyr'zhul, harbinger_of_the_rift"><div class="card"><img src="../assets/bosses/yyr'zhul, harbinger_of_the_rift.png"><div>Yyr'Zhul Harbinger of the Rift<br>Lv. 120</div></div></a>
+      <a href="../combat.html?enemy=shard_imp_tyrant" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/bosses/shard_imp_tyrant.png"><div>Shard Imp Tyrant<br>Lv. 105</div></div>
+      </a>
+      <a href="../combat.html?enemy=smolderstalk_warlord" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/bosses/smolderstalk_warlord.png"><div>Smolderstalk Warlord<br>Lv. 110</div></div>
+      </a>
+      <a href="../combat.html?enemy=soul_leech_king" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/bosses/soul_leech_king.png"><div>Soul Leech King<br>Lv. 115</div></div>
+      </a>
+      <a href="../combat.html?enemy=yyr'zhul, harbinger_of_the_rift" onclick="setRegion('Zerocrypt')">
+        <div class="card"><img src="../assets/bosses/yyr'zhul, harbinger_of_the_rift.png"><div>Yyr'Zhul Harbinger of the Rift<br>Lv. 120</div></div>
+      </a>
     </div>
   </div>
 
@@ -111,6 +135,11 @@
     window.onload = () => {
       updateSaveTime();
     };
+
+    // ✅ NEW: Save the region to localStorage when a monster/boss is clicked
+    function setRegion(regionName) {
+      localStorage.setItem('selectedRegion', regionName);
+    }
   </script>
 </body>
 </html>
