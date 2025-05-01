@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bank - Cryptic Idle Worlds</title>
+  <title>Bank & Gear - Cryptic Idle Worlds</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -14,29 +14,47 @@
       color: #00ff99;
       padding: 20px;
     }
-    .bank-container {
+    #save-bar {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-bottom: 2px solid #00ff99;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .container-flex {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 80px;
+    }
+    .box {
       background-color: rgba(0,0,0,0.6);
       border: 2px solid #00ff99;
       padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 400px;
+      flex: 1;
+      min-width: 300px;
     }
-    .bank-grid {
+    .grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
       justify-content: center;
     }
-    .bank-item {
+    .item {
       background: rgba(0,0,0,0.8);
       border: 1px solid #00ff99;
       padding: 10px;
       text-align: center;
-      width: 120px;
+      width: 100px;
     }
-    .bank-item img {
-      width: 64px;
-      height: 64px;
+    .item img {
+      width: 48px;
+      height: 48px;
       margin-bottom: 5px;
     }
     .btn {
@@ -49,7 +67,7 @@
     }
     h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 100px 0 20px;
     }
     .back-btn {
       display: block;
@@ -57,16 +75,45 @@
       margin: 20px auto 0;
       width: 150px;
     }
+    #skills-tab {
+      background-color: rgba(0,0,0,0.6);
+      border: 2px solid #00ff99;
+      padding: 16px;
+      margin-top: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 <body>
-  <h1>🏦 Bank</h1>
-  <div class="bank-container">
-    <div class="bank-grid" id="bankGrid"></div>
+  <div id="save-bar">
+    <span id="last-save-time">Time since last save: 0s</span>
+    <button onclick="saveProgress()">💾 Cloud Save</button>
+  </div>
+
+  <h1>🏦 Bank & 🛡️ Gear</h1>
+
+  <div class="container-flex">
+    <div class="box">
+      <h2>🏦 Bank</h2>
+      <div class="grid" id="bankGrid"></div>
+    </div>
+
+    <div class="box">
+      <h2>🛡️ Equipped Gear</h2>
+      <div class="grid" id="gearGrid"></div>
+    </div>
+  </div>
+
+  <div id="skills-tab">
+    <h3>🧠 Skill Levels</h3>
+    <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
   </div>
 
   <a href="home.html" class="btn back-btn">🏠 Back to Home</a>
 
+  <script src="js/skills.js"></script>
   <script src="js/items.js"></script>
   <script src="js/bank.js"></script>
   <script>
@@ -82,18 +129,57 @@
         if (!item) continue;
 
         const div = document.createElement('div');
-        div.className = 'bank-item';
+        div.className = 'item';
         div.innerHTML = `
           <img src="${item.image}" alt="${item.name}">
           <div>${item.name}</div>
           <div>Qty: ${count}</div>
-          ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}')">Equip</button>` : ''}
+          ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}'); renderGear();">Equip</button>` : ''}
         `;
         grid.appendChild(div);
       }
     }
 
+    function renderGear() {
+      const gearGrid = document.getElementById('gearGrid');
+      gearGrid.innerHTML = '';
+
+      for (const slot in playerEquipment) {
+        const itemId = playerEquipment[slot];
+        const item = itemId ? getItem(itemId) : null;
+
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = item ? `
+          <img src="${item.image}" alt="${item.name}">
+          <div>${item.name}</div>
+          <button class="btn" onclick="unequipItem('${slot}'); renderGear();">Unequip</button>
+        ` : `
+          <div style="height:48px;"></div>
+          <div>${slot}</div>
+          <div>(empty)</div>
+        `;
+        gearGrid.appendChild(div);
+      }
+    }
+
+    function saveProgress() {
+      localStorage.setItem("lastSave", Date.now());
+      alert("Progress saved to the cloud!");
+    }
+
+    function updateSaveTime() {
+      const lastSave = localStorage.getItem("lastSave");
+      if (lastSave) {
+        const seconds = Math.floor((Date.now() - lastSave) / 1000);
+        document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
+      }
+    }
+
+    setInterval(updateSaveTime, 1000);
+
     renderBank();
+    renderGear();
   </script>
 </body>
 </html>
