@@ -14,19 +14,35 @@
       color: #00ff99;
       padding: 20px;
     }
+    h1 {
+      font-size: 24px;
+    }
+    .region-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
     .region-card {
+      width: 180px;
       border: 2px solid #00ff99;
       background-color: rgba(0, 0, 0, 0.6);
-      padding: 16px;
-      margin-bottom: 20px;
+      text-align: center;
       cursor: pointer;
+      padding: 10px;
+      transition: transform 0.2s;
     }
     .region-card.locked {
       opacity: 0.4;
       pointer-events: none;
     }
-    .region-card h3 {
-      margin-top: 0;
+    .region-card:hover {
+      transform: scale(1.05);
+    }
+    .region-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
     }
     .btn {
       background-color: #000;
@@ -42,24 +58,31 @@
   <h1>🧠 Train: Striker Protocol (Attack)</h1>
   <p>Select a region to begin training. Higher regions require higher combat levels.</p>
 
-  <div class="region-card" id="ashlands" onclick="goToRegion('ashlands')">
-    <h3>🌋 Ashlands</h3>
-    <p>Beginner area. Weak monsters for early training.</p>
-  </div>
-
-  <div class="region-card" id="wraithmarsh" onclick="goToRegion('wraithmarsh')">
-    <h3>💀 Wraithmarsh</h3>
-    <p>Unlocked at combat level 30.</p>
-  </div>
-
-  <div class="region-card" id="cyberspire" onclick="goToRegion('cyberspire')">
-    <h3>🧠 Cyberspire</h3>
-    <p>Unlocked at combat level 70.</p>
-  </div>
-
-  <div class="region-card" id="zerocrypt" onclick="goToRegion('zerocrypt')">
-    <h3>🧊 Zerocrypt</h3>
-    <p>Unlocked at combat level 100.</p>
+  <div class="region-container">
+    <a href="../regions/ashlands.html">
+      <div class="region-card">
+        <img src="../assets/regions/ashlands.png" alt="Ashlands">
+        <strong>Ashlands</strong>
+      </div>
+    </a>
+    <a href="../regions/wraithmarsh.html">
+      <div class="region-card">
+        <img src="../assets/regions/wraithmarsh.png" alt="Wraithmarsh">
+        <strong>Wraithmarsh</strong>
+      </div>
+    </a>
+    <a href="../regions/cyberspire.html">
+      <div class="region-card">
+        <img src="../assets/regions/cyberspire.png" alt="Cyberspire">
+        <strong>Cyberspire</strong>
+      </div>
+    </a>
+    <a href="../regions/zerocrypt.html">
+      <div class="region-card">
+        <img src="../assets/regions/zerocrypt.png" alt="Zerocrypt">
+        <strong>Zerocrypt</strong>
+      </div>
+    </a>
   </div>
 
   <button class="btn" onclick="window.location.href='../home.html'">🏠 Return to Home</button>
@@ -76,16 +99,12 @@
       return Math.floor(base + melee);
     }
 
-    function goToRegion(regionName) {
-      window.location.href = `../regions/${regionName}.html`;
-    }
-
     function lockRegions() {
       const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
       const level = getCombatLevel(skillData);
-      if (level < 30) document.getElementById("wraithmarsh").classList.add("locked");
-      if (level < 70) document.getElementById("cyberspire").classList.add("locked");
-      if (level < 100) document.getElementById("zerocrypt").classList.add("locked");
+      if (level < 30) document.querySelector('a[href*="wraithmarsh"]').classList.add("locked");
+      if (level < 70) document.querySelector('a[href*="cyberspire"]').classList.add("locked");
+      if (level < 100) document.querySelector('a[href*="zerocrypt"]').classList.add("locked");
     }
 
     window.onload = () => {
@@ -93,4 +112,4 @@
     };
   </script>
 </body>
-</html>
+</html
