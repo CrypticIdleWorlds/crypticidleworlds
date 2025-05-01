@@ -22,22 +22,10 @@ document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
 });
 
 let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
-let enemies = {};
 let enemy = null;
 let enemyHP = 0;
 let playerHP = 100;
 let isBattling = false;
-
-// 🔥 Load enemies dynamically from monsters.json
-async function loadEnemies() {
-  try {
-    const response = await fetch('monsters.json');  // Path to your monsters.json
-    enemies = await response.json();
-    console.log('✅ Enemies loaded:', enemies);
-  } catch (error) {
-    console.error('❌ Failed to load monsters.json', error);
-  }
-}
 
 function getParam(param) {
   return new URLSearchParams(window.location.search).get(param);
@@ -179,8 +167,8 @@ function startBattle() {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
       let dmgToPlayer = 0;
-      if (hitChance < enemy.accuracy) {
-        dmgToPlayer = Math.floor(Math.random() * enemy.maxHit);
+      if (hitChance < (enemy.accuracy || 0.5)) {  // Added default accuracy if missing
+        dmgToPlayer = Math.floor(Math.random() * (enemy.maxHit || 5));  // Added default maxHit if missing
       }
       enemyHP -= dmgToEnemy;
       playerHP -= dmgToPlayer;
@@ -191,7 +179,7 @@ function startBattle() {
         floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
       }
     }
-  }, enemy.attackSpeed * 600);
+  }, (enemy.attackSpeed || 1) * 600);  // Default attack speed if missing
 }
 
 // 🚀 Initialize everything (no fetch, use enemy-data.js)
@@ -200,4 +188,3 @@ window.onload = () => {
   updateSkillTracker();
   setInterval(updateSaveTimer, 1000);
 };
-
