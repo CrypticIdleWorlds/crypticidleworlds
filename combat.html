@@ -175,7 +175,6 @@
   <script src="js/combat.js"></script>
 
   <script>
-    // Save system: unified playerData handling
     let playerData = JSON.parse(localStorage.getItem('playerData')) || {
       skills: {
         Attack: { level: 1, xp: 0, xpToNext: 100 },
@@ -218,7 +217,6 @@
       });
     }
 
-    // Example XP gain function (combat.js should hook into this)
     function gainXp(skill, amount) {
       if (playerData.skills[skill]) {
         playerData.skills[skill].xp += amount;
@@ -241,10 +239,12 @@
     }
 
     setInterval(updateSaveTime, 1000);
-    window.onload = () => {
+
+    // ✅ Merged load event so it doesn't overwrite combat.js onload
+    window.addEventListener('load', () => {
       updateSaveTime();
       renderCombatSkills();
-    };
+    });
   </script>
 </body>
 </html>
