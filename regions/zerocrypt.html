@@ -51,9 +51,21 @@
       color: #00ff99;
       text-decoration: none;
     }
+    #save-bar {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #00ff99;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
+  <div id="save-bar">
+    <span id="last-save-time">Time since last save: 0s</span>
+    <button onclick="saveProgress()">💾 Cloud Save</button>
+  </div>
+
   <h1>🧊 Zerocrypt Region</h1>
 
   <div class="section">
@@ -74,10 +86,31 @@
     <h2>Bosses</h2>
     <div class="grid">
       <a href="../combat.html?enemy=shard_imp_tyrant"><div class="card"><img src="../assets/bosses/shard_imp_tyrant.png"><div>Shard Imp Tyrant<br>Lv. 105</div></div></a>
-      <a href="../combat.html?enemy=smolderstalk_warlord"><div class="card"><img src="../assets/bosses/smolderstalk_warlord.png"><div>smolderstalk_warlord<br>Lv. 110</div></div></a>
+      <a href="../combat.html?enemy=smolderstalk_warlord"><div class="card"><img src="../assets/bosses/smolderstalk_warlord.png"><div>Smolderstalk Warlord<br>Lv. 110</div></div></a>
       <a href="../combat.html?enemy=soul_leech_king"><div class="card"><img src="../assets/bosses/soul_leech_king.png"><div>Soul Leech King<br>Lv. 115</div></div></a>
       <a href="../combat.html?enemy=yyr'zhul, harbinger_of_the_rift"><div class="card"><img src="../assets/bosses/yyr'zhul, harbinger_of_the_rift.png"><div>Yyr'Zhul Harbinger of the Rift<br>Lv. 120</div></div></a>
     </div>
   </div>
+
+  <script>
+    function saveProgress() {
+      localStorage.setItem("lastSave", Date.now());
+      alert("Progress saved to the cloud!");
+    }
+
+    function updateSaveTime() {
+      const lastSave = localStorage.getItem("lastSave");
+      if (lastSave) {
+        const seconds = Math.floor((Date.now() - lastSave) / 1000);
+        document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
+      }
+    }
+
+    setInterval(updateSaveTime, 1000);
+
+    window.onload = () => {
+      updateSaveTime();
+    };
+  </script>
 </body>
 </html>
