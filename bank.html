@@ -143,15 +143,20 @@
   <script src="js/bank.js"></script>
 
   <script>
-    const skills = {
-      Attack: { level: 5, xp: 250, xpToNext: 500 },
-      Strength: { level: 3, xp: 100, xpToNext: 300 },
-      Defense: { level: 4, xp: 180, xpToNext: 400 },
-      Magic: { level: 2, xp: 50, xpToNext: 200 },
-      Woodcutting: { level: 7, xp: 500, xpToNext: 700 },
-      Mining: { level: 6, xp: 450, xpToNext: 650 },
-      // Add more skills if needed
-    };
+    // LOAD PLAYER SKILLS
+    let skills = JSON.parse(localStorage.getItem('playerSkills')) || {};
+
+    // FALLBACK if no save yet
+    if (Object.keys(skills).length === 0) {
+      skills = {
+        Attack: { level: 1, xp: 0, xpToNext: 100 },
+        Strength: { level: 1, xp: 0, xpToNext: 100 },
+        Defense: { level: 1, xp: 0, xpToNext: 100 },
+        Magic: { level: 1, xp: 0, xpToNext: 100 },
+        Woodcutting: { level: 1, xp: 0, xpToNext: 100 },
+        Mining: { level: 1, xp: 0, xpToNext: 100 },
+      };
+    }
 
     async function renderBank() {
       await loadItemsData();
@@ -191,7 +196,6 @@
         filledSlots++;
       }
 
-      // Fill remaining slots with "Empty"
       for (let i = filledSlots; i < totalSlots; i++) {
         const div = document.createElement('div');
         div.className = 'item';
@@ -254,12 +258,14 @@
           skills[skill].xp -= skills[skill].xpToNext;
           skills[skill].xpToNext = Math.floor(skills[skill].xpToNext * 1.25);
         }
+        localStorage.setItem('playerSkills', JSON.stringify(skills));
         renderSkills();
       }
     }
 
     function saveProgress() {
       localStorage.setItem("lastSave", Date.now());
+      localStorage.setItem('playerSkills', JSON.stringify(skills));
       alert("Progress saved to the cloud!");
     }
 
