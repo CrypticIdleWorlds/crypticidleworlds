@@ -194,10 +194,10 @@ function startBattle() {
   }, enemy.attackSpeed * 600);
 }
 
-// 🚀 Initialize everything AFTER loading monsters
-window.onload = async () => {
-  await loadEnemies();
+// 🚀 Initialize everything (no fetch, use enemy-data.js)
+window.onload = () => {
   initCombat();
   updateSkillTracker();
   setInterval(updateSaveTimer, 1000);
 };
+
