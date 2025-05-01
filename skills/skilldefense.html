@@ -3,93 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Train: Striker Protocol</title>
+  <title>Train: Striker Protocol (Defense)</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
-    body {
-      background: url('../assets/backgrounds/home.png') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Share Tech Mono', monospace;
-      color: #00ff99;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-    #save-bar {
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid #00ff99;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    #main-content {
-      display: flex;
-      flex: 1;
-    }
-    #skills-panel {
-      width: 200px;
-      margin-right: 40px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border: 2px solid #00ff99;
-      height: fit-content;
-    }
-    #skills-panel h3 {
-      margin-top: 0;
-    }
-    #skills-panel ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    #skills-panel li {
-      margin-bottom: 8px;
-    }
-    .region-main {
-      flex: 1;
-      position: relative;
-    }
-    h1 {
-      font-size: 24px;
-    }
-    .region-container {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .region-card {
-      width: 180px;
-      border: 2px solid #00ff99;
-      background-color: rgba(0, 0, 0, 0.6);
-      text-align: center;
-      cursor: pointer;
-      padding: 10px;
-      transition: transform 0.2s;
-    }
-    .region-card.locked {
-      opacity: 0.4;
-      pointer-events: none;
-    }
-    .region-card:hover {
-      transform: scale(1.05);
-    }
-    .region-card img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    .btn {
-      background-color: #000;
-      color: #00ff99;
-      border: 1px solid #00ff99;
-      padding: 10px 20px;
-      cursor: pointer;
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-    }
+    body { background: url('../assets/backgrounds/home.png') no-repeat center center fixed; background-size: cover; font-family: 'Share Tech Mono', monospace; color: #00ff99; padding: 20px; display: flex; flex-direction: column; height: 100vh; }
+    #save-bar { padding: 10px; background: rgba(0, 0, 0, 0.6); border: 2px solid #00ff99; margin-bottom: 20px; text-align: center; }
+    #main-content { display: flex; flex: 1; }
+    #skills-panel { width: 200px; margin-right: 40px; background: rgba(0, 0, 0, 0.6); padding: 20px; border: 2px solid #00ff99; height: fit-content; }
+    #skills-panel h3 { margin-top: 0; }
+    #skills-panel ul { list-style: none; padding-left: 0; }
+    #skills-panel li { margin-bottom: 8px; }
+    .region-main { flex: 1; position: relative; }
+    h1 { font-size: 24px; }
+    .region-container { display: flex; gap: 20px; justify-content: center; margin-top: 40px; }
+    .region-card { width: 180px; border: 2px solid #00ff99; background-color: rgba(0, 0, 0, 0.6); text-align: center; cursor: pointer; padding: 10px; transition: transform 0.2s; }
+    .region-card.locked { opacity: 0.4; pointer-events: none; }
+    .region-card:hover { transform: scale(1.05); }
+    .region-card img { width: 100%; height: auto; margin-bottom: 10px; }
+    .btn { background-color: #000; color: #00ff99; border: 1px solid #00ff99; padding: 10px 20px; cursor: pointer; position: absolute; bottom: 20px; right: 20px; }
+    #global-skill-tracker { background: #111; padding: 10px; color: #fff; font-size: 14px; border-top: 2px solid #00ff99; margin-top: 20px; }
+    .skill-entry { margin-bottom: 8px; }
+    .skill-entry .xp-bar { background: #333; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 3px; }
+    .skill-entry .xp-bar div { height: 100%; background: #4caf50; }
+    .active-skill { background: #222; padding: 5px; border-left: 4px solid #4caf50; }
   </style>
 </head>
 <body>
@@ -112,7 +49,7 @@
     </div>
 
     <div class="region-main">
-      <h1>🧠 Train: Striker Protocol (Defense)</h1>
+      <h1>🛡️ Train: Striker Protocol (Defense)</h1>
       <p>Select a region to begin training. Higher regions require higher combat levels.</p>
 
       <div class="region-container">
@@ -146,6 +83,16 @@
     </div>
   </div>
 
+  <div id="global-skill-tracker"></div>
+
+  <script src="../js/items.js"></script>
+  <script src="../js/masterySystem.js"></script>
+  <script src="../js/achievementsSystem.js"></script>
+  <script src="../js/combatLogSystem.js"></script>
+  <script src="../js/offlineProgress.js"></script>
+  <script src="../js/skills.js"></script>
+  <script src="../js/skillsSystem.js"></script>
+
   <script>
     function saveProgress() {
       localStorage.setItem("lastSave", Date.now());
@@ -170,12 +117,10 @@
       const magic = data.magic?.level || 1;
       const ranged = data.ranged?.level || 1;
       const prayer = data.prayer?.level || 1;
-
       const base = 0.25 * (defense + hitpoints + Math.floor(prayer / 2));
       const melee = 0.325 * (attack + strength);
       const range = 0.325 * Math.floor(ranged * 1.5);
       const mage = 0.325 * Math.floor(magic * 1.5);
-
       return Math.floor(base + Math.max(melee, range, mage));
     }
 
