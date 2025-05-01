@@ -79,6 +79,7 @@
   <div id="skills-panel">
     <h3>🧠 Skill Levels</h3>
     <ul id="skill-list">
+      <li>Combat Level: <span id="level-combat">3</span></li>
       <li>Attack: <span id="level-attack">1</span></li>
       <li>Strength: <span id="level-strength">1</span></li>
       <li>Defense: <span id="level-defense">1</span></li>
@@ -126,12 +127,17 @@
       const attack = data.attack?.level || 1;
       const strength = data.strength?.level || 1;
       const defense = data.defense?.level || 1;
-      const ranged = data.ranged?.level || 1;
+      const hitpoints = data.hitpoints?.level || 10;
       const magic = data.magic?.level || 1;
+      const ranged = data.ranged?.level || 1;
+      const prayer = data.prayer?.level || 1;
 
-      const base = 0.25 * (defense + Math.max(magic, ranged));
+      const base = 0.25 * (defense + hitpoints + Math.floor(prayer / 2));
       const melee = 0.325 * (attack + strength);
-      return Math.floor(base + melee);
+      const range = 0.325 * Math.floor(ranged * 1.5);
+      const mage = 0.325 * Math.floor(magic * 1.5);
+
+      return Math.floor(base + Math.max(melee, range, mage));
     }
 
     function lockRegions() {
@@ -144,6 +150,7 @@
 
     function updateSkillLevels() {
       const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
+      document.getElementById("level-combat").textContent = getCombatLevel(skillData);
       document.getElementById("level-attack").textContent = skillData.attack?.level || 1;
       document.getElementById("level-strength").textContent = skillData.strength?.level || 1;
       document.getElementById("level-defense").textContent = skillData.defense?.level || 1;
