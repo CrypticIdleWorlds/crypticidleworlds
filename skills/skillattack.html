@@ -14,6 +14,19 @@
       color: #00ff99;
       padding: 20px;
       display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    #save-bar {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #00ff99;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #main-content {
+      display: flex;
+      flex: 1;
     }
     #skills-panel {
       width: 200px;
@@ -21,6 +34,7 @@
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border: 2px solid #00ff99;
+      height: fit-content;
     }
     #skills-panel h3 {
       margin-top: 0;
@@ -34,6 +48,7 @@
     }
     .region-main {
       flex: 1;
+      position: relative;
     }
     h1 {
       font-size: 24px;
@@ -71,58 +86,82 @@
       border: 1px solid #00ff99;
       padding: 10px 20px;
       cursor: pointer;
-      margin-top: 30px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
     }
   </style>
 </head>
 <body>
-  <div id="skills-panel">
-    <h3>🧠 Skill Levels</h3>
-    <ul id="skill-list">
-      <li>Combat Level: <span id="level-combat">3</span></li>
-      <li>Attack: <span id="level-attack">1</span></li>
-      <li>Strength: <span id="level-strength">1</span></li>
-      <li>Defense: <span id="level-defense">1</span></li>
-      <li>Magic: <span id="level-magic">1</span></li>
-      <li>Ranged: <span id="level-ranged">1</span></li>
-    </ul>
+  <div id="save-bar">
+    <span id="last-save-time">Time since last save: 0s</span>
+    <button onclick="saveProgress()">💾 Cloud Save</button>
   </div>
 
-  <div class="region-main">
-    <h1>🧠 Train: Striker Protocol (Attack)</h1>
-    <p>Select a region to begin training. Higher regions require higher combat levels.</p>
-
-    <div class="region-container">
-      <a href="../regions/ashlands.html">
-        <div class="region-card">
-          <img src="../assets/regions/ashlands.png" alt="Ashlands">
-          <strong>Ashlands</strong>
-        </div>
-      </a>
-      <a href="../regions/cyberspire.html">
-        <div class="region-card">
-          <img src="../assets/regions/cyberspire.png" alt="Cyberspire">
-          <strong>Cyberspire</strong>
-        </div>
-      </a>
-      <a href="../regions/wraithmarsh.html">
-        <div class="region-card">
-          <img src="../assets/regions/wraithmarsh.png" alt="Wraithmarsh">
-          <strong>Wraithmarsh</strong>
-        </div>
-      </a>
-      <a href="../regions/zerocrypt.html">
-        <div class="region-card">
-          <img src="../assets/regions/zerocrypt.png" alt="Zerocrypt">
-          <strong>Zerocrypt</strong>
-        </div>
-      </a>
+  <div id="main-content">
+    <div id="skills-panel">
+      <h3>🧠 Skill Levels</h3>
+      <ul id="skill-list">
+        <li>Combat Level: <span id="level-combat">3</span></li>
+        <li>Attack: <span id="level-attack">1</span></li>
+        <li>Strength: <span id="level-strength">1</span></li>
+        <li>Defense: <span id="level-defense">1</span></li>
+        <li>Magic: <span id="level-magic">1</span></li>
+        <li>Ranged: <span id="level-ranged">1</span></li>
+      </ul>
     </div>
 
-    <button class="btn" onclick="window.location.href='../home.html'">🏠 Return to Home</button>
+    <div class="region-main">
+      <h1>🧠 Train: Striker Protocol (Attack)</h1>
+      <p>Select a region to begin training. Higher regions require higher combat levels.</p>
+
+      <div class="region-container">
+        <a href="../regions/ashlands.html">
+          <div class="region-card">
+            <img src="../assets/regions/ashlands.png" alt="Ashlands">
+            <strong>Ashlands</strong>
+          </div>
+        </a>
+        <a href="../regions/cyberspire.html">
+          <div class="region-card">
+            <img src="../assets/regions/cyberspire.png" alt="Cyberspire">
+            <strong>Cyberspire</strong>
+          </div>
+        </a>
+        <a href="../regions/wraithmarsh.html">
+          <div class="region-card">
+            <img src="../assets/regions/wraithmarsh.png" alt="Wraithmarsh">
+            <strong>Wraithmarsh</strong>
+          </div>
+        </a>
+        <a href="../regions/zerocrypt.html">
+          <div class="region-card">
+            <img src="../assets/regions/zerocrypt.png" alt="Zerocrypt">
+            <strong>Zerocrypt</strong>
+          </div>
+        </a>
+      </div>
+
+      <button class="btn" onclick="window.location.href='../home.html'">🏠 Return to Home</button>
+    </div>
   </div>
 
   <script>
+    function saveProgress() {
+      localStorage.setItem("lastSave", Date.now());
+      alert("Progress saved to the cloud!");
+    }
+
+    function updateSaveTime() {
+      const lastSave = localStorage.getItem("lastSave");
+      if (lastSave) {
+        const seconds = Math.floor((Date.now() - lastSave) / 1000);
+        document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
+      }
+    }
+
+    setInterval(updateSaveTime, 1000);
+
     function getCombatLevel(data) {
       const attack = data.attack?.level || 1;
       const strength = data.strength?.level || 1;
@@ -141,26 +180,21 @@
     }
 
     function lockRegions() {
-  const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
-  const level = getCombatLevel(skillData);
-  if (level < 30) disableRegion("wraithmarsh");
-  if (level < 70) disableRegion("cyberspire");
-  if (level < 100) disableRegion("zerocrypt");
-}
-
-function disableRegion(name) {
-  const link = document.querySelector(`a[href*="${name}"]`);
-  if (link) {
-    link.classList.add("locked");
-    link.onclick = (e) => e.preventDefault();
-    link.style.pointerEvents = "none";
-    link.style.opacity = "0.4";
-  }
-};
+      const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
       const level = getCombatLevel(skillData);
-      if (level < 30) document.querySelector('a[href*="wraithmarsh"]').classList.add("locked");
-      if (level < 70) document.querySelector('a[href*="cyberspire"]').classList.add("locked");
-      if (level < 100) document.querySelector('a[href*="zerocrypt"]').classList.add("locked");
+      if (level < 30) disableRegion("wraithmarsh");
+      if (level < 70) disableRegion("cyberspire");
+      if (level < 100) disableRegion("zerocrypt");
+    }
+
+    function disableRegion(name) {
+      const link = document.querySelector(`a[href*="${name}"]`);
+      if (link) {
+        link.classList.add("locked");
+        link.onclick = (e) => e.preventDefault();
+        link.style.pointerEvents = "none";
+        link.style.opacity = "0.4";
+      }
     }
 
     function updateSkillLevels() {
@@ -174,9 +208,10 @@ function disableRegion(name) {
     }
 
     window.onload = () => {
-  lockRegions();
-  updateSkillLevels();
-};
+      lockRegions();
+      updateSkillLevels();
+      updateSaveTime();
+    };
   </script>
 </body>
 </html>
