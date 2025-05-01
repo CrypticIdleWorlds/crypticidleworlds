@@ -26,7 +26,7 @@
     }
     .container-flex {
       display: flex;
-      gap: 20px;
+      gap: 40px; /* Increased gap for more space */
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 80px;
@@ -39,11 +39,19 @@
       flex: 1;
       min-width: 300px;
     }
+    .bank-box {
+      transform: translateX(-20px); /* Move bank slightly left */
+    }
+    .gear-box {
+      transform: translateX(20px); /* Move gear slightly right */
+    }
     .grid {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
       justify-content: center;
+      max-height: 600px; /* Scrollable max height */
+      overflow-y: auto;
     }
     .item {
       background: rgba(0,0,0,0.8);
@@ -95,12 +103,12 @@
   <h1>🏦 Bank & 🛡️ Gear</h1>
 
   <div class="container-flex">
-    <div class="box">
-      <h2>🏦 Bank</h2>
+    <div class="box bank-box">
+      <h2>🏦 Bank (500 Slots)</h2>
       <div class="grid" id="bankGrid"></div>
     </div>
 
-    <div class="box">
+    <div class="box gear-box">
       <h2>🛡️ Equipped Gear</h2>
       <div class="grid" id="gearGrid"></div>
     </div>
@@ -119,13 +127,33 @@
   <script>
     async function renderBank() {
       await loadItemsData();
-      const bank = getAllBankItems();
       const grid = document.getElementById('bankGrid');
       grid.innerHTML = '';
 
-      for (const itemId in bank) {
+      // ==============================
+      // DEMO: Start fake bank population
+      // ==============================
+      // Add all items to bank with 1 qty each for demo
+      for (const itemId in itemsData) {
+        addItemToBank(itemId, 1);
+      }
+      // Fill the rest of the 500 slots with empty placeholders
+      const totalSlots = 500;
+      const currentCount = Object.keys(bankInventory).length;
+      for (let i = currentCount; i < totalSlots; i++) {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `<div style="height:48px;"></div><div>Empty</div>`;
+        grid.appendChild(div);
+      }
+      // ==============================
+      // DEMO: End fake bank population
+      // ==============================
+
+      // Render actual items
+      for (const itemId in bankInventory) {
         const item = getItem(itemId);
-        const count = bank[itemId];
+        const count = bankInventory[itemId];
         if (!item) continue;
 
         const div = document.createElement('div');
@@ -136,7 +164,7 @@
           <div>Qty: ${count}</div>
           ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}'); renderGear();">Equip</button>` : ''}
         `;
-        grid.appendChild(div);
+        grid.prepend(div); // Put actual items at the top
       }
     }
 
