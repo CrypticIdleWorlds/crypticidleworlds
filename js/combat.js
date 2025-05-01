@@ -103,9 +103,14 @@ function initCombat() {
   enemyHP = enemy.hp;
   document.getElementById("enemy-name").innerText = enemy.name;
 
-  // ✅ Load image directly from JSON (no rewriting)
   const imgElement = document.getElementById("enemy-image");
-  imgElement.src = enemy.image;
+
+// ✅ Auto-fix the path if needed
+if (enemy.image.startsWith('monsters/')) {
+    imgElement.src = 'assets/' + enemy.image;  // Patch the path dynamically
+} else {
+    imgElement.src = enemy.image;
+}
 
   // 🛡️ Fallback if image is missing (only triggers once)
   imgElement.onerror = () => {
