@@ -1,5 +1,3 @@
-// scripts/combat.js
-
 // XP table (same as RuneScape style)
 const xpTable = Array(100).fill(0).map((_, level) => {
   let xp = 0;
@@ -24,10 +22,22 @@ document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
 });
 
 let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
+let enemies = {};  // 🔥 We'll fetch this now
 let enemy = null;
 let enemyHP = 0;
 let playerHP = 100;
 let isBattling = false;
+
+// 🔥 Load enemies dynamically from monsters.json
+async function loadEnemies() {
+  try {
+    const response = await fetch('monsters.json');  // Update path if needed
+    enemies = await response.json();
+    console.log('✅ Enemies loaded:', enemies);
+  } catch (error) {
+    console.error('❌ Failed to load monsters.json', error);
+  }
+}
 
 function getParam(param) {
   return new URLSearchParams(window.location.search).get(param);
@@ -97,7 +107,10 @@ function updateSaveTimer() {
 
 function initCombat() {
   const enemyKey = getParam("enemy");
-  if (!enemyKey || !enemies[enemyKey]) return;
+  if (!enemyKey || !enemies[enemyKey]) {
+    log(`[ERROR] Enemy data not found for key: ${enemyKey}`);
+    return;
+  }
   enemy = enemies[enemyKey];
   enemyHP = enemy.hp;
   document.getElementById("enemy-name").innerText = enemy.name;
@@ -126,6 +139,7 @@ function updateSkillTracker() {
 function startBattle() {
   if (isBattling) return;
   isBattling = true;
+  
   const loop = setInterval(() => {
     if (enemyHP <= 0 || playerHP <= 0) {
       if (playerHP <= 0) {
@@ -136,27 +150,41 @@ function startBattle() {
         return;
       }
       log(`[VICTORY] ${enemy.name} defeated.`);
-      grantXP(selectedStyle, enemy.xp);
+      const xpMap = enemy.xpDrop || { attack: enemy.xp };  // fallback just in case
+      for (const skill in xpMap) {
+        if (xpMap[skill] > 0) {
+          grantXP(skill, xpMap[skill]);
+        }
+      }
       localStorage.setItem("skillData", JSON.stringify(skillData));
       updateSkillTracker();
       enemyHP = enemy.hp;
       document.getElementById("enemy-hp").innerText = enemyHP;
       isBattling = false;
-      startBattle();
+      startBattle();  // auto-loop
     } else {
+      // Use enemy's real combat stats
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
-      const dmgToPlayer = Math.floor(Math.random() * 5);
+      const hitChance = Math.random();
+      let dmgToPlayer = 0;
+      if (hitChance < enemy.accuracy) {
+        dmgToPlayer = Math.floor(Math.random() * enemy.maxHit);
+      }
       enemyHP -= dmgToEnemy;
       playerHP -= dmgToPlayer;
       document.getElementById("enemy-hp").innerText = Math.max(enemyHP, 0);
       document.getElementById("player-hp").innerText = Math.max(playerHP, 0);
       floatText(document.getElementById("enemy-box"), `-${dmgToEnemy}`, "enemy");
-      floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
+      if (dmgToPlayer > 0) {
+        floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
+      }
     }
-  }, 1000);
+  }, enemy.attackSpeed * 600); // attack speed in ticks (4 ticks = 2.4s)
 }
 
-window.onload = () => {
+// 🚀 Initialize everything AFTER loading monsters
+window.onload = async () => {
+  await loadEnemies();
   initCombat();
   updateSkillTracker();
   setInterval(updateSaveTimer, 1000);
