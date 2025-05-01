@@ -98,16 +98,16 @@
           <strong>Ashlands</strong>
         </div>
       </a>
-      <a href="../regions/wraithmarsh.html">
-        <div class="region-card">
-          <img src="../assets/regions/wraithmarsh.png" alt="Wraithmarsh">
-          <strong>Wraithmarsh</strong>
-        </div>
-      </a>
       <a href="../regions/cyberspire.html">
         <div class="region-card">
           <img src="../assets/regions/cyberspire.png" alt="Cyberspire">
           <strong>Cyberspire</strong>
+        </div>
+      </a>
+      <a href="../regions/wraithmarsh.html">
+        <div class="region-card">
+          <img src="../assets/regions/wraithmarsh.png" alt="Wraithmarsh">
+          <strong>Wraithmarsh</strong>
         </div>
       </a>
       <a href="../regions/zerocrypt.html">
@@ -122,14 +122,15 @@
   </div>
 
   <script>
-    function getCombatLevel(skillData) {
-      const atk = skillData.attack?.level || 1;
-      const str = skillData.strength?.level || 1;
-      const def = skillData.defense?.level || 1;
-      const magic = skillData.magic?.level || 1;
-      const ranged = skillData.ranged?.level || 1;
-      const base = 0.25 * (def + Math.max(magic, ranged));
-      const melee = 0.325 * (atk + str);
+    function getCombatLevel(data) {
+      const attack = data.attack?.level || 1;
+      const strength = data.strength?.level || 1;
+      const defense = data.defense?.level || 1;
+      const ranged = data.ranged?.level || 1;
+      const magic = data.magic?.level || 1;
+
+      const base = 0.25 * (defense + Math.max(magic, ranged));
+      const melee = 0.325 * (attack + strength);
       return Math.floor(base + melee);
     }
 
