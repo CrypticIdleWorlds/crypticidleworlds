@@ -166,6 +166,24 @@
 
   <!-- ✅ Cleaned up script tags -->
   <!-- ❌ <script src="js/enemy-data.js"></script> REMOVED because we use monsters.json -->
+  <script>
+  // Dynamically change background based on the region of the enemy
+  function updateCombatBackground() {
+    const region = localStorage.getItem('selectedRegion') || 'Default';
+    let bg = 'assets/backgrounds/battle2.png'; // fallback/default
+    if (region === 'Ashlands') bg = 'assets/backgrounds/battleashlands.png';
+    else if (region === 'Cyberspire') bg = 'assets/backgrounds/battlecyberspire.png';
+    else if (region === 'Wraithmarsh') bg = 'assets/backgrounds/battlewraithmarsh.png';
+    else if (region === 'Zerocrypt') bg = 'assets/backgrounds/battlezerocrypt.png';
+
+    document.body.style.background = `url('${bg}') no-repeat center center fixed`;
+    document.body.style.backgroundSize = 'cover';
+  }
+
+  // Run on page load after everything is set up
+  window.addEventListener('DOMContentLoaded', updateCombatBackground);
+  </script>
+
   <script src="js/skills.js"></script>
   <script src="js/combat.js"></script>
   
