@@ -7,28 +7,104 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Keep original CSS unchanged */
-    body { font-family: 'Share Tech Mono', monospace; background: url('assets/backgrounds/battle2.png') no-repeat center center fixed; background-size: cover; color: #00ff99; padding: 20px; }
-    #save-bar { background-color: rgba(0, 0, 0, 0.6); padding: 10px; border-bottom: 2px solid #00ff99; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
-    #combat-area { display: flex; margin-top: 80px; gap: 20px; }
-    #combat-style-panel { background-color: rgba(0, 0, 0, 0.6); padding: 20px; border: 2px solid #00ff99; width: 250px; }
-    .style-group { margin-bottom: 20px; }
-    .style-group strong img { width: 20px; vertical-align: middle; }
-    #combat-display { display: flex; justify-content: space-between; gap: 40px; width: 100%; }
-    #enemy-box, #player-box { background-color: rgba(0, 0, 0, 0.6); border: 2px solid #00ff99; padding: 20px; width: 50%; text-align: center; }
-    #enemy-image { width: 120px; margin: 10px 0; }
-    .btn { background-color: rgba(0,0,0,0.8); color: #00ff99; border: 1px solid #00ff99; padding: 10px 20px; cursor: pointer; margin-top: 10px; }
-    #food-box img { width: 40px; border: 1px solid #00ff99; cursor: pointer; }
-    #skills-tab { background-color: rgba(0,0,0,0.6); border: 2px solid #00ff99; padding: 16px; margin-top: 30px; }
-    #combat-log { margin-top: 20px; padding: 10px; background-color: rgba(0, 0, 0, 0.6); border-top: 2px solid #00ff99; font-size: 12px; height: 120px; overflow-y: auto; }
-    .level-up-message { position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; background: #00ff99; color: #000; padding: 10px 20px; border: 2px solid #00ff99; z-index: 9999; opacity: 0; animation: flashFade 2s ease-out; }
-    @keyframes flashFade { 0% { opacity: 1; } 100% { opacity: 0; } }
-    /* Global tracker */
-    #global-skill-tracker { background: #111; padding: 10px; color: #fff; font-size: 14px; border-top: 2px solid #00ff99; margin-top: 20px; }
-    .skill-entry { margin-bottom: 8px; }
-    .skill-entry .xp-bar { background: #333; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 3px; }
-    .skill-entry .xp-bar div { height: 100%; background: #4caf50; }
-    .active-skill { background: #222; padding: 5px; border-left: 4px solid #4caf50; }
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: url('assets/backgrounds/battle2.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ff99;
+      padding: 20px;
+    }
+    #save-bar {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-bottom: 2px solid #00ff99;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    #combat-area {
+      display: flex;
+      margin-top: 80px;
+      gap: 20px;
+    }
+    #combat-style-panel {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border: 2px solid #00ff99;
+      width: 250px;
+    }
+    .style-group {
+      margin-bottom: 20px;
+    }
+    .style-group strong img {
+      width: 20px;
+      vertical-align: middle;
+    }
+    #combat-display {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      width: 100%;
+    }
+    #enemy-box, #player-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid #00ff99;
+      padding: 20px;
+      width: 50%;
+      text-align: center;
+    }
+    #enemy-image {
+      width: 120px;
+      margin: 10px 0;
+    }
+    .btn {
+      background-color: rgba(0,0,0,0.8);
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #food-box img {
+      width: 40px;
+      border: 1px solid #00ff99;
+      cursor: pointer;
+    }
+    #skills-tab {
+      background-color: rgba(0,0,0,0.6);
+      border: 2px solid #00ff99;
+      padding: 16px;
+      margin-top: 30px;
+    }
+    #combat-log {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-top: 2px solid #00ff99;
+      font-size: 12px;
+      height: 120px;
+      overflow-y: auto;
+    }
+    .level-up-message {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      background: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      border: 2px solid #00ff99;
+      z-index: 9999;
+      opacity: 0;
+      animation: flashFade 2s ease-out;
+    }
+    @keyframes flashFade {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -39,16 +115,56 @@
 
   <h1>⚔️ Combat Mode <button onclick="window.location.href='home.html'" class="btn" style="float:right">🛑 Escape</button></h1>
 
-  <div id="combat-area"> <!-- unchanged content here --> </div>
+  <div id="combat-area">
+    <div id="combat-style-panel">
+      <h3>Choose Combat Style</h3>
+      <div class="style-group">
+        <strong>Melee <img src="assets/skills/strength.png" alt="melee"></strong><br>
+        <label><input type="radio" name="combatStyle" value="attack"> Stab</label><br>
+        <label><input type="radio" name="combatStyle" value="strength"> Slash</label><br>
+        <label><input type="radio" name="combatStyle" value="defense"> Block</label>
+      </div>
+      <div class="style-group">
+        <strong>Ranged <img src="assets/skills/ranged.png" alt="ranged"></strong><br>
+        <label><input type="radio" name="combatStyle" value="ranged"> Rapid Fire</label><br>
+        <label><input type="radio" name="combatStyle" value="ranged"> Long Range</label><br>
+        <label><input type="radio" name="combatStyle" value="ranged_defense"> Controlled</label>
+      </div>
+      <div class="style-group">
+        <strong>Magic <img src="assets/skills/magic.png" alt="magic"></strong><br>
+        <label><input type="radio" name="combatStyle" value="magic"> Aggressive Cast</label><br>
+        <label><input type="radio" name="combatStyle" value="magic_defense"> Defensive Cast</label>
+      </div>
+    </div>
 
-  <div id="skills-tab"> <!-- unchanged skills tracker --> </div>
+    <div id="combat-display">
+      <div id="enemy-box">
+        <h2 id="enemy-name">Enemy</h2>
+        <img id="enemy-image" src="" alt="Enemy" />
+        <p>HP: <span id="enemy-hp">0</span></p>
+      </div>
+      <div id="player-box">
+        <h2>You</h2>
+        <p>HP: <span id="player-hp">100</span></p>
+        <button class="btn" onclick="startBattle()">Battle</button>
+        <div id="food-box">
+          <p>Food:</p>
+          <img src="assets/items/consumables/bread.png" alt="Bread" onclick="eatFood()" />
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div id="global-skill-tracker"></div>
+  <div id="skills-tab">
+    <h3>🧠 Skill Levels</h3>
+    <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
+  </div>
 
   <div id="combat-log">[LOG] Combat initialized.<br /></div>
   <div id="level-up-popup" class="level-up-message"></div>
 
-  <!-- New JS includes -->
+  <!-- Include all supporting scripts -->
+  <script src="js/enemy-data.js"></script>
   <script src="js/items.js"></script>
   <script src="js/masterySystem.js"></script>
   <script src="js/achievementsSystem.js"></script>
@@ -56,21 +172,79 @@
   <script src="js/offlineProgress.js"></script>
   <script src="js/skills.js"></script>
   <script src="js/skillsSystem.js"></script>
-
-  <!-- Existing logic -->
-  <script>
-    function updateCombatBackground() {
-      const region = localStorage.getItem('selectedRegion') || 'Default';
-      let bg = 'assets/backgrounds/battle2.png';
-      if (region === 'Ashlands') bg = 'assets/backgrounds/battleashlands.png';
-      else if (region === 'Cyberspire') bg = 'assets/backgrounds/battlecyberspire.png';
-      else if (region === 'Wraithmarsh') bg = 'assets/backgrounds/battlewraithmarsh.png';
-      else if (region === 'Zerocrypt') bg = 'assets/backgrounds/battlezerocrypt.png';
-      document.body.style.background = `url('${bg}') no-repeat center center fixed`;
-      document.body.style.backgroundSize = 'cover';
-    }
-    window.addEventListener('DOMContentLoaded', updateCombatBackground);
-  </script>
   <script src="js/combat.js"></script>
+
+  <script>
+    // Save system: unified playerData handling
+    let playerData = JSON.parse(localStorage.getItem('playerData')) || {
+      skills: {
+        Attack: { level: 1, xp: 0, xpToNext: 100 },
+        Strength: { level: 1, xp: 0, xpToNext: 100 },
+        Defense: { level: 1, xp: 0, xpToNext: 100 },
+        Magic: { level: 1, xp: 0, xpToNext: 100 },
+        Ranged: { level: 1, xp: 0, xpToNext: 100 }
+      },
+      bankInventory: {},
+      playerEquipment: {}
+    };
+
+    function saveProgress() {
+      localStorage.setItem('playerData', JSON.stringify(playerData));
+      localStorage.setItem("lastSave", Date.now());
+      alert("Progress saved to the cloud!");
+    }
+
+    function updateSaveTime() {
+      const lastSave = localStorage.getItem("lastSave");
+      if (lastSave) {
+        const seconds = Math.floor((Date.now() - lastSave) / 1000);
+        document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
+      }
+    }
+
+    function renderCombatSkills() {
+      const skillsList = document.getElementById('combat-skill-tracker');
+      skillsList.innerHTML = '';
+      Object.entries(playerData.skills).forEach(([skillName, { level, xp, xpToNext }]) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${skillName}</strong> (Level ${level})
+          <div class="xp-bar">
+            <div style="width: ${(xp / xpToNext) * 100}%"></div>
+          </div>
+          <small>${xp} / ${xpToNext} XP</small>
+        `;
+        skillsList.appendChild(li);
+      });
+    }
+
+    // Example XP gain function (combat.js should hook into this)
+    function gainXp(skill, amount) {
+      if (playerData.skills[skill]) {
+        playerData.skills[skill].xp += amount;
+        if (playerData.skills[skill].xp >= playerData.skills[skill].xpToNext) {
+          playerData.skills[skill].level++;
+          playerData.skills[skill].xp -= playerData.skills[skill].xpToNext;
+          playerData.skills[skill].xpToNext = Math.floor(playerData.skills[skill].xpToNext * 1.25);
+          showLevelUp(skill);
+        }
+        saveProgress();
+        renderCombatSkills();
+      }
+    }
+
+    function showLevelUp(skill) {
+      const popup = document.getElementById('level-up-popup');
+      popup.textContent = `Level Up! ${skill} is now Level ${playerData.skills[skill].level}`;
+      popup.style.opacity = 1;
+      setTimeout(() => { popup.style.opacity = 0; }, 2000);
+    }
+
+    setInterval(updateSaveTime, 1000);
+    window.onload = () => {
+      updateSaveTime();
+      renderCombatSkills();
+    };
+  </script>
 </body>
 </html>
