@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    /* same CSS as before, keep it unchanged */
     body {
       font-family: 'Share Tech Mono', monospace;
       background: url('assets/backgrounds/battle.png') no-repeat center center fixed;
@@ -163,29 +164,10 @@
   <div id="combat-log">[LOG] Combat initialized.<br /></div>
   <div id="level-up-popup" class="level-up-message"></div>
 
-  <script src="js/enemy-data.js"></script>
+  <!-- ✅ Cleaned up script tags -->
+  <!-- ❌ <script src="js/enemy-data.js"></script> REMOVED because we use monsters.json -->
   <script src="js/skills.js"></script>
   <script src="js/combat.js"></script>
 
-  <script>
-    function saveProgress() {
-      localStorage.setItem("lastSave", Date.now());
-      alert("Progress saved to the cloud!");
-    }
-
-    function updateSaveTime() {
-      const lastSave = localStorage.getItem("lastSave");
-      if (lastSave) {
-        const seconds = Math.floor((Date.now() - lastSave) / 1000);
-        document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
-      }
-    }
-
-    setInterval(updateSaveTime, 1000);
-
-    window.onload = () => {
-      updateSaveTime();
-    };
-  </script>
 </body>
 </html>
