@@ -31,7 +31,7 @@ let isBattling = false;
 // 🔥 Load enemies dynamically from monsters.json
 async function loadEnemies() {
   try {
-    const response = await fetch('monsters.json');  // Update path if needed
+    const response = await fetch('monsters.json');  // Path to your monsters.json
     enemies = await response.json();
     console.log('✅ Enemies loaded:', enemies);
   } catch (error) {
@@ -115,20 +115,17 @@ function initCombat() {
   enemyHP = enemy.hp;
   document.getElementById("enemy-name").innerText = enemy.name;
 
-  // ✅ PATCH the path for monsters & bosses images
+  // ✅ Load image directly from JSON (no rewriting)
   const imgElement = document.getElementById("enemy-image");
-  let imgPath = enemy.image;
-  if (imgPath.startsWith("assets/monsters/")) {
-    imgPath = imgPath.replace("assets/monsters/", "monsters/monsters/");
-  } else if (imgPath.startsWith("assets/bosses/")) {
-    imgPath = imgPath.replace("assets/bosses/", "monsters/bosses/");
-  }
-  imgElement.src = imgPath;
+  imgElement.src = enemy.image;
 
-  // 🛡️ Fallback if image is missing
+  // 🛡️ Fallback if image is missing (only triggers once)
   imgElement.onerror = () => {
-    console.warn(`[Image Missing] Could not load ${imgPath}, using fallback.`);
-    imgElement.src = 'monsters/monsters/default_enemy.png';  // Add a fallback image here
+    if (!imgElement.dataset.fallbackUsed) {
+      console.warn(`[Image Missing] Could not load ${enemy.image}, using fallback.`);
+      imgElement.dataset.fallbackUsed = "true";
+      imgElement.src = 'assets/monsters/default_enemy.png';  // Fallback image location
+    }
   };
 
   document.getElementById("enemy-hp").innerText = enemyHP;
