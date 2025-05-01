@@ -1,3 +1,5 @@
+<!-- ✅ Updated BANK PAGE with global tracker + all scripts -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,91 +9,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      font-family: 'Share Tech Mono', monospace;
-      background: url('assets/backgrounds/home2.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #00ff99;
-      padding: 20px;
-    }
-    #save-bar {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-bottom: 2px solid #00ff99;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .container-flex {
-      display: flex;
-      gap: 40px; /* Increased gap for more space */
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 80px;
-    }
-    .box {
-      background-color: rgba(0,0,0,0.6);
-      border: 2px solid #00ff99;
-      padding: 20px;
-      max-width: 400px;
-      flex: 1;
-      min-width: 300px;
-    }
-    .bank-box {
-      transform: translateX(-20px); /* Move bank slightly left */
-    }
-    .gear-box {
-      transform: translateX(20px); /* Move gear slightly right */
-    }
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      max-height: 600px; /* Scrollable max height */
-      overflow-y: auto;
-    }
-    .item {
-      background: rgba(0,0,0,0.8);
-      border: 1px solid #00ff99;
-      padding: 10px;
-      text-align: center;
-      width: 100px;
-    }
-    .item img {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 5px;
-    }
-    .btn {
-      background-color: rgba(0,0,0,0.8);
-      color: #00ff99;
-      border: 1px solid #00ff99;
-      padding: 5px 10px;
-      cursor: pointer;
-      margin-top: 5px;
-    }
-    h1 {
-      text-align: center;
-      margin: 100px 0 20px;
-    }
-    .back-btn {
-      display: block;
-      text-align: center;
-      margin: 20px auto 0;
-      width: 150px;
-    }
-    #skills-tab {
-      background-color: rgba(0,0,0,0.6);
-      border: 2px solid #00ff99;
-      padding: 16px;
-      margin-top: 30px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    body { font-family: 'Share Tech Mono', monospace; background: url('assets/backgrounds/home2.png') no-repeat center center fixed; background-size: cover; color: #00ff99; padding: 20px; }
+    #save-bar { background-color: rgba(0, 0, 0, 0.6); padding: 10px; border-bottom: 2px solid #00ff99; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
+    .container-flex { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 80px; }
+    .box { background-color: rgba(0,0,0,0.6); border: 2px solid #00ff99; padding: 20px; max-width: 400px; flex: 1; min-width: 300px; }
+    .bank-box { transform: translateX(-20px); }
+    .gear-box { transform: translateX(20px); }
+    .grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-height: 600px; overflow-y: auto; }
+    .item { background: rgba(0,0,0,0.8); border: 1px solid #00ff99; padding: 10px; text-align: center; width: 100px; }
+    .item img { width: 48px; height: 48px; margin-bottom: 5px; }
+    .btn { background-color: rgba(0,0,0,0.8); color: #00ff99; border: 1px solid #00ff99; padding: 5px 10px; cursor: pointer; margin-top: 5px; }
+    h1 { text-align: center; margin: 100px 0 20px; }
+    .back-btn { display: block; text-align: center; margin: 20px auto 0; width: 150px; }
+    #skills-tab { background-color: rgba(0,0,0,0.6); border: 2px solid #00ff99; padding: 16px; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    #global-skill-tracker { background: #111; padding: 10px; color: #fff; font-size: 14px; border-top: 2px solid #00ff99; margin-top: 20px; }
+    .skill-entry { margin-bottom: 8px; }
+    .skill-entry .xp-bar { background: #333; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 3px; }
+    .skill-entry .xp-bar div { height: 100%; background: #4caf50; }
+    .active-skill { background: #222; padding: 5px; border-left: 4px solid #4caf50; }
   </style>
 </head>
 <body>
@@ -119,25 +54,24 @@
     <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
   </div>
 
+  <div id="global-skill-tracker"></div>
+
   <a href="home.html" class="btn back-btn">🏠 Back to Home</a>
 
-  <script src="js/skills.js"></script>
   <script src="js/items.js"></script>
+  <script src="js/masterySystem.js"></script>
+  <script src="js/achievementsSystem.js"></script>
+  <script src="js/combatLogSystem.js"></script>
+  <script src="js/offlineProgress.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/skillsSystem.js"></script>
   <script src="js/bank.js"></script>
   <script>
     async function renderBank() {
       await loadItemsData();
       const grid = document.getElementById('bankGrid');
       grid.innerHTML = '';
-
-      // ==============================
-      // DEMO: Start fake bank population
-      // ==============================
-      // Add all items to bank with 1 qty each for demo
-      for (const itemId in itemsData) {
-        addItemToBank(itemId, 1);
-      }
-      // Fill the rest of the 500 slots with empty placeholders
+      for (const itemId in itemsData) { addItemToBank(itemId, 1); }
       const totalSlots = 500;
       const currentCount = Object.keys(bankInventory).length;
       for (let i = currentCount; i < totalSlots; i++) {
@@ -146,16 +80,10 @@
         div.innerHTML = `<div style="height:48px;"></div><div>Empty</div>`;
         grid.appendChild(div);
       }
-      // ==============================
-      // DEMO: End fake bank population
-      // ==============================
-
-      // Render actual items
       for (const itemId in bankInventory) {
         const item = getItem(itemId);
         const count = bankInventory[itemId];
         if (!item) continue;
-
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = `
@@ -164,18 +92,16 @@
           <div>Qty: ${count}</div>
           ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}'); renderGear();">Equip</button>` : ''}
         `;
-        grid.prepend(div); // Put actual items at the top
+        grid.prepend(div);
       }
     }
 
     function renderGear() {
       const gearGrid = document.getElementById('gearGrid');
       gearGrid.innerHTML = '';
-
       for (const slot in playerEquipment) {
         const itemId = playerEquipment[slot];
         const item = itemId ? getItem(itemId) : null;
-
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = item ? `
@@ -205,7 +131,6 @@
     }
 
     setInterval(updateSaveTime, 1000);
-
     renderBank();
     renderGear();
   </script>
