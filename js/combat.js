@@ -115,18 +115,20 @@ function initCombat() {
   enemyHP = enemy.hp;
   document.getElementById("enemy-name").innerText = enemy.name;
 
-  // ✅ PATCH the path for the image
+  // ✅ PATCH the path for monsters & bosses images
   const imgElement = document.getElementById("enemy-image");
   let imgPath = enemy.image;
   if (imgPath.startsWith("assets/monsters/")) {
     imgPath = imgPath.replace("assets/monsters/", "monsters/monsters/");
+  } else if (imgPath.startsWith("assets/bosses/")) {
+    imgPath = imgPath.replace("assets/bosses/", "monsters/bosses/");
   }
   imgElement.src = imgPath;
 
   // 🛡️ Fallback if image is missing
   imgElement.onerror = () => {
     console.warn(`[Image Missing] Could not load ${imgPath}, using fallback.`);
-    imgElement.src = 'monsters/monsters/default_enemy.png';  // Add this image in your folder!
+    imgElement.src = 'monsters/monsters/default_enemy.png';  // Add a fallback image here
   };
 
   document.getElementById("enemy-hp").innerText = enemyHP;
