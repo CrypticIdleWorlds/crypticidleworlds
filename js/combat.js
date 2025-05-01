@@ -22,7 +22,7 @@ document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
 });
 
 let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
-let enemies = {};  // 🔥 We'll fetch this now
+let enemies = {};
 let enemy = null;
 let enemyHP = 0;
 let playerHP = 100;
@@ -114,7 +114,21 @@ function initCombat() {
   enemy = enemies[enemyKey];
   enemyHP = enemy.hp;
   document.getElementById("enemy-name").innerText = enemy.name;
-  document.getElementById("enemy-image").src = enemy.image;
+
+  // ✅ PATCH the path for the image
+  const imgElement = document.getElementById("enemy-image");
+  let imgPath = enemy.image;
+  if (imgPath.startsWith("assets/monsters/")) {
+    imgPath = imgPath.replace("assets/monsters/", "monsters/monsters/");
+  }
+  imgElement.src = imgPath;
+
+  // 🛡️ Fallback if image is missing
+  imgElement.onerror = () => {
+    console.warn(`[Image Missing] Could not load ${imgPath}, using fallback.`);
+    imgElement.src = 'monsters/monsters/default_enemy.png';  // Add this image in your folder!
+  };
+
   document.getElementById("enemy-hp").innerText = enemyHP;
   document.getElementById("player-hp").innerText = playerHP;
   log(`[ENEMY] Encountered ${enemy.name} with ${enemy.hp} HP.`);
@@ -150,7 +164,7 @@ function startBattle() {
         return;
       }
       log(`[VICTORY] ${enemy.name} defeated.`);
-      const xpMap = enemy.xpDrop || { attack: enemy.xp };  // fallback just in case
+      const xpMap = enemy.xpDrop || { attack: enemy.xp };
       for (const skill in xpMap) {
         if (xpMap[skill] > 0) {
           grantXP(skill, xpMap[skill]);
@@ -163,7 +177,6 @@ function startBattle() {
       isBattling = false;
       startBattle();  // auto-loop
     } else {
-      // Use enemy's real combat stats
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
       let dmgToPlayer = 0;
@@ -179,7 +192,7 @@ function startBattle() {
         floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
       }
     }
-  }, enemy.attackSpeed * 600); // attack speed in ticks (4 ticks = 2.4s)
+  }, enemy.attackSpeed * 600);
 }
 
 // 🚀 Initialize everything AFTER loading monsters
