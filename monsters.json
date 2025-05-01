@@ -2,7 +2,7 @@
   "ashborn_revenant": {
     "name": "Ashborn Revenant",
     "type": "monster",
-    "image": "monsters/monsters/ashborn_revenant.png",
+    "image": "assets/monsters/ashborn_revenant.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.5,
@@ -19,7 +19,7 @@
   "ashen_horror": {
     "name": "Ashen Horror",
     "type": "monster",
-    "image": "monsters/monsters/ashen_horror.png",
+    "image": "assets/monsters/ashen_horror.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.5,
@@ -36,7 +36,7 @@
   "ashen_revenant": {
     "name": "Ashen Revenant",
     "type": "monster",
-    "image": "monsters/monsters/ashen_revenant.png",
+    "image": "assets/monsters/ashen_revenant.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.5,
@@ -53,7 +53,7 @@
   "ashen_whelp": {
     "name": "Ashen Whelp",
     "type": "monster",
-    "image": "monsters/monsters/ashen_whelp.png",
+    "image": "assets/monsters/ashen_whelp.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.5,
@@ -70,7 +70,7 @@
   "ashfang_serpent": {
     "name": "Ashfang Serpent",
     "type": "monster",
-    "image": "monsters/monsters/ashfang_serpent.png",
+    "image": "assets/monsters/ashfang_serpent.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.52,
@@ -87,7 +87,7 @@
   "ashveil_spider": {
     "name": "Ashveil Spider",
     "type": "monster",
-    "image": "monsters/monsters/ashveil_spider.png",
+    "image": "assets/monsters/ashveil_spider.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.52,
@@ -104,7 +104,7 @@
   "bilebrood": {
     "name": "Bilebrood",
     "type": "monster",
-    "image": "monsters/monsters/bilebrood.png",
+    "image": "assets/monsters/bilebrood.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.52,
@@ -121,7 +121,7 @@
   "blightclaw_ravager": {
     "name": "Blightclaw Ravager",
     "type": "monster",
-    "image": "monsters/monsters/blightclaw_ravager.png",
+    "image": "assets/monsters/blightclaw_ravager.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.52,
@@ -138,7 +138,7 @@
   "blightdrake": {
     "name": "Blightdrake",
     "type": "monster",
-    "image": "monsters/monsters/blightdrake.png",
+    "image": "assets/monsters/blightdrake.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.54,
@@ -155,7 +155,7 @@
   "blight_rat": {
     "name": "Blight Rat",
     "type": "monster",
-    "image": "monsters/monsters/blight_rat.png",
+    "image": "assets/monsters/blight_rat.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.54,
@@ -172,7 +172,7 @@
   "blight_widow": {
     "name": "Blight Widow",
     "type": "monster",
-    "image": "monsters/monsters/blight_widow.png",
+    "image": "assets/monsters/blight_widow.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.54,
@@ -189,7 +189,7 @@
   "blistercoil_drake": {
     "name": "Blistercoil Drake",
     "type": "monster",
-    "image": "monsters/monsters/blistercoil_drake.png",
+    "image": "assets/monsters/blistercoil_drake.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.54,
@@ -206,7 +206,7 @@
   "blistergrub": {
     "name": "Blistergrub",
     "type": "monster",
-    "image": "monsters/monsters/blistergrub.png",
+    "image": "assets/monsters/blistergrub.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.56,
@@ -223,7 +223,7 @@
   "bloodreaver_scarab": {
     "name": "Bloodreaver Scarab",
     "type": "monster",
-    "image": "monsters/monsters/bloodreaver_scarab.png",
+    "image": "assets/monsters/bloodreaver_scarab.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.56,
@@ -240,7 +240,7 @@
   "bonegnasher": {
     "name": "Bonegnasher",
     "type": "monster",
-    "image": "monsters/monsters/bonegnasher.png",
+    "image": "assets/monsters/bonegnasher.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.56,
@@ -257,7 +257,7 @@
   "bramblechoke_horror": {
     "name": "Bramblechoke Horror",
     "type": "monster",
-    "image": "monsters/monsters/bramblechoke_horror.png",
+    "image": "assets/monsters/bramblechoke_horror.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.56,
@@ -274,7 +274,7 @@
   "carrion_scarab": {
     "name": "Carrion Scarab",
     "type": "monster",
-    "image": "monsters/monsters/carrion_scarab.png",
+    "image": "assets/monsters/carrion_scarab.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.58,
@@ -291,7 +291,7 @@
   "carrion_weaver": {
     "name": "Carrion Weaver",
     "type": "monster",
-    "image": "monsters/monsters/carrion_weaver.png",
+    "image": "assets/monsters/carrion_weaver.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.58,
@@ -308,7 +308,7 @@
   "charnel_spawn": {
     "name": "Charnel Spawn",
     "type": "monster",
-    "image": "monsters/monsters/charnel_spawn.png",
+    "image": "assets/monsters/charnel_spawn.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.58,
@@ -325,7 +325,7 @@
   "cindershade_horror": {
     "name": "Cindershade Horror",
     "type": "monster",
-    "image": "monsters/monsters/cindershade_horror.png",
+    "image": "assets/monsters/cindershade_horror.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.58,
@@ -342,7 +342,7 @@
   "cindershroud_wisp": {
     "name": "Cindershroud Wisp",
     "type": "monster",
-    "image": "monsters/monsters/cindershroud_wisp.png",
+    "image": "assets/monsters/cindershroud_wisp.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.6,
@@ -359,7 +359,7 @@
   "cragjaw": {
     "name": "Cragjaw",
     "type": "monster",
-    "image": "monsters/monsters/cragjaw.png",
+    "image": "assets/monsters/cragjaw.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.6,
@@ -376,7 +376,7 @@
   "cragrot_shambler": {
     "name": "Cragrot Shambler",
     "type": "monster",
-    "image": "monsters/monsters/cragrot_shambler.png",
+    "image": "assets/monsters/cragrot_shambler.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.6,
@@ -393,7 +393,7 @@
   "cryptbane_spider": {
     "name": "Cryptbane Spider",
     "type": "monster",
-    "image": "monsters/monsters/cryptbane_spider.png",
+    "image": "assets/monsters/cryptbane_spider.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.6,
@@ -410,7 +410,7 @@
   "cryptmire_beast": {
     "name": "Cryptmire Beast",
     "type": "monster",
-    "image": "monsters/monsters/cryptmire_beast.png",
+    "image": "assets/monsters/cryptmire_beast.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.62,
@@ -427,7 +427,7 @@
   "crypt_blight": {
     "name": "Crypt Blight",
     "type": "monster",
-    "image": "monsters/monsters/crypt_blight.png",
+    "image": "assets/monsters/crypt_blight.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.62,
@@ -444,7 +444,7 @@
   "crypt_darter": {
     "name": "Crypt Darter",
     "type": "monster",
-    "image": "monsters/monsters/crypt_darter.png",
+    "image": "assets/monsters/crypt_darter.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.62,
@@ -461,7 +461,7 @@
   "crypt_ghast": {
     "name": "Crypt Ghast",
     "type": "monster",
-    "image": "monsters/monsters/crypt_ghast.png",
+    "image": "assets/monsters/crypt_ghast.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.62,
@@ -478,7 +478,7 @@
   "crypt_howler": {
     "name": "Crypt Howler",
     "type": "monster",
-    "image": "monsters/monsters/crypt_howler.png",
+    "image": "assets/monsters/crypt_howler.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.64,
@@ -495,7 +495,7 @@
   "crypt_ravager": {
     "name": "Crypt Ravager",
     "type": "monster",
-    "image": "monsters/monsters/crypt_ravager.png",
+    "image": "assets/monsters/crypt_ravager.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.64,
@@ -512,7 +512,7 @@
   "crypt_serpent": {
     "name": "Crypt Serpent",
     "type": "monster",
-    "image": "monsters/monsters/crypt_serpent.png",
+    "image": "assets/monsters/crypt_serpent.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.64,
@@ -529,7 +529,7 @@
   "crypt_widow": {
     "name": "Crypt Widow",
     "type": "monster",
-    "image": "monsters/monsters/crypt_widow.png",
+    "image": "assets/monsters/crypt_widow.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.64,
@@ -546,7 +546,7 @@
   "deathrot_spawn": {
     "name": "Deathrot Spawn",
     "type": "monster",
-    "image": "monsters/monsters/deathrot_spawn.png",
+    "image": "assets/monsters/deathrot_spawn.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.66,
@@ -563,7 +563,7 @@
   "dreadthorn_lurker": {
     "name": "Dreadthorn Lurker",
     "type": "monster",
-    "image": "monsters/monsters/dreadthorn_lurker.png",
+    "image": "assets/monsters/dreadthorn_lurker.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.66,
@@ -580,7 +580,7 @@
   "duskgloom_howler": {
     "name": "Duskgloom Howler",
     "type": "monster",
-    "image": "monsters/monsters/duskgloom_howler.png",
+    "image": "assets/monsters/duskgloom_howler.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.66,
@@ -597,7 +597,7 @@
   "duskthorn_beast": {
     "name": "Duskthorn Beast",
     "type": "monster",
-    "image": "monsters/monsters/duskthorn_beast.png",
+    "image": "assets/monsters/duskthorn_beast.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.66,
@@ -614,7 +614,7 @@
   "duskwatch_bettle": {
     "name": "Duskwatch Bettle",
     "type": "monster",
-    "image": "monsters/monsters/duskwatch_bettle.png",
+    "image": "assets/monsters/duskwatch_bettle.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.68,
@@ -631,7 +631,7 @@
   "duskwither": {
     "name": "Duskwither",
     "type": "monster",
-    "image": "monsters/monsters/duskwither.png",
+    "image": "assets/monsters/duskwither.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.68,
@@ -648,7 +648,7 @@
   "duskwither_shade": {
     "name": "Duskwither Shade",
     "type": "monster",
-    "image": "monsters/monsters/duskwither_shade.png",
+    "image": "assets/monsters/duskwither_shade.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.68,
@@ -665,7 +665,7 @@
   "duskworm": {
     "name": "Duskworm",
     "type": "monster",
-    "image": "monsters/monsters/duskworm.png",
+    "image": "assets/monsters/duskworm.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.68,
@@ -682,7 +682,7 @@
   "embergnash_scarab": {
     "name": "Embergnash Scarab",
     "type": "monster",
-    "image": "monsters/monsters/embergnash_scarab.png",
+    "image": "assets/monsters/embergnash_scarab.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.7,
@@ -699,7 +699,7 @@
   "ember_beetle": {
     "name": "Ember Beetle",
     "type": "monster",
-    "image": "monsters/monsters/ember_beetle.png",
+    "image": "assets/monsters/ember_beetle.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.7,
@@ -716,7 +716,7 @@
   "frostgrave_abomination": {
     "name": "Frostgrave Abomination",
     "type": "monster",
-    "image": "monsters/monsters/frostgrave_abomination.png",
+    "image": "assets/monsters/frostgrave_abomination.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.7,
@@ -733,7 +733,7 @@
   "gloomwing": {
     "name": "Gloomwing",
     "type": "monster",
-    "image": "monsters/monsters/gloomwing.png",
+    "image": "assets/monsters/gloomwing.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.7,
@@ -750,7 +750,7 @@
   "graveblade_stalker": {
     "name": "Graveblade Stalker",
     "type": "monster",
-    "image": "monsters/monsters/graveblade_stalker.png",
+    "image": "assets/monsters/graveblade_stalker.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.72,
@@ -767,7 +767,7 @@
   "gravebloom_horror": {
     "name": "Gravebloom Horror",
     "type": "monster",
-    "image": "monsters/monsters/gravebloom_horror.png",
+    "image": "assets/monsters/gravebloom_horror.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.72,
@@ -784,7 +784,7 @@
   "graveborn_wretch": {
     "name": "Graveborn Wretch",
     "type": "monster",
-    "image": "monsters/monsters/graveborn_wretch.png",
+    "image": "assets/monsters/graveborn_wretch.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.72,
@@ -801,7 +801,7 @@
   "gravecoil": {
     "name": "Gravecoil",
     "type": "monster",
-    "image": "monsters/monsters/gravecoil.png",
+    "image": "assets/monsters/gravecoil.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.72,
@@ -818,7 +818,7 @@
   "gravemarrow": {
     "name": "Gravemarrow",
     "type": "monster",
-    "image": "monsters/monsters/gravemarrow.png",
+    "image": "assets/monsters/gravemarrow.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.74,
@@ -835,7 +835,7 @@
   "gravemist_wyrm": {
     "name": "Gravemist Wyrm",
     "type": "monster",
-    "image": "monsters/monsters/gravemist_wyrm.png",
+    "image": "assets/monsters/gravemist_wyrm.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.74,
@@ -852,7 +852,7 @@
   "grave_vulture": {
     "name": "Grave Vulture",
     "type": "monster",
-    "image": "monsters/monsters/grave_vulture.png",
+    "image": "assets/monsters/grave_vulture.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.74,
@@ -869,7 +869,7 @@
   "grime_crawler": {
     "name": "Grime Crawler",
     "type": "monster",
-    "image": "monsters/monsters/grime_crawler.png",
+    "image": "assets/monsters/grime_crawler.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.74,
@@ -886,7 +886,7 @@
   "hollowfang": {
     "name": "Hollowfang",
     "type": "monster",
-    "image": "monsters/monsters/hollowfang.png",
+    "image": "assets/monsters/hollowfang.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.76,
@@ -903,7 +903,7 @@
   "hollow_hound": {
     "name": "Hollow Hound",
     "type": "monster",
-    "image": "monsters/monsters/hollow_hound.png",
+    "image": "assets/monsters/hollow_hound.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.76,
@@ -920,7 +920,7 @@
   "hollow_revenant": {
     "name": "Hollow Revenant",
     "type": "monster",
-    "image": "monsters/monsters/hollow_revenant.png",
+    "image": "assets/monsters/hollow_revenant.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.76,
@@ -937,7 +937,7 @@
   "hollow_scarab": {
     "name": "Hollow Scarab",
     "type": "monster",
-    "image": "monsters/monsters/hollow_scarab.png",
+    "image": "assets/monsters/hollow_scarab.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.76,
@@ -954,7 +954,7 @@
   "hollow_weaver": {
     "name": "Hollow Weaver",
     "type": "monster",
-    "image": "monsters/monsters/hollow_weaver.png",
+    "image": "assets/monsters/hollow_weaver.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.78,
@@ -971,7 +971,7 @@
   "mireclaw": {
     "name": "Mireclaw",
     "type": "monster",
-    "image": "monsters/monsters/mireclaw.png",
+    "image": "assets/monsters/mireclaw.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.78,
@@ -988,7 +988,7 @@
   "miregulper_beast": {
     "name": "Miregulper Beast",
     "type": "monster",
-    "image": "monsters/monsters/miregulper_beast.png",
+    "image": "assets/monsters/miregulper_beast.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.78,
@@ -1005,7 +1005,7 @@
   "mirehowl": {
     "name": "Mirehowl",
     "type": "monster",
-    "image": "monsters/monsters/mirehowl.png",
+    "image": "assets/monsters/mirehowl.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.78,
@@ -1022,7 +1022,7 @@
   "mireling": {
     "name": "Mireling",
     "type": "monster",
-    "image": "monsters/monsters/mireling.png",
+    "image": "assets/monsters/mireling.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.8,
@@ -1039,7 +1039,7 @@
   "mireling_matron": {
     "name": "Mireling Matron",
     "type": "monster",
-    "image": "monsters/monsters/mireling_matron.png",
+    "image": "assets/monsters/mireling_matron.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.8,
@@ -1056,7 +1056,7 @@
   "mirevenom_brood": {
     "name": "Mirevenom Brood",
     "type": "monster",
-    "image": "monsters/monsters/mirevenom_brood.png",
+    "image": "assets/monsters/mirevenom_brood.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.8,
@@ -1073,7 +1073,7 @@
   "mire_thrasher": {
     "name": "Mire Thrasher",
     "type": "monster",
-    "image": "monsters/monsters/mire_thrasher.png",
+    "image": "assets/monsters/mire_thrasher.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.8,
@@ -1090,7 +1090,7 @@
   "mossvile_serpent": {
     "name": "Mossvile Serpent",
     "type": "monster",
-    "image": "monsters/monsters/mossvile_serpent.png",
+    "image": "assets/monsters/mossvile_serpent.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.82,
@@ -1107,7 +1107,7 @@
   "murkmaw_drake": {
     "name": "Murkmaw Drake",
     "type": "monster",
-    "image": "monsters/monsters/murkmaw_drake.png",
+    "image": "assets/monsters/murkmaw_drake.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.82,
@@ -1124,7 +1124,7 @@
   "nightmaw_leech": {
     "name": "Nightmaw Leech",
     "type": "monster",
-    "image": "monsters/monsters/nightmaw_leech.png",
+    "image": "assets/monsters/nightmaw_leech.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.82,
@@ -1141,7 +1141,7 @@
   "nocturn_husk": {
     "name": "Nocturn Husk",
     "type": "monster",
-    "image": "monsters/monsters/nocturn_husk.png",
+    "image": "assets/monsters/nocturn_husk.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.82,
@@ -1158,7 +1158,7 @@
   "noxious_bloom": {
     "name": "Noxious Bloom",
     "type": "monster",
-    "image": "monsters/monsters/noxious_bloom.png",
+    "image": "assets/monsters/noxious_bloom.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.84,
@@ -1175,7 +1175,7 @@
   "noxmire_spawn": {
     "name": "Noxmire Spawn",
     "type": "monster",
-    "image": "monsters/monsters/noxmire_spawn.png",
+    "image": "assets/monsters/noxmire_spawn.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.84,
@@ -1192,7 +1192,7 @@
   "noxthorn_drake": {
     "name": "Noxthorn Drake",
     "type": "monster",
-    "image": "monsters/monsters/noxthorn_drake.png",
+    "image": "assets/monsters/noxthorn_drake.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.84,
@@ -1209,7 +1209,7 @@
   "noxvine_horror": {
     "name": "Noxvine Horror",
     "type": "monster",
-    "image": "monsters/monsters/noxvine_horror.png",
+    "image": "assets/monsters/noxvine_horror.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.84,
@@ -1226,7 +1226,7 @@
   "plaguefly": {
     "name": "Plaguefly",
     "type": "monster",
-    "image": "monsters/monsters/plaguefly.png",
+    "image": "assets/monsters/plaguefly.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.86,
@@ -1243,7 +1243,7 @@
   "plague_shambler": {
     "name": "Plague Shambler",
     "type": "monster",
-    "image": "monsters/monsters/plague_shambler.png",
+    "image": "assets/monsters/plague_shambler.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.86,
@@ -1260,7 +1260,7 @@
   "rimeclaw_stalker": {
     "name": "Rimeclaw Stalker",
     "type": "monster",
-    "image": "monsters/monsters/rimeclaw_stalker.png",
+    "image": "assets/monsters/rimeclaw_stalker.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.86,
@@ -1277,7 +1277,7 @@
   "rotfiend": {
     "name": "Rotfiend",
     "type": "monster",
-    "image": "monsters/monsters/rotfiend.png",
+    "image": "assets/monsters/rotfiend.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.86,
@@ -1294,7 +1294,7 @@
   "rotlash_creeper": {
     "name": "Rotlash Creeper",
     "type": "monster",
-    "image": "monsters/monsters/rotlash_creeper.png",
+    "image": "assets/monsters/rotlash_creeper.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.88,
@@ -1311,7 +1311,7 @@
   "rotmaw_howler": {
     "name": "Rotmaw Howler",
     "type": "monster",
-    "image": "monsters/monsters/rotmaw_howler.png",
+    "image": "assets/monsters/rotmaw_howler.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.88,
@@ -1328,7 +1328,7 @@
   "scorchbloom_horror": {
     "name": "Scorchbloom Horror",
     "type": "monster",
-    "image": "monsters/monsters/scorchbloom_horror.png",
+    "image": "assets/monsters/scorchbloom_horror.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.88,
@@ -1345,7 +1345,7 @@
   "shard_imp": {
     "name": "Shard Imp",
     "type": "monster",
-    "image": "monsters/monsters/shard_imp.png",
+    "image": "assets/monsters/shard_imp.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.88,
@@ -1362,7 +1362,7 @@
   "shattermaw_beast": {
     "name": "Shattermaw Beast",
     "type": "monster",
-    "image": "monsters/monsters/shattermaw_beast.png",
+    "image": "assets/monsters/shattermaw_beast.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.9,
@@ -1379,7 +1379,7 @@
   "sludgecarver": {
     "name": "Sludgecarver",
     "type": "monster",
-    "image": "monsters/monsters/sludgecarver.png",
+    "image": "assets/monsters/sludgecarver.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.9,
@@ -1396,7 +1396,7 @@
   "smogjaw_horror": {
     "name": "Smogjaw Horror",
     "type": "monster",
-    "image": "monsters/monsters/smogjaw_horror.png",
+    "image": "assets/monsters/smogjaw_horror.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.9,
@@ -1413,7 +1413,7 @@
   "smolderfang": {
     "name": "Smolderfang",
     "type": "monster",
-    "image": "monsters/monsters/smolderfang.png",
+    "image": "assets/monsters/smolderfang.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.9,
@@ -1430,7 +1430,7 @@
   "smolderstalk": {
     "name": "Smolderstalk",
     "type": "monster",
-    "image": "monsters/monsters/smolderstalk.png",
+    "image": "assets/monsters/smolderstalk.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.92,
@@ -1447,7 +1447,7 @@
   "sootfang_revenant": {
     "name": "Sootfang Revenant",
     "type": "monster",
-    "image": "monsters/monsters/sootfang_revenant.png",
+    "image": "assets/monsters/sootfang_revenant.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.92,
@@ -1464,7 +1464,7 @@
   "soul_leech": {
     "name": "Soul Leech",
     "type": "monster",
-    "image": "monsters/monsters/soul_leech.png",
+    "image": "assets/monsters/soul_leech.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.92,
@@ -1481,7 +1481,7 @@
   "spitewing": {
     "name": "Spitewing",
     "type": "monster",
-    "image": "monsters/monsters/spitewing.png",
+    "image": "assets/monsters/spitewing.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.92,
@@ -1498,7 +1498,7 @@
   "thornhide_behemoth": {
     "name": "Thornhide Behemoth",
     "type": "monster",
-    "image": "monsters/monsters/thornhide_behemoth.png",
+    "image": "assets/monsters/thornhide_behemoth.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.94,
@@ -1515,7 +1515,7 @@
   "thornlash_revenant": {
     "name": "Thornlash Revenant",
     "type": "monster",
-    "image": "monsters/monsters/thornlash_revenant.png",
+    "image": "assets/monsters/thornlash_revenant.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.94,
@@ -1532,7 +1532,7 @@
   "thornmaw": {
     "name": "Thornmaw",
     "type": "monster",
-    "image": "monsters/monsters/thornmaw.png",
+    "image": "assets/monsters/thornmaw.png",
     "hp": 30,
     "maxHit": 3,
     "accuracy": 0.94,
@@ -1549,7 +1549,7 @@
   "tomb_viper": {
     "name": "Tomb Viper",
     "type": "monster",
-    "image": "monsters/monsters/tomb_viper.png",
+    "image": "assets/monsters/tomb_viper.png",
     "hp": 35,
     "maxHit": 3,
     "accuracy": 0.94,
@@ -1566,7 +1566,7 @@
   "tomb_widow": {
     "name": "Tomb Widow",
     "type": "monster",
-    "image": "monsters/monsters/tomb_widow.png",
+    "image": "assets/monsters/tomb_widow.png",
     "hp": 40,
     "maxHit": 4,
     "accuracy": 0.96,
@@ -1583,7 +1583,7 @@
   "venomspire_widow": {
     "name": "Venomspire Widow",
     "type": "monster",
-    "image": "monsters/monsters/venomspire_widow.png",
+    "image": "assets/monsters/venomspire_widow.png",
     "hp": 45,
     "maxHit": 4,
     "accuracy": 0.96,
@@ -1600,7 +1600,7 @@
   "venom_mite": {
     "name": "Venom Mite",
     "type": "monster",
-    "image": "monsters/monsters/venom_mite.png",
+    "image": "assets/monsters/venom_mite.png",
     "hp": 50,
     "maxHit": 5,
     "accuracy": 0.96,
@@ -1617,7 +1617,7 @@
   "vilethorn_beast": {
     "name": "Vilethorn Beast",
     "type": "monster",
-    "image": "monsters/monsters/vilethorn_beast.png",
+    "image": "assets/monsters/vilethorn_beast.png",
     "hp": 55,
     "maxHit": 5,
     "accuracy": 0.96,
@@ -1634,7 +1634,7 @@
   "vilethorn_matron": {
     "name": "Vilethorn Matron",
     "type": "monster",
-    "image": "monsters/monsters/vilethorn_matron.png",
+    "image": "assets/monsters/vilethorn_matron.png",
     "hp": 60,
     "maxHit": 6,
     "accuracy": 0.98,
@@ -1651,7 +1651,7 @@
   "witherling": {
     "name": "Witherling",
     "type": "monster",
-    "image": "monsters/monsters/witherling.png",
+    "image": "assets/monsters/witherling.png",
     "hp": 65,
     "maxHit": 6,
     "accuracy": 0.98,
@@ -1668,7 +1668,7 @@
   "wraithfang": {
     "name": "Wraithfang",
     "type": "monster",
-    "image": "monsters/monsters/wraithfang.png",
+    "image": "assets/monsters/wraithfang.png",
     "hp": 70,
     "maxHit": 7,
     "accuracy": 0.98,
@@ -1685,7 +1685,7 @@
   "wretchbane": {
     "name": "Wretchbane",
     "type": "monster",
-    "image": "monsters/monsters/wretchbane.png",
+    "image": "assets/monsters/wretchbane.png",
     "hp": 75,
     "maxHit": 7,
     "accuracy": 0.98,
@@ -1702,7 +1702,7 @@
   "ashborn_revenant_lord": {
     "name": "Ashborn Revenant Lord",
     "type": "boss",
-    "image": "bosses/bosses/ashborn_revenant_lord.png",
+    "image": "assets/bosses/ashborn_revenant_lord.png",
     "hp": 120,
     "maxHit": 12,
     "accuracy": 1.0,
@@ -1719,7 +1719,7 @@
   "ashen_horror_overlord": {
     "name": "Ashen Horror Overlord",
     "type": "boss",
-    "image": "bosses/bosses/ashen_horror_overlord.png",
+    "image": "assets/bosses/ashen_horror_overlord.png",
     "hp": 135,
     "maxHit": 13,
     "accuracy": 1.0,
@@ -1736,7 +1736,7 @@
   "ashen_revenant_titan": {
     "name": "Ashen Revenant Titan",
     "type": "boss",
-    "image": "bosses/bosses/ashen_revenant_titan.png",
+    "image": "assets/bosses/ashen_revenant_titan.png",
     "hp": 150,
     "maxHit": 15,
     "accuracy": 1.0,
@@ -1753,7 +1753,7 @@
   "ashen_whelp_matriarch": {
     "name": "Ashen Whelp Matriarch",
     "type": "boss",
-    "image": "bosses/bosses/ashen_whelp_matriarch.png",
+    "image": "assets/bosses/ashen_whelp_matriarch.png",
     "hp": 165,
     "maxHit": 16,
     "accuracy": 1.0,
@@ -1770,7 +1770,7 @@
   "ashfang_serpent_alpha": {
     "name": "Ashfang Serpent Alpha",
     "type": "boss",
-    "image": "bosses/bosses/ashfang_serpent_alpha.png",
+    "image": "assets/bosses/ashfang_serpent_alpha.png",
     "hp": 180,
     "maxHit": 18,
     "accuracy": 1.0,
@@ -1787,7 +1787,7 @@
   "ashveil_spider_mother": {
     "name": "Ashveil Spider Mother",
     "type": "boss",
-    "image": "bosses/bosses/ashveil_spider_mother.png",
+    "image": "assets/bosses/ashveil_spider_mother.png",
     "hp": 195,
     "maxHit": 19,
     "accuracy": 1.0,
@@ -1804,7 +1804,7 @@
   "bilebrood_overfiend": {
     "name": "Bilebrood Overfiend",
     "type": "boss",
-    "image": "bosses/bosses/bilebrood_overfiend.png",
+    "image": "assets/bosses/bilebrood_overfiend.png",
     "hp": 210,
     "maxHit": 21,
     "accuracy": 1.0,
@@ -1821,7 +1821,7 @@
   "blightclaw_ravager_alpha": {
     "name": "Blightclaw Ravager Alpha",
     "type": "boss",
-    "image": "bosses/bosses/blightclaw_ravager_alpha.png",
+    "image": "assets/bosses/blightclaw_ravager_alpha.png",
     "hp": 225,
     "maxHit": 22,
     "accuracy": 1.0,
@@ -1838,7 +1838,7 @@
   "blightdrake_abomination": {
     "name": "Blightdrake Abomination",
     "type": "boss",
-    "image": "bosses/bosses/blightdrake_abomination.png",
+    "image": "assets/bosses/blightdrake_abomination.png",
     "hp": 240,
     "maxHit": 24,
     "accuracy": 1.0,
@@ -1855,7 +1855,7 @@
   "blight_widow_queen": {
     "name": "Blight Widow Queen",
     "type": "boss",
-    "image": "bosses/bosses/blight_widow_queen.png",
+    "image": "assets/bosses/blight_widow_queen.png",
     "hp": 255,
     "maxHit": 25,
     "accuracy": 1.0,
@@ -1872,7 +1872,7 @@
   "cindershade_horror_king": {
     "name": "Cindershade Horror King",
     "type": "boss",
-    "image": "bosses/bosses/cindershade_horror_king.png",
+    "image": "assets/bosses/cindershade_horror_king.png",
     "hp": 120,
     "maxHit": 12,
     "accuracy": 1.0,
@@ -1889,7 +1889,7 @@
   "cryptmire_beast_alpha": {
     "name": "Cryptmire Beast Alpha",
     "type": "boss",
-    "image": "bosses/bosses/cryptmire_beast_alpha.png",
+    "image": "assets/bosses/cryptmire_beast_alpha.png",
     "hp": 135,
     "maxHit": 13,
     "accuracy": 1.0,
@@ -1906,7 +1906,7 @@
   "crypt_blight_overlord": {
     "name": "Crypt Blight Overlord",
     "type": "boss",
-    "image": "bosses/bosses/crypt_blight_overlord.png",
+    "image": "assets/bosses/crypt_blight_overlord.png",
     "hp": 150,
     "maxHit": 15,
     "accuracy": 1.0,
@@ -1923,7 +1923,7 @@
   "crypt_ghast_lord": {
     "name": "Crypt Ghast Lord",
     "type": "boss",
-    "image": "bosses/bosses/crypt_ghast_lord.png",
+    "image": "assets/bosses/crypt_ghast_lord.png",
     "hp": 165,
     "maxHit": 16,
     "accuracy": 1.0,
@@ -1940,7 +1940,7 @@
   "crypt_ravager_dreadknight": {
     "name": "Crypt Ravager Dreadknight",
     "type": "boss",
-    "image": "bosses/bosses/crypt_ravager_dreadknight.png",
+    "image": "assets/bosses/crypt_ravager_dreadknight.png",
     "hp": 180,
     "maxHit": 18,
     "accuracy": 1.0,
@@ -1957,7 +1957,7 @@
   "deathrot_spawn_colossus": {
     "name": "Deathrot Spawn Colossus",
     "type": "boss",
-    "image": "bosses/bosses/deathrot_spawn_colossus.png",
+    "image": "assets/bosses/deathrot_spawn_colossus.png",
     "hp": 195,
     "maxHit": 19,
     "accuracy": 1.0,
@@ -1974,7 +1974,7 @@
   "dreadthorn_lurker_alpha": {
     "name": "Dreadthorn Lurker Alpha",
     "type": "boss",
-    "image": "bosses/bosses/dreadthorn_lurker_alpha.png",
+    "image": "assets/bosses/dreadthorn_lurker_alpha.png",
     "hp": 210,
     "maxHit": 21,
     "accuracy": 1.0,
@@ -1991,7 +1991,7 @@
   "duskgloom_howler_alpha": {
     "name": "Duskgloom Howler Alpha",
     "type": "boss",
-    "image": "bosses/bosses/duskgloom_howler_alpha.png",
+    "image": "assets/bosses/duskgloom_howler_alpha.png",
     "hp": 225,
     "maxHit": 22,
     "accuracy": 1.0,
@@ -2008,7 +2008,7 @@
   "duskwither_shade_wraith": {
     "name": "Duskwither Shade Wraith",
     "type": "boss",
-    "image": "bosses/bosses/duskwither_shade_wraith.png",
+    "image": "assets/bosses/duskwither_shade_wraith.png",
     "hp": 240,
     "maxHit": 24,
     "accuracy": 1.0,
@@ -2025,7 +2025,7 @@
   "eldrith_oracle_of_the_end": {
     "name": "Eldrith Oracle Of The End",
     "type": "boss",
-    "image": "bosses/bosses/eldrith_oracle_of_the_end.png",
+    "image": "assets/bosses/eldrith_oracle_of_the_end.png",
     "hp": 255,
     "maxHit": 25,
     "accuracy": 1.0,
@@ -2042,7 +2042,7 @@
   "frostgrave_abomination_titan": {
     "name": "Frostgrave Abomination Titan",
     "type": "boss",
-    "image": "bosses/bosses/frostgrave_abomination_titan.png",
+    "image": "assets/bosses/frostgrave_abomination_titan.png",
     "hp": 120,
     "maxHit": 12,
     "accuracy": 1.0,
@@ -2059,7 +2059,7 @@
   "gloomwing_tyrant": {
     "name": "Gloomwing Tyrant",
     "type": "boss",
-    "image": "bosses/bosses/gloomwing_tyrant.png",
+    "image": "assets/bosses/gloomwing_tyrant.png",
     "hp": 135,
     "maxHit": 13,
     "accuracy": 1.0,
@@ -2076,7 +2076,7 @@
   "gravecoil_overlord": {
     "name": "Gravecoil Overlord",
     "type": "boss",
-    "image": "bosses/bosses/gravecoil_overlord.png",
+    "image": "assets/bosses/gravecoil_overlord.png",
     "hp": 150,
     "maxHit": 15,
     "accuracy": 1.0,
@@ -2093,7 +2093,7 @@
   "gravemarrow_ancient": {
     "name": "Gravemarrow Ancient",
     "type": "boss",
-    "image": "bosses/bosses/gravemarrow_ancient.png",
+    "image": "assets/bosses/gravemarrow_ancient.png",
     "hp": 165,
     "maxHit": 16,
     "accuracy": 1.0,
@@ -2110,7 +2110,7 @@
   "gravemist_wyrm_overlord": {
     "name": "Gravemist Wyrm Overlord",
     "type": "boss",
-    "image": "bosses/bosses/gravemist_wyrm_overlord.png",
+    "image": "assets/bosses/gravemist_wyrm_overlord.png",
     "hp": 180,
     "maxHit": 18,
     "accuracy": 1.0,
@@ -2127,7 +2127,7 @@
   "korr'magoth_world_butcher": {
     "name": "Korr'Magoth World Butcher",
     "type": "boss",
-    "image": "bosses/bosses/korr'magoth_world_butcher.png",
+    "image": "assets/bosses/korr'magoth_world_butcher.png",
     "hp": 195,
     "maxHit": 19,
     "accuracy": 1.0,
@@ -2144,7 +2144,7 @@
   "mirevenom_broodmother": {
     "name": "Mirevenom Broodmother",
     "type": "boss",
-    "image": "bosses/bosses/mirevenom_broodmother.png",
+    "image": "assets/bosses/mirevenom_broodmother.png",
     "hp": 210,
     "maxHit": 21,
     "accuracy": 1.0,
@@ -2161,7 +2161,7 @@
   "mol'gorath_the_searing_maw": {
     "name": "Mol'Gorath The Searing Maw",
     "type": "boss",
-    "image": "bosses/bosses/mol'gorath_the_searing_maw.png",
+    "image": "assets/bosses/mol'gorath_the_searing_maw.png",
     "hp": 225,
     "maxHit": 22,
     "accuracy": 1.0,
@@ -2178,7 +2178,7 @@
   "nocturn_husk_alpha": {
     "name": "Nocturn Husk Alpha",
     "type": "boss",
-    "image": "bosses/bosses/nocturn_husk_alpha.png",
+    "image": "assets/bosses/nocturn_husk_alpha.png",
     "hp": 240,
     "maxHit": 24,
     "accuracy": 1.0,
@@ -2195,7 +2195,7 @@
   "noxious_bloom_ancient": {
     "name": "Noxious Bloom Ancient",
     "type": "boss",
-    "image": "bosses/bosses/noxious_bloom_ancient.png",
+    "image": "assets/bosses/noxious_bloom_ancient.png",
     "hp": 255,
     "maxHit": 25,
     "accuracy": 1.0,
@@ -2212,7 +2212,7 @@
   "noxmire_spawn_broodking": {
     "name": "Noxmire Spawn Broodking",
     "type": "boss",
-    "image": "bosses/bosses/noxmire_spawn_broodking.png",
+    "image": "assets/bosses/noxmire_spawn_broodking.png",
     "hp": 120,
     "maxHit": 12,
     "accuracy": 1.0,
@@ -2229,7 +2229,7 @@
   "nyxaris_shadowed_crown": {
     "name": "Nyxaris Shadowed Crown",
     "type": "boss",
-    "image": "bosses/bosses/nyxaris_shadowed_crown.png",
+    "image": "assets/bosses/nyxaris_shadowed_crown.png",
     "hp": 135,
     "maxHit": 13,
     "accuracy": 1.0,
@@ -2246,7 +2246,7 @@
   "rimeclaw_stalker_alpha": {
     "name": "Rimeclaw Stalker Alpha",
     "type": "boss",
-    "image": "bosses/bosses/rimeclaw_stalker_alpha.png",
+    "image": "assets/bosses/rimeclaw_stalker_alpha.png",
     "hp": 150,
     "maxHit": 15,
     "accuracy": 1.0,
@@ -2263,7 +2263,7 @@
   "rotlash_creeper_warlord": {
     "name": "Rotlash Creeper Warlord",
     "type": "boss",
-    "image": "bosses/bosses/rotlash_creeper_warlord.png",
+    "image": "assets/bosses/rotlash_creeper_warlord.png",
     "hp": 165,
     "maxHit": 16,
     "accuracy": 1.0,
@@ -2280,7 +2280,7 @@
   "scorchbloom_horror_overlord": {
     "name": "Scorchbloom Horror Overlord",
     "type": "boss",
-    "image": "bosses/bosses/scorchbloom_horror_overlord.png",
+    "image": "assets/bosses/scorchbloom_horror_overlord.png",
     "hp": 180,
     "maxHit": 18,
     "accuracy": 1.0,
@@ -2297,7 +2297,7 @@
   "seraphaine_the_last_light": {
     "name": "Seraphaine The Last Light",
     "type": "boss",
-    "image": "bosses/bosses/seraphaine_the_last_light.png",
+    "image": "assets/bosses/seraphaine_the_last_light.png",
     "hp": 195,
     "maxHit": 19,
     "accuracy": 1.0,
@@ -2314,7 +2314,7 @@
   "shard_imp_tyrant": {
     "name": "Shard Imp Tyrant",
     "type": "boss",
-    "image": "bosses/bosses/shard_imp_tyrant.png",
+    "image": "assets/bosses/shard_imp_tyrant.png",
     "hp": 210,
     "maxHit": 21,
     "accuracy": 1.0,
@@ -2331,7 +2331,7 @@
   "shattermaw_beast_overlord": {
     "name": "Shattermaw Beast Overlord",
     "type": "boss",
-    "image": "bosses/bosses/shattermaw_beast_overlord.png",
+    "image": "assets/bosses/shattermaw_beast_overlord.png",
     "hp": 225,
     "maxHit": 22,
     "accuracy": 1.0,
@@ -2348,7 +2348,7 @@
   "smogjaw_horror_colossus": {
     "name": "Smogjaw Horror Colossus",
     "type": "boss",
-    "image": "bosses/bosses/smogjaw_horror_colossus.png",
+    "image": "assets/bosses/smogjaw_horror_colossus.png",
     "hp": 240,
     "maxHit": 24,
     "accuracy": 1.0,
@@ -2365,7 +2365,7 @@
   "smolderfang_alpha": {
     "name": "Smolderfang Alpha",
     "type": "boss",
-    "image": "bosses/bosses/smolderfang_alpha.png",
+    "image": "assets/bosses/smolderfang_alpha.png",
     "hp": 255,
     "maxHit": 25,
     "accuracy": 1.0,
@@ -2382,7 +2382,7 @@
   "smolderstalk_warlord": {
     "name": "Smolderstalk Warlord",
     "type": "boss",
-    "image": "bosses/bosses/smolderstalk_warlord.png",
+    "image": "assets/bosses/smolderstalk_warlord.png",
     "hp": 120,
     "maxHit": 12,
     "accuracy": 1.0,
@@ -2399,7 +2399,7 @@
   "sootfang_revenant_king": {
     "name": "Sootfang Revenant King",
     "type": "boss",
-    "image": "bosses/bosses/sootfang_revenant_king.png",
+    "image": "assets/bosses/sootfang_revenant_king.png",
     "hp": 135,
     "maxHit": 13,
     "accuracy": 1.0,
@@ -2416,7 +2416,7 @@
   "soul_leech_king": {
     "name": "Soul Leech King",
     "type": "boss",
-    "image": "bosses/bosses/soul_leech_king.png",
+    "image": "assets/bosses/soul_leech_king.png",
     "hp": 150,
     "maxHit": 15,
     "accuracy": 1.0,
@@ -2433,7 +2433,7 @@
   "thornhide_behemoth_alpha": {
     "name": "Thornhide Behemoth Alpha",
     "type": "boss",
-    "image": "bosses/bosses/thornhide_behemoth_alpha.png",
+    "image": "assets/bosses/thornhide_behemoth_alpha.png",
     "hp": 165,
     "maxHit": 16,
     "accuracy": 1.0,
@@ -2450,7 +2450,7 @@
   "thornlash_revenant_warlord": {
     "name": "Thornlash Revenant Warlord",
     "type": "boss",
-    "image": "bosses/bosses/thornlash_revenant_warlord.png",
+    "image": "assets/bosses/thornlash_revenant_warlord.png",
     "hp": 180,
     "maxHit": 18,
     "accuracy": 1.0,
@@ -2467,7 +2467,7 @@
   "thryxxis_weaver_of_stars": {
     "name": "Thryxxis Weaver Of Stars",
     "type": "boss",
-    "image": "bosses/bosses/thryxxis_weaver_of_stars.png",
+    "image": "assets/bosses/thryxxis_weaver_of_stars.png",
     "hp": 195,
     "maxHit": 19,
     "accuracy": 1.0,
@@ -2484,7 +2484,7 @@
   "vaelyn_warden_of_echoes": {
     "name": "Vaelyn Warden Of Echoes",
     "type": "boss",
-    "image": "bosses/bosses/vaelyn_warden_of_echoes.png",
+    "image": "assets/bosses/vaelyn_warden_of_echoes.png",
     "hp": 210,
     "maxHit": 21,
     "accuracy": 1.0,
@@ -2501,7 +2501,7 @@
   "vilethorn_beast_alpha": {
     "name": "Vilethorn Beast Alpha",
     "type": "boss",
-    "image": "bosses/bosses/vilethorn_beast_alpha.png",
+    "image": "assets/bosses/vilethorn_beast_alpha.png",
     "hp": 225,
     "maxHit": 22,
     "accuracy": 1.0,
@@ -2518,7 +2518,7 @@
   "vilethorn_matron_dreadqueen": {
     "name": "Vilethorn Matron Dreadqueen",
     "type": "boss",
-    "image": "bosses/bosses/vilethorn_matron_dreadqueen.png",
+    "image": "assets/bosses/vilethorn_matron_dreadqueen.png",
     "hp": 240,
     "maxHit": 24,
     "accuracy": 1.0,
@@ -2535,7 +2535,7 @@
   "wraithfang_alpha": {
     "name": "Wraithfang Alpha",
     "type": "boss",
-    "image": "bosses/bosses/wraithfang_alpha.png",
+    "image": "assets/bosses/wraithfang_alpha.png",
     "hp": 255,
     "maxHit": 25,
     "accuracy": 1.0,
@@ -2552,7 +2552,7 @@
   "wretchbane_warlord": {
     "name": "Wretchbane Warlord",
     "type": "boss",
-    "image": "bosses/bosses/wretchbane_warlord.png",
+    "image": "assets/bosses/wretchbane_warlord.png",
     "hp": 120,
     "maxHit": 12,
     "accuracy": 1.0,
@@ -2569,7 +2569,7 @@
   "xal'zurath_shattered_god": {
     "name": "Xal'Zurath Shattered God",
     "type": "boss",
-    "image": "bosses/bosses/xal'zurath_shattered_god.png",
+    "image": "assets/bosses/xal'zurath_shattered_god.png",
     "hp": 135,
     "maxHit": 13,
     "accuracy": 1.0,
@@ -2586,7 +2586,7 @@
   "yyr'zhul, harbinger_of_the_rift": {
     "name": "Yyr'Zhul, Harbinger Of The Rift",
     "type": "boss",
-    "image": "bosses/bosses/yyr'zhul, harbinger_of_the_rift.png",
+    "image": "assets/bosses/yyr'zhul, harbinger_of_the_rift.png",
     "hp": 150,
     "maxHit": 15,
     "accuracy": 1.0,
