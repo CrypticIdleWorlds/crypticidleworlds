@@ -70,23 +70,45 @@
   <div class="section">
     <h2>Monsters</h2>
     <div class="grid">
-      <a href="../combat.html?enemy=cryptbane_spider"><div class="card"><img src="../assets/monsters/cryptbane_spider.png"><div>Cryptbane Spider<br>Lv. 33</div></div></a>
-      <a href="../combat.html?enemy=crypt_darter"><div class="card"><img src="../assets/monsters/crypt_darter.png"><div>Crypt Darter<br>Lv. 35</div></div></a>
-      <a href="../combat.html?enemy=venom_mite"><div class="card"><img src="../assets/monsters/venom_mite.png"><div>Venom Mite<br>Lv. 36</div></div></a>
-      <a href="../combat.html?enemy=venomspire_widow"><div class="card"><img src="../assets/monsters/venomspire_widow.png"><div>Venomspire Widow<br>Lv. 38</div></div></a>
-      <a href="../combat.html?enemy=blistercoil_drake"><div class="card"><img src="../assets/monsters/blistercoil_drake.png"><div>Blistercoil Drake<br>Lv. 39</div></div></a>
-      <a href="../combat.html?enemy=crypt_serpent"><div class="card"><img src="../assets/monsters/crypt_serpent.png"><div>Crypt Serpent<br>Lv. 40</div></div></a>
+      <a href="../combat.html?enemy=cryptbane_spider" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/monsters/cryptbane_spider.png"><div>Cryptbane Spider<br>Lv. 33</div></div>
+      </a>
+      <a href="../combat.html?enemy=crypt_darter" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/monsters/crypt_darter.png"><div>Crypt Darter<br>Lv. 35</div></div>
+      </a>
+      <a href="../combat.html?enemy=venom_mite" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/monsters/venom_mite.png"><div>Venom Mite<br>Lv. 36</div></div>
+      </a>
+      <a href="../combat.html?enemy=venomspire_widow" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/monsters/venomspire_widow.png"><div>Venomspire Widow<br>Lv. 38</div></div>
+      </a>
+      <a href="../combat.html?enemy=blistercoil_drake" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/monsters/blistercoil_drake.png"><div>Blistercoil Drake<br>Lv. 39</div></div>
+      </a>
+      <a href="../combat.html?enemy=crypt_serpent" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/monsters/crypt_serpent.png"><div>Crypt Serpent<br>Lv. 40</div></div>
+      </a>
     </div>
   </div>
 
   <div class="section">
     <h2>Bosses</h2>
     <div class="grid">
-      <a href="../combat.html?enemy=cryptmire_beast_alpha"><div class="card"><img src="../assets/bosses/cryptmire_beast_alpha.png"><div>Cryptmire Beast Alpha<br>Lv. 45</div></div></a>
-      <a href="../combat.html?enemy=crypt_ghast_lord"><div class="card"><img src="../assets/bosses/crypt_ghast_lord.png"><div>Crypt Ghast Lord<br>Lv. 47</div></div></a>
-      <a href="../combat.html?enemy=nocturn_husk_alpha"><div class="card"><img src="../assets/bosses/nocturn_husk_alpha.png"><div>Nocturn Husk Alpha<br>Lv. 49</div></div></a>
-      <a href="../combat.html?enemy=xal'zurath_shattered_god"><div class="card"><img src="../assets/bosses/xal'zurath_shattered_god.png"><div>Xal'Zurath Shattered God<br>Lv. 52</div></div></a>
-      <a href="../combat.html?enemy=yyr'zhul, harbinger_of_the_rift"><div class="card"><img src="../assets/bosses/yyr'zhul, harbinger_of_the_rift.png"><div>Yyr'Zhul Harbinger of the Rift<br>Lv. 54</div></div></a>
+      <a href="../combat.html?enemy=cryptmire_beast_alpha" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/bosses/cryptmire_beast_alpha.png"><div>Cryptmire Beast Alpha<br>Lv. 45</div></div>
+      </a>
+      <a href="../combat.html?enemy=crypt_ghast_lord" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/bosses/crypt_ghast_lord.png"><div>Crypt Ghast Lord<br>Lv. 47</div></div>
+      </a>
+      <a href="../combat.html?enemy=nocturn_husk_alpha" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/bosses/nocturn_husk_alpha.png"><div>Nocturn Husk Alpha<br>Lv. 49</div></div>
+      </a>
+      <a href="../combat.html?enemy=xal'zurath_shattered_god" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/bosses/xal'zurath_shattered_god.png"><div>Xal'Zurath Shattered God<br>Lv. 52</div></div>
+      </a>
+      <a href="../combat.html?enemy=yyr'zhul, harbinger_of_the_rift" onclick="setRegion('Cyberspire')">
+        <div class="card"><img src="../assets/bosses/yyr'zhul, harbinger_of_the_rift.png"><div>Yyr'Zhul Harbinger of the Rift<br>Lv. 54</div></div>
+      </a>
     </div>
   </div>
 
@@ -109,6 +131,11 @@
     window.onload = () => {
       updateSaveTime();
     };
+
+    // ✅ NEW: Save the region to localStorage when a monster/boss is clicked
+    function setRegion(regionName) {
+      localStorage.setItem('selectedRegion', regionName);
+    }
   </script>
 </body>
 </html>
