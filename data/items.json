@@ -1,6 +1,6 @@
 {
-  "obsidian_guard_helm": {
-    "name": "Obsidian Guard Helm",
+  "ashblight_raider_helm": {
+    "name": "Ashblight Raider Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
@@ -14,10 +14,10 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/obsidian_guard_helm.png"
+    "image": "assets/items/armor/helm/common/ashblight_raider_helm.png"
   },
-  "obsidian_guard_chest": {
-    "name": "Obsidian Guard Chest",
+  "ashblight_raider_chest": {
+    "name": "Ashblight Raider Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
@@ -25,16 +25,16 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/obsidian_guard_chest.png"
+    "price": 100,
+    "image": "assets/items/armor/chest/common/ashblight_raider_chest.png"
   },
-  "obsidian_guard_legs": {
-    "name": "Obsidian Guard Legs",
+  "ashblight_raider_legs": {
+    "name": "Ashblight Raider Legs",
     "type": "legs",
     "slot": "legs",
     "rarity": "common",
@@ -42,33 +42,33 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 2,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/obsidian_guard_legs.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/ashblight_raider_legs.png"
   },
-  "obsidian_guard_gloves": {
-    "name": "Obsidian Guard Gloves",
+  "ashblight_raider_gloves": {
+    "name": "Ashblight Raider Gloves",
     "type": "gloves",
     "slot": "hands",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/obsidian_guard_gloves.png"
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/ashblight_raider_gloves.png"
   },
-  "obsidian_guard_boots": {
-    "name": "Obsidian Guard Boots",
+  "ashblight_raider_boots": {
+    "name": "Ashblight Raider Boots",
     "type": "boots",
     "slot": "feet",
     "rarity": "common",
@@ -81,28 +81,28 @@
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/obsidian_guard_boots.png"
+    "price": 100,
+    "image": "assets/items/armor/boots/common/ashblight_raider_boots.png"
   },
-  "obsidian_guard_cape": {
-    "name": "Obsidian Guard Cape",
+  "ashblight_raider_cape": {
+    "name": "Ashblight Raider Cape",
     "type": "cape",
     "slot": "cape",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/obsidian_guard_cape.png"
+    "image": "assets/items/armor/cape/common/ashblight_raider_cape.png"
   },
-  "obsidian_guard_ring": {
-    "name": "Obsidian Guard Ring",
+  "ashblight_raider_ring": {
+    "name": "Ashblight Raider Ring",
     "type": "ring",
     "slot": "ring",
     "rarity": "common",
@@ -110,50 +110,50 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
-      "strength": 1
+      "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/obsidian_guard_ring.png"
+    "price": 100,
+    "image": "assets/items/armor/ring/common/ashblight_raider_ring.png"
   },
-  "obsidian_guard_necklace": {
-    "name": "Obsidian Guard Necklace",
+  "ashblight_raider_necklace": {
+    "name": "Ashblight Raider Necklace",
     "type": "necklace",
     "slot": "neck",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/obsidian_guard_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/ashblight_raider_necklace.png"
   },
-  "obsidian_guard_aura": {
-    "name": "Obsidian Guard Aura",
+  "ashblight_raider_aura": {
+    "name": "Ashblight Raider Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/obsidian_guard_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/ashblight_raider_aura.png"
   },
-  "steel_vanguard_helm": {
-    "name": "Steel Vanguard Helm",
+  "bramblethorn_warden_helm": {
+    "name": "Bramblethorn Warden Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
@@ -167,10 +167,10 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/steel_vanguard_helm.png"
+    "image": "assets/items/armor/helm/common/bramblethorn_warden_helm.png"
   },
-  "steel_vanguard_chest": {
-    "name": "Steel Vanguard Chest",
+  "bramblethorn_warden_chest": {
+    "name": "Bramblethorn Warden Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
@@ -178,16 +178,16 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/steel_vanguard_chest.png"
+    "price": 100,
+    "image": "assets/items/armor/chest/common/bramblethorn_warden_chest.png"
   },
-  "steel_vanguard_legs": {
-    "name": "Steel Vanguard Legs",
+  "bramblethorn_warden_legs": {
+    "name": "Bramblethorn Warden Legs",
     "type": "legs",
     "slot": "legs",
     "rarity": "common",
@@ -195,33 +195,33 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 2,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/steel_vanguard_legs.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/bramblethorn_warden_legs.png"
   },
-  "steel_vanguard_gloves": {
-    "name": "Steel Vanguard Gloves",
+  "bramblethorn_warden_gloves": {
+    "name": "Bramblethorn Warden Gloves",
     "type": "gloves",
     "slot": "hands",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/steel_vanguard_gloves.png"
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/bramblethorn_warden_gloves.png"
   },
-  "steel_vanguard_boots": {
-    "name": "Steel Vanguard Boots",
+  "bramblethorn_warden_boots": {
+    "name": "Bramblethorn Warden Boots",
     "type": "boots",
     "slot": "feet",
     "rarity": "common",
@@ -234,28 +234,28 @@
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/steel_vanguard_boots.png"
+    "price": 100,
+    "image": "assets/items/armor/boots/common/bramblethorn_warden_boots.png"
   },
-  "steel_vanguard_cape": {
-    "name": "Steel Vanguard Cape",
+  "bramblethorn_warden_cape": {
+    "name": "Bramblethorn Warden Cape",
     "type": "cape",
     "slot": "cape",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/steel_vanguard_cape.png"
+    "image": "assets/items/armor/cape/common/bramblethorn_warden_cape.png"
   },
-  "steel_vanguard_ring": {
-    "name": "Steel Vanguard Ring",
+  "bramblethorn_warden_ring": {
+    "name": "Bramblethorn Warden Ring",
     "type": "ring",
     "slot": "ring",
     "rarity": "common",
@@ -263,50 +263,50 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
-      "strength": 1
+      "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/steel_vanguard_ring.png"
+    "price": 100,
+    "image": "assets/items/armor/ring/common/bramblethorn_warden_ring.png"
   },
-  "steel_vanguard_necklace": {
-    "name": "Steel Vanguard Necklace",
+  "bramblethorn_warden_necklace": {
+    "name": "Bramblethorn Warden Necklace",
     "type": "necklace",
     "slot": "neck",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/steel_vanguard_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/bramblethorn_warden_necklace.png"
   },
-  "steel_vanguard_aura": {
-    "name": "Steel Vanguard Aura",
+  "bramblethorn_warden_aura": {
+    "name": "Bramblethorn Warden Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/steel_vanguard_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/bramblethorn_warden_aura.png"
   },
-  "ironclad_legion_helm": {
-    "name": "Ironclad Legion Helm",
+  "dusksteel_hunter_helm": {
+    "name": "Dusksteel Hunter Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
@@ -320,10 +320,10 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/ironclad_legion_helm.png"
+    "image": "assets/items/armor/helm/common/dusksteel_hunter_helm.png"
   },
-  "ironclad_legion_chest": {
-    "name": "Ironclad Legion Chest",
+  "dusksteel_hunter_chest": {
+    "name": "Dusksteel Hunter Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
@@ -331,16 +331,16 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/ironclad_legion_chest.png"
+    "price": 100,
+    "image": "assets/items/armor/chest/common/dusksteel_hunter_chest.png"
   },
-  "ironclad_legion_legs": {
-    "name": "Ironclad Legion Legs",
+  "dusksteel_hunter_legs": {
+    "name": "Dusksteel Hunter Legs",
     "type": "legs",
     "slot": "legs",
     "rarity": "common",
@@ -348,33 +348,33 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 2,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/ironclad_legion_legs.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/dusksteel_hunter_legs.png"
   },
-  "ironclad_legion_gloves": {
-    "name": "Ironclad Legion Gloves",
+  "dusksteel_hunter_gloves": {
+    "name": "Dusksteel Hunter Gloves",
     "type": "gloves",
     "slot": "hands",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/ironclad_legion_gloves.png"
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/dusksteel_hunter_gloves.png"
   },
-  "ironclad_legion_boots": {
-    "name": "Ironclad Legion Boots",
+  "dusksteel_hunter_boots": {
+    "name": "Dusksteel Hunter Boots",
     "type": "boots",
     "slot": "feet",
     "rarity": "common",
@@ -387,28 +387,28 @@
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/ironclad_legion_boots.png"
+    "price": 100,
+    "image": "assets/items/armor/boots/common/dusksteel_hunter_boots.png"
   },
-  "ironclad_legion_cape": {
-    "name": "Ironclad Legion Cape",
+  "dusksteel_hunter_cape": {
+    "name": "Dusksteel Hunter Cape",
     "type": "cape",
     "slot": "cape",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/ironclad_legion_cape.png"
+    "image": "assets/items/armor/cape/common/dusksteel_hunter_cape.png"
   },
-  "ironclad_legion_ring": {
-    "name": "Ironclad Legion Ring",
+  "dusksteel_hunter_ring": {
+    "name": "Dusksteel Hunter Ring",
     "type": "ring",
     "slot": "ring",
     "rarity": "common",
@@ -416,50 +416,50 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
-      "strength": 1
+      "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/ironclad_legion_ring.png"
+    "price": 100,
+    "image": "assets/items/armor/ring/common/dusksteel_hunter_ring.png"
   },
-  "ironclad_legion_necklace": {
-    "name": "Ironclad Legion Necklace",
+  "dusksteel_hunter_necklace": {
+    "name": "Dusksteel Hunter Necklace",
     "type": "necklace",
     "slot": "neck",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/ironclad_legion_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/dusksteel_hunter_necklace.png"
   },
-  "ironclad_legion_aura": {
-    "name": "Ironclad Legion Aura",
+  "dusksteel_hunter_aura": {
+    "name": "Dusksteel Hunter Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/ironclad_legion_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/dusksteel_hunter_aura.png"
   },
-  "crimson_watch_helm": {
-    "name": "Crimson Watch Helm",
+  "duskveil_watcher_helm": {
+    "name": "Duskveil Watcher Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
@@ -473,10 +473,10 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/crimson_watch_helm.png"
+    "image": "assets/items/armor/helm/common/duskveil_watcher_helm.png"
   },
-  "crimson_watch_chest": {
-    "name": "Crimson Watch Chest",
+  "duskveil_watcher_chest": {
+    "name": "Duskveil Watcher Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
@@ -484,16 +484,16 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/crimson_watch_chest.png"
+    "price": 100,
+    "image": "assets/items/armor/chest/common/duskveil_watcher_chest.png"
   },
-  "crimson_watch_legs": {
-    "name": "Crimson Watch Legs",
+  "duskveil_watcher_legs": {
+    "name": "Duskveil Watcher Legs",
     "type": "legs",
     "slot": "legs",
     "rarity": "common",
@@ -501,33 +501,33 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 2,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/crimson_watch_legs.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/duskveil_watcher_legs.png"
   },
-  "crimson_watch_gloves": {
-    "name": "Crimson Watch Gloves",
+  "duskveil_watcher_gloves": {
+    "name": "Duskveil Watcher Gloves",
     "type": "gloves",
     "slot": "hands",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/crimson_watch_gloves.png"
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/duskveil_watcher_gloves.png"
   },
-  "crimson_watch_boots": {
-    "name": "Crimson Watch Boots",
+  "duskveil_watcher_boots": {
+    "name": "Duskveil Watcher Boots",
     "type": "boots",
     "slot": "feet",
     "rarity": "common",
@@ -540,28 +540,28 @@
       "ranged": 0,
       "strength": 0
     },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/crimson_watch_boots.png"
+    "price": 100,
+    "image": "assets/items/armor/boots/common/duskveil_watcher_boots.png"
   },
-  "crimson_watch_cape": {
-    "name": "Crimson Watch Cape",
+  "duskveil_watcher_cape": {
+    "name": "Duskveil Watcher Cape",
     "type": "cape",
     "slot": "cape",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/crimson_watch_cape.png"
+    "image": "assets/items/armor/cape/common/duskveil_watcher_cape.png"
   },
-  "crimson_watch_ring": {
-    "name": "Crimson Watch Ring",
+  "duskveil_watcher_ring": {
+    "name": "Duskveil Watcher Ring",
     "type": "ring",
     "slot": "ring",
     "rarity": "common",
@@ -569,54 +569,54 @@
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
-      "strength": 1
+      "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/crimson_watch_ring.png"
+    "price": 100,
+    "image": "assets/items/armor/ring/common/duskveil_watcher_ring.png"
   },
-  "crimson_watch_necklace": {
-    "name": "Crimson Watch Necklace",
+  "duskveil_watcher_necklace": {
+    "name": "Duskveil Watcher Necklace",
     "type": "necklace",
     "slot": "neck",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
-      "defense": 0,
+      "attack": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/crimson_watch_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/duskveil_watcher_necklace.png"
   },
-  "crimson_watch_aura": {
-    "name": "Crimson Watch Aura",
+  "duskveil_watcher_aura": {
+    "name": "Duskveil Watcher Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/crimson_watch_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/duskveil_watcher_aura.png"
   },
-  "dusk_fury_helm": {
-    "name": "Dusk Fury Helm",
+  "emberweave_adept_helm": {
+    "name": "Emberweave Adept Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
@@ -626,150 +626,150 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/dusk_fury_helm.png"
+    "image": "assets/items/armor/helm/common/emberweave_adept_helm.png"
   },
-  "dusk_fury_chest": {
-    "name": "Dusk Fury Chest",
+  "emberweave_adept_chest": {
+    "name": "Emberweave Adept Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/dusk_fury_chest.png"
-  },
-  "dusk_fury_legs": {
-    "name": "Dusk Fury Legs",
-    "type": "legs",
-    "slot": "legs",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 2,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/dusk_fury_legs.png"
-  },
-  "dusk_fury_gloves": {
-    "name": "Dusk Fury Gloves",
-    "type": "gloves",
-    "slot": "hands",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/dusk_fury_gloves.png"
-  },
-  "dusk_fury_boots": {
-    "name": "Dusk Fury Boots",
-    "type": "boots",
-    "slot": "feet",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 1,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/dusk_fury_boots.png"
-  },
-  "dusk_fury_cape": {
-    "name": "Dusk Fury Cape",
-    "type": "cape",
-    "slot": "cape",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/dusk_fury_cape.png"
+    "image": "assets/items/armor/chest/common/emberweave_adept_chest.png"
   },
-  "dusk_fury_ring": {
-    "name": "Dusk Fury Ring",
-    "type": "ring",
-    "slot": "ring",
+  "emberweave_adept_legs": {
+    "name": "Emberweave Adept Legs",
+    "type": "legs",
+    "slot": "legs",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 1
-    },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/dusk_fury_ring.png"
-  },
-  "dusk_fury_necklace": {
-    "name": "Dusk Fury Necklace",
-    "type": "necklace",
-    "slot": "neck",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/dusk_fury_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/emberweave_adept_legs.png"
   },
-  "dusk_fury_aura": {
-    "name": "Dusk Fury Aura",
+  "emberweave_adept_gloves": {
+    "name": "Emberweave Adept Gloves",
+    "type": "gloves",
+    "slot": "hands",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/emberweave_adept_gloves.png"
+  },
+  "emberweave_adept_boots": {
+    "name": "Emberweave Adept Boots",
+    "type": "boots",
+    "slot": "feet",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/boots/common/emberweave_adept_boots.png"
+  },
+  "emberweave_adept_cape": {
+    "name": "Emberweave Adept Cape",
+    "type": "cape",
+    "slot": "cape",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/cape/common/emberweave_adept_cape.png"
+  },
+  "emberweave_adept_ring": {
+    "name": "Emberweave Adept Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/ring/common/emberweave_adept_ring.png"
+  },
+  "emberweave_adept_necklace": {
+    "name": "Emberweave Adept Necklace",
+    "type": "necklace",
+    "slot": "neck",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/emberweave_adept_necklace.png"
+  },
+  "emberweave_adept_aura": {
+    "name": "Emberweave Adept Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/dusk_fury_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/emberweave_adept_aura.png"
   },
-  "ashbourne_plate_helm": {
-    "name": "Ashbourne Plate Helm",
+  "frostbranch_adept_helm": {
+    "name": "Frostbranch Adept Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
@@ -779,150 +779,150 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/ashbourne_plate_helm.png"
+    "image": "assets/items/armor/helm/common/frostbranch_adept_helm.png"
   },
-  "ashbourne_plate_chest": {
-    "name": "Ashbourne Plate Chest",
+  "frostbranch_adept_chest": {
+    "name": "Frostbranch Adept Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/ashbourne_plate_chest.png"
-  },
-  "ashbourne_plate_legs": {
-    "name": "Ashbourne Plate Legs",
-    "type": "legs",
-    "slot": "legs",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 2,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/ashbourne_plate_legs.png"
-  },
-  "ashbourne_plate_gloves": {
-    "name": "Ashbourne Plate Gloves",
-    "type": "gloves",
-    "slot": "hands",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/ashbourne_plate_gloves.png"
-  },
-  "ashbourne_plate_boots": {
-    "name": "Ashbourne Plate Boots",
-    "type": "boots",
-    "slot": "feet",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 1,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/ashbourne_plate_boots.png"
-  },
-  "ashbourne_plate_cape": {
-    "name": "Ashbourne Plate Cape",
-    "type": "cape",
-    "slot": "cape",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/ashbourne_plate_cape.png"
+    "image": "assets/items/armor/chest/common/frostbranch_adept_chest.png"
   },
-  "ashbourne_plate_ring": {
-    "name": "Ashbourne Plate Ring",
-    "type": "ring",
-    "slot": "ring",
+  "frostbranch_adept_legs": {
+    "name": "Frostbranch Adept Legs",
+    "type": "legs",
+    "slot": "legs",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 1
-    },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/ashbourne_plate_ring.png"
-  },
-  "ashbourne_plate_necklace": {
-    "name": "Ashbourne Plate Necklace",
-    "type": "necklace",
-    "slot": "neck",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/ashbourne_plate_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/frostbranch_adept_legs.png"
   },
-  "ashbourne_plate_aura": {
-    "name": "Ashbourne Plate Aura",
+  "frostbranch_adept_gloves": {
+    "name": "Frostbranch Adept Gloves",
+    "type": "gloves",
+    "slot": "hands",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/frostbranch_adept_gloves.png"
+  },
+  "frostbranch_adept_boots": {
+    "name": "Frostbranch Adept Boots",
+    "type": "boots",
+    "slot": "feet",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/boots/common/frostbranch_adept_boots.png"
+  },
+  "frostbranch_adept_cape": {
+    "name": "Frostbranch Adept Cape",
+    "type": "cape",
+    "slot": "cape",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/cape/common/frostbranch_adept_cape.png"
+  },
+  "frostbranch_adept_ring": {
+    "name": "Frostbranch Adept Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/ring/common/frostbranch_adept_ring.png"
+  },
+  "frostbranch_adept_necklace": {
+    "name": "Frostbranch Adept Necklace",
+    "type": "necklace",
+    "slot": "neck",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/frostbranch_adept_necklace.png"
+  },
+  "frostbranch_adept_aura": {
+    "name": "Frostbranch Adept Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/ashbourne_plate_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/frostbranch_adept_aura.png"
   },
-  "sentinel_ward_helm": {
-    "name": "Sentinel Ward Helm",
+  "ironroot_guard_helm": {
+    "name": "Ironroot Guard Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
@@ -932,150 +932,150 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/sentinel_ward_helm.png"
+    "image": "assets/items/armor/helm/common/ironroot_guard_helm.png"
   },
-  "sentinel_ward_chest": {
-    "name": "Sentinel Ward Chest",
+  "ironroot_guard_chest": {
+    "name": "Ironroot Guard Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/sentinel_ward_chest.png"
-  },
-  "sentinel_ward_legs": {
-    "name": "Sentinel Ward Legs",
-    "type": "legs",
-    "slot": "legs",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 2,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/sentinel_ward_legs.png"
-  },
-  "sentinel_ward_gloves": {
-    "name": "Sentinel Ward Gloves",
-    "type": "gloves",
-    "slot": "hands",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/sentinel_ward_gloves.png"
-  },
-  "sentinel_ward_boots": {
-    "name": "Sentinel Ward Boots",
-    "type": "boots",
-    "slot": "feet",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 1,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/sentinel_ward_boots.png"
-  },
-  "sentinel_ward_cape": {
-    "name": "Sentinel Ward Cape",
-    "type": "cape",
-    "slot": "cape",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/sentinel_ward_cape.png"
+    "image": "assets/items/armor/chest/common/ironroot_guard_chest.png"
   },
-  "sentinel_ward_ring": {
-    "name": "Sentinel Ward Ring",
-    "type": "ring",
-    "slot": "ring",
+  "ironroot_guard_legs": {
+    "name": "Ironroot Guard Legs",
+    "type": "legs",
+    "slot": "legs",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 1
-    },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/sentinel_ward_ring.png"
-  },
-  "sentinel_ward_necklace": {
-    "name": "Sentinel Ward Necklace",
-    "type": "necklace",
-    "slot": "neck",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/sentinel_ward_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/ironroot_guard_legs.png"
   },
-  "sentinel_ward_aura": {
-    "name": "Sentinel Ward Aura",
+  "ironroot_guard_gloves": {
+    "name": "Ironroot Guard Gloves",
+    "type": "gloves",
+    "slot": "hands",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/ironroot_guard_gloves.png"
+  },
+  "ironroot_guard_boots": {
+    "name": "Ironroot Guard Boots",
+    "type": "boots",
+    "slot": "feet",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/boots/common/ironroot_guard_boots.png"
+  },
+  "ironroot_guard_cape": {
+    "name": "Ironroot Guard Cape",
+    "type": "cape",
+    "slot": "cape",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/cape/common/ironroot_guard_cape.png"
+  },
+  "ironroot_guard_ring": {
+    "name": "Ironroot Guard Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/ring/common/ironroot_guard_ring.png"
+  },
+  "ironroot_guard_necklace": {
+    "name": "Ironroot Guard Necklace",
+    "type": "necklace",
+    "slot": "neck",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/ironroot_guard_necklace.png"
+  },
+  "ironroot_guard_aura": {
+    "name": "Ironroot Guard Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/sentinel_ward_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/ironroot_guard_aura.png"
   },
-  "nightfall_raiders_helm": {
-    "name": "Nightfall Raiders Helm",
+  "scrapforge_runner_helm": {
+    "name": "Scrapforge Runner Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
@@ -1085,150 +1085,150 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/nightfall_raiders_helm.png"
+    "image": "assets/items/armor/helm/common/scrapforge_runner_helm.png"
   },
-  "nightfall_raiders_chest": {
-    "name": "Nightfall Raiders Chest",
+  "scrapforge_runner_chest": {
+    "name": "Scrapforge Runner Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/nightfall_raiders_chest.png"
-  },
-  "nightfall_raiders_legs": {
-    "name": "Nightfall Raiders Legs",
-    "type": "legs",
-    "slot": "legs",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 2,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/nightfall_raiders_legs.png"
-  },
-  "nightfall_raiders_gloves": {
-    "name": "Nightfall Raiders Gloves",
-    "type": "gloves",
-    "slot": "hands",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/nightfall_raiders_gloves.png"
-  },
-  "nightfall_raiders_boots": {
-    "name": "Nightfall Raiders Boots",
-    "type": "boots",
-    "slot": "feet",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 1,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/nightfall_raiders_boots.png"
-  },
-  "nightfall_raiders_cape": {
-    "name": "Nightfall Raiders Cape",
-    "type": "cape",
-    "slot": "cape",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/nightfall_raiders_cape.png"
+    "image": "assets/items/armor/chest/common/scrapforge_runner_chest.png"
   },
-  "nightfall_raiders_ring": {
-    "name": "Nightfall Raiders Ring",
-    "type": "ring",
-    "slot": "ring",
+  "scrapforge_runner_legs": {
+    "name": "Scrapforge Runner Legs",
+    "type": "legs",
+    "slot": "legs",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 1
-    },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/nightfall_raiders_ring.png"
-  },
-  "nightfall_raiders_necklace": {
-    "name": "Nightfall Raiders Necklace",
-    "type": "necklace",
-    "slot": "neck",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/nightfall_raiders_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/scrapforge_runner_legs.png"
   },
-  "nightfall_raiders_aura": {
-    "name": "Nightfall Raiders Aura",
+  "scrapforge_runner_gloves": {
+    "name": "Scrapforge Runner Gloves",
+    "type": "gloves",
+    "slot": "hands",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/scrapforge_runner_gloves.png"
+  },
+  "scrapforge_runner_boots": {
+    "name": "Scrapforge Runner Boots",
+    "type": "boots",
+    "slot": "feet",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/boots/common/scrapforge_runner_boots.png"
+  },
+  "scrapforge_runner_cape": {
+    "name": "Scrapforge Runner Cape",
+    "type": "cape",
+    "slot": "cape",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/cape/common/scrapforge_runner_cape.png"
+  },
+  "scrapforge_runner_ring": {
+    "name": "Scrapforge Runner Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/ring/common/scrapforge_runner_ring.png"
+  },
+  "scrapforge_runner_necklace": {
+    "name": "Scrapforge Runner Necklace",
+    "type": "necklace",
+    "slot": "neck",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/scrapforge_runner_necklace.png"
+  },
+  "scrapforge_runner_aura": {
+    "name": "Scrapforge Runner Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/nightfall_raiders_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/scrapforge_runner_aura.png"
   },
-  "frostwolf_armor_helm": {
-    "name": "Frostwolf Armor Helm",
+  "sootstalker_apprentice_helm": {
+    "name": "Sootstalker Apprentice Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
@@ -1238,150 +1238,150 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/frostwolf_armor_helm.png"
+    "image": "assets/items/armor/helm/common/sootstalker_apprentice_helm.png"
   },
-  "frostwolf_armor_chest": {
-    "name": "Frostwolf Armor Chest",
+  "sootstalker_apprentice_chest": {
+    "name": "Sootstalker Apprentice Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/frostwolf_armor_chest.png"
-  },
-  "frostwolf_armor_legs": {
-    "name": "Frostwolf Armor Legs",
-    "type": "legs",
-    "slot": "legs",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 2,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/frostwolf_armor_legs.png"
-  },
-  "frostwolf_armor_gloves": {
-    "name": "Frostwolf Armor Gloves",
-    "type": "gloves",
-    "slot": "hands",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/frostwolf_armor_gloves.png"
-  },
-  "frostwolf_armor_boots": {
-    "name": "Frostwolf Armor Boots",
-    "type": "boots",
-    "slot": "feet",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 1,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/frostwolf_armor_boots.png"
-  },
-  "frostwolf_armor_cape": {
-    "name": "Frostwolf Armor Cape",
-    "type": "cape",
-    "slot": "cape",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/frostwolf_armor_cape.png"
+    "image": "assets/items/armor/chest/common/sootstalker_apprentice_chest.png"
   },
-  "frostwolf_armor_ring": {
-    "name": "Frostwolf Armor Ring",
-    "type": "ring",
-    "slot": "ring",
+  "sootstalker_apprentice_legs": {
+    "name": "Sootstalker Apprentice Legs",
+    "type": "legs",
+    "slot": "legs",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 1
-    },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/frostwolf_armor_ring.png"
-  },
-  "frostwolf_armor_necklace": {
-    "name": "Frostwolf Armor Necklace",
-    "type": "necklace",
-    "slot": "neck",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/frostwolf_armor_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/sootstalker_apprentice_legs.png"
   },
-  "frostwolf_armor_aura": {
-    "name": "Frostwolf Armor Aura",
+  "sootstalker_apprentice_gloves": {
+    "name": "Sootstalker Apprentice Gloves",
+    "type": "gloves",
+    "slot": "hands",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/sootstalker_apprentice_gloves.png"
+  },
+  "sootstalker_apprentice_boots": {
+    "name": "Sootstalker Apprentice Boots",
+    "type": "boots",
+    "slot": "feet",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/boots/common/sootstalker_apprentice_boots.png"
+  },
+  "sootstalker_apprentice_cape": {
+    "name": "Sootstalker Apprentice Cape",
+    "type": "cape",
+    "slot": "cape",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/cape/common/sootstalker_apprentice_cape.png"
+  },
+  "sootstalker_apprentice_ring": {
+    "name": "Sootstalker Apprentice Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/ring/common/sootstalker_apprentice_ring.png"
+  },
+  "sootstalker_apprentice_necklace": {
+    "name": "Sootstalker Apprentice Necklace",
+    "type": "necklace",
+    "slot": "neck",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/sootstalker_apprentice_necklace.png"
+  },
+  "sootstalker_apprentice_aura": {
+    "name": "Sootstalker Apprentice Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/frostwolf_armor_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/sootstalker_apprentice_aura.png"
   },
-  "embersteel_guard_helm": {
-    "name": "Embersteel Guard Helm",
+  "stonejaw_warrior_helm": {
+    "name": "Stonejaw Warrior Helm",
     "type": "helm",
     "slot": "head",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
@@ -1391,146 +1391,146 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/helm/common/embersteel_guard_helm.png"
+    "image": "assets/items/armor/helm/common/stonejaw_warrior_helm.png"
   },
-  "embersteel_guard_chest": {
-    "name": "Embersteel Guard Chest",
+  "stonejaw_warrior_chest": {
+    "name": "Stonejaw Warrior Chest",
     "type": "chest",
     "slot": "body",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 3,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 150,
-    "image": "assets/items/armor/chest/common/embersteel_guard_chest.png"
-  },
-  "embersteel_guard_legs": {
-    "name": "Embersteel Guard Legs",
-    "type": "legs",
-    "slot": "legs",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 2,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 120,
-    "image": "assets/items/armor/legs/common/embersteel_guard_legs.png"
-  },
-  "embersteel_guard_gloves": {
-    "name": "Embersteel Guard Gloves",
-    "type": "gloves",
-    "slot": "hands",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/gloves/common/embersteel_guard_gloves.png"
-  },
-  "embersteel_guard_boots": {
-    "name": "Embersteel Guard Boots",
-    "type": "boots",
-    "slot": "feet",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 0,
-      "defense": 1,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 80,
-    "image": "assets/items/armor/boots/common/embersteel_guard_boots.png"
-  },
-  "embersteel_guard_cape": {
-    "name": "Embersteel Guard Cape",
-    "type": "cape",
-    "slot": "cape",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
       "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/armor/cape/common/embersteel_guard_cape.png"
+    "image": "assets/items/armor/chest/common/stonejaw_warrior_chest.png"
   },
-  "embersteel_guard_ring": {
-    "name": "Embersteel Guard Ring",
-    "type": "ring",
-    "slot": "ring",
+  "stonejaw_warrior_legs": {
+    "name": "Stonejaw Warrior Legs",
+    "type": "legs",
+    "slot": "legs",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
       "attack": 0,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 0,
-      "strength": 1
-    },
-    "price": 90,
-    "image": "assets/items/armor/ring/common/embersteel_guard_ring.png"
-  },
-  "embersteel_guard_necklace": {
-    "name": "Embersteel Guard Necklace",
-    "type": "necklace",
-    "slot": "neck",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
+      "defense": 1,
       "magic": 0,
       "ranged": 0,
       "strength": 0
     },
-    "price": 90,
-    "image": "assets/items/armor/necklace/common/embersteel_guard_necklace.png"
+    "price": 100,
+    "image": "assets/items/armor/legs/common/stonejaw_warrior_legs.png"
   },
-  "embersteel_guard_aura": {
-    "name": "Embersteel Guard Aura",
+  "stonejaw_warrior_gloves": {
+    "name": "Stonejaw Warrior Gloves",
+    "type": "gloves",
+    "slot": "hands",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/gloves/common/stonejaw_warrior_gloves.png"
+  },
+  "stonejaw_warrior_boots": {
+    "name": "Stonejaw Warrior Boots",
+    "type": "boots",
+    "slot": "feet",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/boots/common/stonejaw_warrior_boots.png"
+  },
+  "stonejaw_warrior_cape": {
+    "name": "Stonejaw Warrior Cape",
+    "type": "cape",
+    "slot": "cape",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/cape/common/stonejaw_warrior_cape.png"
+  },
+  "stonejaw_warrior_ring": {
+    "name": "Stonejaw Warrior Ring",
+    "type": "ring",
+    "slot": "ring",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/ring/common/stonejaw_warrior_ring.png"
+  },
+  "stonejaw_warrior_necklace": {
+    "name": "Stonejaw Warrior Necklace",
+    "type": "necklace",
+    "slot": "neck",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 0,
+      "defense": 1,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "price": 100,
+    "image": "assets/items/armor/necklace/common/stonejaw_warrior_necklace.png"
+  },
+  "stonejaw_warrior_aura": {
+    "name": "Stonejaw Warrior Aura",
     "type": "aura",
     "slot": "aura",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 1,
+      "attack": 0,
       "defense": 1,
-      "magic": 1,
-      "ranged": 1,
-      "strength": 1
+      "magic": 0,
+      "ranged": 0,
+      "strength": 0
     },
-    "price": 150,
-    "image": "assets/items/armor/aura/common/embersteel_guard_aura.png"
+    "price": 100,
+    "image": "assets/items/armor/aura/common/stonejaw_warrior_aura.png"
   },
-  "obsidian_blade": {
-    "name": "Obsidian Blade",
+  "ashbreaker_pike": {
+    "name": "Ashbreaker Pike",
     "type": "weapon",
     "slot": "weapon",
     "rarity": "common",
@@ -1544,92 +1544,1690 @@
       "strength": 2
     },
     "price": 250,
-    "image": "assets/items/weapons/common/obsidian_blade.png"
+    "image": "assets/items/weapons/common/ashbreaker_pike.png"
   },
-  "obsidian_bow": {
-    "name": "Obsidian Bow",
-    "type": "weapon",
-    "slot": "weapon",
-    "rarity": "common",
-    "combatType": "ranged",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 0,
-      "ranged": 3,
-      "strength": 0
-    },
-    "price": 250,
-    "image": "assets/items/weapons/common/obsidian_bow.png"
-  },
-  "obsidian_staff": {
-    "name": "Obsidian Staff",
-    "type": "weapon",
-    "slot": "weapon",
-    "rarity": "common",
-    "combatType": "magic",
-    "levelReq": 1,
-    "stats": {
-      "attack": 1,
-      "defense": 0,
-      "magic": 3,
-      "ranged": 0,
-      "strength": 0
-    },
-    "price": 250,
-    "image": "assets/items/weapons/common/obsidian_staff.png"
-  },
-  "steel_greatsword": {
-    "name": "Steel Greatsword",
+  "ashdrift_longspear": {
+    "name": "Ashdrift Longspear",
     "type": "weapon",
     "slot": "weapon",
     "rarity": "common",
     "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 4,
+      "attack": 3,
       "defense": 0,
       "magic": 0,
       "ranged": 0,
-      "strength": 3
+      "strength": 2
     },
     "price": 250,
-    "image": "assets/items/weapons/common/steel_greatsword.png"
+    "image": "assets/items/weapons/common/ashdrift_longspear.png"
   },
-  "crimson_longbow": {
-    "name": "Crimson Longbow",
+  "ashgloom_warblade": {
+    "name": "Ashgloom Warblade",
     "type": "weapon",
     "slot": "weapon",
     "rarity": "common",
-    "combatType": "ranged",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 2,
+      "attack": 3,
       "defense": 0,
       "magic": 0,
-      "ranged": 4,
-      "strength": 0
+      "ranged": 0,
+      "strength": 2
     },
     "price": 250,
-    "image": "assets/items/weapons/common/crimson_longbow.png"
+    "image": "assets/items/weapons/common/ashgloom_warblade.png"
   },
-  "dusk_scepter": {
-    "name": "Dusk Scepter",
+  "ashthorn_dagger": {
+    "name": "Ashthorn Dagger",
     "type": "weapon",
     "slot": "weapon",
     "rarity": "common",
-    "combatType": "magic",
+    "combatType": "melee",
     "levelReq": 1,
     "stats": {
-      "attack": 2,
+      "attack": 3,
       "defense": 0,
-      "magic": 4,
+      "magic": 0,
       "ranged": 0,
-      "strength": 0
+      "strength": 2
     },
     "price": 250,
-    "image": "assets/items/weapons/common/dusk_scepter.png"
+    "image": "assets/items/weapons/common/ashthorn_dagger.png"
+  },
+  "ashvenom_saber": {
+    "name": "Ashvenom Saber",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/ashvenom_saber.png"
+  },
+  "ashwrought_greataxe": {
+    "name": "Ashwrought Greataxe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/ashwrought_greataxe.png"
+  },
+  "blightthorn_bow": {
+    "name": "Blightthorn Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/blightthorn_bow.png"
+  },
+  "blightweave_staff": {
+    "name": "Blightweave Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/blightweave_staff.png"
+  },
+  "bloodcurse_wand": {
+    "name": "Bloodcurse Wand",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/bloodcurse_wand.png"
+  },
+  "bloodrot_sword": {
+    "name": "Bloodrot Sword",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/bloodrot_sword.png"
+  },
+  "bloodshard_warhammer": {
+    "name": "Bloodshard Warhammer",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/bloodshard_warhammer.png"
+  },
+  "bloodspire_blade": {
+    "name": "Bloodspire Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/bloodspire_blade.png"
+  },
+  "bloodthorn_longbow": {
+    "name": "Bloodthorn Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/bloodthorn_longbow.png"
+  },
+  "bloodveil_greataxe": {
+    "name": "Bloodveil Greataxe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/bloodveil_greataxe.png"
+  },
+  "cinderbite_dagger": {
+    "name": "Cinderbite Dagger",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/cinderbite_dagger.png"
+  },
+  "cinderspine_crossbow": {
+    "name": "Cinderspine Crossbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/cinderspine_crossbow.png"
+  },
+  "cryptvine_bow": {
+    "name": "Cryptvine Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/cryptvine_bow.png"
+  },
+  "deathbloom_staff": {
+    "name": "Deathbloom Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/deathbloom_staff.png"
+  },
+  "duskbranch_staff": {
+    "name": "Duskbranch Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskbranch_staff.png"
+  },
+  "duskchill_knife": {
+    "name": "Duskchill Knife",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskchill_knife.png"
+  },
+  "duskdrift_longbow": {
+    "name": "Duskdrift Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskdrift_longbow.png"
+  },
+  "duskfang_blade": {
+    "name": "Duskfang Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskfang_blade.png"
+  },
+  "duskfang_scythe": {
+    "name": "Duskfang Scythe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskfang_scythe.png"
+  },
+  "duskhowl_blade": {
+    "name": "Duskhowl Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskhowl_blade.png"
+  },
+  "duskroot_wand": {
+    "name": "Duskroot Wand",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskroot_wand.png"
+  },
+  "duskshard_glaive": {
+    "name": "Duskshard Glaive",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskshard_glaive.png"
+  },
+  "duskspire_catalyst": {
+    "name": "Duskspire Catalyst",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskspire_catalyst.png"
+  },
+  "duskthorn_longbow": {
+    "name": "Duskthorn Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskthorn_longbow.png"
+  },
+  "duskthorn_pike": {
+    "name": "Duskthorn Pike",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskthorn_pike.png"
+  },
+  "duskveil_glaive": {
+    "name": "Duskveil Glaive",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskveil_glaive.png"
+  },
+  "duskveil_longbow": {
+    "name": "Duskveil Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/duskveil_longbow.png"
+  },
+  "embercrack_axe": {
+    "name": "Embercrack Axe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/embercrack_axe.png"
+  },
+  "emberfang_dagger": {
+    "name": "Emberfang Dagger",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/emberfang_dagger.png"
+  },
+  "embershard_crossbow": {
+    "name": "Embershard Crossbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/embershard_crossbow.png"
+  },
+  "emberwrath_crossbow": {
+    "name": "Emberwrath Crossbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/emberwrath_crossbow.png"
+  },
+  "frostbite_blade": {
+    "name": "Frostbite Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/frostbite_blade.png"
+  },
+  "gloomroot_bow": {
+    "name": "Gloomroot Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gloomroot_bow.png"
+  },
+  "gloomspire_scepter": {
+    "name": "Gloomspire Scepter",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gloomspire_scepter.png"
+  },
+  "gloomthorn_warblade": {
+    "name": "Gloomthorn Warblade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gloomthorn_warblade.png"
+  },
+  "gravemarrow_halberd": {
+    "name": "Gravemarrow Halberd",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravemarrow_halberd.png"
+  },
+  "gravemarrow_spear": {
+    "name": "Gravemarrow Spear",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravemarrow_spear.png"
+  },
+  "gravemind_flail": {
+    "name": "Gravemind Flail",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravemind_flail.png"
+  },
+  "gravemind_scepter": {
+    "name": "Gravemind Scepter",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravemind_scepter.png"
+  },
+  "gravemist_scythe": {
+    "name": "Gravemist Scythe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravemist_scythe.png"
+  },
+  "gravethorn_cleaver": {
+    "name": "Gravethorn Cleaver",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravethorn_cleaver.png"
+  },
+  "gravethorn_warblade": {
+    "name": "Gravethorn Warblade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravethorn_warblade.png"
+  },
+  "gravetide_mace": {
+    "name": "Gravetide Mace",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravetide_mace.png"
+  },
+  "gravetide_pike": {
+    "name": "Gravetide Pike",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/gravetide_pike.png"
+  },
+  "marrowshard_blade": {
+    "name": "Marrowshard Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/marrowshard_blade.png"
+  },
+  "marshfang_dagger": {
+    "name": "Marshfang Dagger",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/marshfang_dagger.png"
+  },
+  "mirefang_longsword": {
+    "name": "Mirefang Longsword",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/mirefang_longsword.png"
+  },
+  "mirefang_spear": {
+    "name": "Mirefang Spear",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/mirefang_spear.png"
+  },
+  "mirethorn_greatblade": {
+    "name": "Mirethorn Greatblade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/mirethorn_greatblade.png"
+  },
+  "mirethorn_longbow": {
+    "name": "Mirethorn Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/mirethorn_longbow.png"
+  },
+  "mireweaver_staff": {
+    "name": "Mireweaver Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/mireweaver_staff.png"
+  },
+  "mirewood_staff": {
+    "name": "Mirewood Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/mirewood_staff.png"
+  },
+  "nightthorn_bow": {
+    "name": "Nightthorn Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/nightthorn_bow.png"
+  },
+  "plaguebite_axe": {
+    "name": "Plaguebite Axe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/plaguebite_axe.png"
+  },
+  "plaguefang_claw": {
+    "name": "Plaguefang Claw",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/plaguefang_claw.png"
+  },
+  "plaguewrought_glaive": {
+    "name": "Plaguewrought Glaive",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/plaguewrought_glaive.png"
+  },
+  "rotfang_claws": {
+    "name": "Rotfang Claws",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/rotfang_claws.png"
+  },
+  "shardfang_rapier": {
+    "name": "Shardfang Rapier",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/shardfang_rapier.png"
+  },
+  "shardking_blade": {
+    "name": "Shardking Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/shardking_blade.png"
+  },
+  "shardrift_longspear": {
+    "name": "Shardrift Longspear",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/shardrift_longspear.png"
+  },
+  "shardstone_mace": {
+    "name": "Shardstone Mace",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/shardstone_mace.png"
+  },
+  "shatterspike_blade": {
+    "name": "Shatterspike Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/shatterspike_blade.png"
+  },
+  "smogcoil_whip": {
+    "name": "Smogcoil Whip",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/smogcoil_whip.png"
+  },
+  "smolderthorn_glaive": {
+    "name": "Smolderthorn Glaive",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/smolderthorn_glaive.png"
+  },
+  "sootcrack_warhammer": {
+    "name": "Sootcrack Warhammer",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/sootcrack_warhammer.png"
+  },
+  "sootveil_blade": {
+    "name": "Sootveil Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/sootveil_blade.png"
+  },
+  "soulbind_bow": {
+    "name": "Soulbind Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulbind_bow.png"
+  },
+  "soulflare_bow": {
+    "name": "Soulflare Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulflare_bow.png"
+  },
+  "soulforge_staff": {
+    "name": "Soulforge Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulforge_staff.png"
+  },
+  "soulpiercer_longbow": {
+    "name": "Soulpiercer Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulpiercer_longbow.png"
+  },
+  "soulreaver_scythe": {
+    "name": "Soulreaver Scythe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulreaver_scythe.png"
+  },
+  "soulreign_bow": {
+    "name": "Soulreign Bow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulreign_bow.png"
+  },
+  "soulrend_longbow": {
+    "name": "Soulrend Longbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulrend_longbow.png"
+  },
+  "soulshard_catalyst": {
+    "name": "Soulshard Catalyst",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulshard_catalyst.png"
+  },
+  "soulshard_wand": {
+    "name": "Soulshard Wand",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulshard_wand.png"
+  },
+  "soulshatter_claws": {
+    "name": "Soulshatter Claws",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulshatter_claws.png"
+  },
+  "soulshatter_greatblade": {
+    "name": "Soulshatter Greatblade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulshatter_greatblade.png"
+  },
+  "soulspike_dagger": {
+    "name": "Soulspike Dagger",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/soulspike_dagger.png"
+  },
+  "thornpierce_lance": {
+    "name": "Thornpierce Lance",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/thornpierce_lance.png"
+  },
+  "thornrend_axe": {
+    "name": "Thornrend Axe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/thornrend_axe.png"
+  },
+  "thornslicer_saber": {
+    "name": "Thornslicer Saber",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/thornslicer_saber.png"
+  },
+  "venomspire_pike": {
+    "name": "Venomspire Pike",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/venomspire_pike.png"
+  },
+  "venomspire_spear": {
+    "name": "Venomspire Spear",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/venomspire_spear.png"
+  },
+  "venomthorn_saber": {
+    "name": "Venomthorn Saber",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/venomthorn_saber.png"
+  },
+  "voidborne_scythe": {
+    "name": "Voidborne Scythe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidborne_scythe.png"
+  },
+  "voidcarver_blade": {
+    "name": "Voidcarver Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidcarver_blade.png"
+  },
+  "voidheart_greataxe": {
+    "name": "Voidheart Greataxe",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidheart_greataxe.png"
+  },
+  "voidlash_crossbow": {
+    "name": "Voidlash Crossbow",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidlash_crossbow.png"
+  },
+  "voidpiercer_spear": {
+    "name": "Voidpiercer Spear",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidpiercer_spear.png"
+  },
+  "voidreaver_blade": {
+    "name": "Voidreaver Blade",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidreaver_blade.png"
+  },
+  "voidrend_warhammer": {
+    "name": "Voidrend Warhammer",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidrend_warhammer.png"
+  },
+  "voidwhisper_staff": {
+    "name": "Voidwhisper Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/voidwhisper_staff.png"
+  },
+  "wraithbone_staff": {
+    "name": "Wraithbone Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/wraithbone_staff.png"
+  },
+  "wraithbound_blades": {
+    "name": "Wraithbound Blades",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/wraithbound_blades.png"
+  },
+  "wraithforged_twinblades": {
+    "name": "Wraithforged Twinblades",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/wraithforged_twinblades.png"
+  },
+  "wraithvine_staff": {
+    "name": "Wraithvine Staff",
+    "type": "weapon",
+    "slot": "weapon",
+    "rarity": "common",
+    "combatType": "melee",
+    "levelReq": 1,
+    "stats": {
+      "attack": 3,
+      "defense": 0,
+      "magic": 0,
+      "ranged": 0,
+      "strength": 2
+    },
+    "price": 250,
+    "image": "assets/items/weapons/common/wraithvine_staff.png"
   },
   "bread": {
     "name": "Bread",
