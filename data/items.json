@@ -14,7 +14,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/obsidian_guard_helm.png"
+    "image": "assets/items/armor/helm/common/obsidian_guard_helm.png"
   },
   "obsidian_guard_chest": {
     "name": "Obsidian Guard Chest",
@@ -31,7 +31,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/obsidian_guard_chest.png"
+    "image": "assets/items/armor/chest/common/obsidian_guard_chest.png"
   },
   "obsidian_guard_legs": {
     "name": "Obsidian Guard Legs",
@@ -48,7 +48,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/obsidian_guard_legs.png"
+    "image": "assets/items/armor/legs/common/obsidian_guard_legs.png"
   },
   "obsidian_guard_gloves": {
     "name": "Obsidian Guard Gloves",
@@ -65,7 +65,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/obsidian_guard_gloves.png"
+    "image": "assets/items/armor/gloves/common/obsidian_guard_gloves.png"
   },
   "obsidian_guard_boots": {
     "name": "Obsidian Guard Boots",
@@ -82,7 +82,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/obsidian_guard_boots.png"
+    "image": "assets/items/armor/boots/common/obsidian_guard_boots.png"
   },
   "obsidian_guard_cape": {
     "name": "Obsidian Guard Cape",
@@ -99,7 +99,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/obsidian_guard_cape.png"
+    "image": "assets/items/armor/cape/common/obsidian_guard_cape.png"
   },
   "obsidian_guard_ring": {
     "name": "Obsidian Guard Ring",
@@ -116,7 +116,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/obsidian_guard_ring.png"
+    "image": "assets/items/armor/ring/common/obsidian_guard_ring.png"
   },
   "obsidian_guard_necklace": {
     "name": "Obsidian Guard Necklace",
@@ -133,7 +133,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/obsidian_guard_necklace.png"
+    "image": "assets/items/armor/necklace/common/obsidian_guard_necklace.png"
   },
   "obsidian_guard_aura": {
     "name": "Obsidian Guard Aura",
@@ -150,7 +150,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/obsidian_guard_aura.png"
+    "image": "assets/items/armor/aura/common/obsidian_guard_aura.png"
   },
   "steel_vanguard_helm": {
     "name": "Steel Vanguard Helm",
@@ -167,7 +167,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/steel_vanguard_helm.png"
+    "image": "assets/items/armor/helm/common/steel_vanguard_helm.png"
   },
   "steel_vanguard_chest": {
     "name": "Steel Vanguard Chest",
@@ -184,7 +184,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/steel_vanguard_chest.png"
+    "image": "assets/items/armor/chest/common/steel_vanguard_chest.png"
   },
   "steel_vanguard_legs": {
     "name": "Steel Vanguard Legs",
@@ -201,7 +201,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/steel_vanguard_legs.png"
+    "image": "assets/items/armor/legs/common/steel_vanguard_legs.png"
   },
   "steel_vanguard_gloves": {
     "name": "Steel Vanguard Gloves",
@@ -218,7 +218,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/steel_vanguard_gloves.png"
+    "image": "assets/items/armor/gloves/common/steel_vanguard_gloves.png"
   },
   "steel_vanguard_boots": {
     "name": "Steel Vanguard Boots",
@@ -235,7 +235,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/steel_vanguard_boots.png"
+    "image": "assets/items/armor/boots/common/steel_vanguard_boots.png"
   },
   "steel_vanguard_cape": {
     "name": "Steel Vanguard Cape",
@@ -252,7 +252,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/steel_vanguard_cape.png"
+    "image": "assets/items/armor/cape/common/steel_vanguard_cape.png"
   },
   "steel_vanguard_ring": {
     "name": "Steel Vanguard Ring",
@@ -269,7 +269,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/steel_vanguard_ring.png"
+    "image": "assets/items/armor/ring/common/steel_vanguard_ring.png"
   },
   "steel_vanguard_necklace": {
     "name": "Steel Vanguard Necklace",
@@ -286,7 +286,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/steel_vanguard_necklace.png"
+    "image": "assets/items/armor/necklace/common/steel_vanguard_necklace.png"
   },
   "steel_vanguard_aura": {
     "name": "Steel Vanguard Aura",
@@ -303,7 +303,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/steel_vanguard_aura.png"
+    "image": "assets/items/armor/aura/common/steel_vanguard_aura.png"
   },
   "ironclad_legion_helm": {
     "name": "Ironclad Legion Helm",
@@ -320,7 +320,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/ironclad_legion_helm.png"
+    "image": "assets/items/armor/helm/common/ironclad_legion_helm.png"
   },
   "ironclad_legion_chest": {
     "name": "Ironclad Legion Chest",
@@ -337,7 +337,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/ironclad_legion_chest.png"
+    "image": "assets/items/armor/chest/common/ironclad_legion_chest.png"
   },
   "ironclad_legion_legs": {
     "name": "Ironclad Legion Legs",
@@ -354,7 +354,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/ironclad_legion_legs.png"
+    "image": "assets/items/armor/legs/common/ironclad_legion_legs.png"
   },
   "ironclad_legion_gloves": {
     "name": "Ironclad Legion Gloves",
@@ -371,7 +371,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/ironclad_legion_gloves.png"
+    "image": "assets/items/armor/gloves/common/ironclad_legion_gloves.png"
   },
   "ironclad_legion_boots": {
     "name": "Ironclad Legion Boots",
@@ -388,7 +388,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/ironclad_legion_boots.png"
+    "image": "assets/items/armor/boots/common/ironclad_legion_boots.png"
   },
   "ironclad_legion_cape": {
     "name": "Ironclad Legion Cape",
@@ -405,7 +405,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/ironclad_legion_cape.png"
+    "image": "assets/items/armor/cape/common/ironclad_legion_cape.png"
   },
   "ironclad_legion_ring": {
     "name": "Ironclad Legion Ring",
@@ -422,7 +422,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/ironclad_legion_ring.png"
+    "image": "assets/items/armor/ring/common/ironclad_legion_ring.png"
   },
   "ironclad_legion_necklace": {
     "name": "Ironclad Legion Necklace",
@@ -439,7 +439,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/ironclad_legion_necklace.png"
+    "image": "assets/items/armor/necklace/common/ironclad_legion_necklace.png"
   },
   "ironclad_legion_aura": {
     "name": "Ironclad Legion Aura",
@@ -456,7 +456,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/ironclad_legion_aura.png"
+    "image": "assets/items/armor/aura/common/ironclad_legion_aura.png"
   },
   "crimson_watch_helm": {
     "name": "Crimson Watch Helm",
@@ -473,7 +473,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/crimson_watch_helm.png"
+    "image": "assets/items/armor/helm/common/crimson_watch_helm.png"
   },
   "crimson_watch_chest": {
     "name": "Crimson Watch Chest",
@@ -490,7 +490,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/crimson_watch_chest.png"
+    "image": "assets/items/armor/chest/common/crimson_watch_chest.png"
   },
   "crimson_watch_legs": {
     "name": "Crimson Watch Legs",
@@ -507,7 +507,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/crimson_watch_legs.png"
+    "image": "assets/items/armor/legs/common/crimson_watch_legs.png"
   },
   "crimson_watch_gloves": {
     "name": "Crimson Watch Gloves",
@@ -524,7 +524,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/crimson_watch_gloves.png"
+    "image": "assets/items/armor/gloves/common/crimson_watch_gloves.png"
   },
   "crimson_watch_boots": {
     "name": "Crimson Watch Boots",
@@ -541,7 +541,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/crimson_watch_boots.png"
+    "image": "assets/items/armor/boots/common/crimson_watch_boots.png"
   },
   "crimson_watch_cape": {
     "name": "Crimson Watch Cape",
@@ -558,7 +558,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/crimson_watch_cape.png"
+    "image": "assets/items/armor/cape/common/crimson_watch_cape.png"
   },
   "crimson_watch_ring": {
     "name": "Crimson Watch Ring",
@@ -575,7 +575,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/crimson_watch_ring.png"
+    "image": "assets/items/armor/ring/common/crimson_watch_ring.png"
   },
   "crimson_watch_necklace": {
     "name": "Crimson Watch Necklace",
@@ -592,7 +592,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/crimson_watch_necklace.png"
+    "image": "assets/items/armor/necklace/common/crimson_watch_necklace.png"
   },
   "crimson_watch_aura": {
     "name": "Crimson Watch Aura",
@@ -609,7 +609,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/crimson_watch_aura.png"
+    "image": "assets/items/armor/aura/common/crimson_watch_aura.png"
   },
   "dusk_fury_helm": {
     "name": "Dusk Fury Helm",
@@ -626,7 +626,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/dusk_fury_helm.png"
+    "image": "assets/items/armor/helm/common/dusk_fury_helm.png"
   },
   "dusk_fury_chest": {
     "name": "Dusk Fury Chest",
@@ -643,7 +643,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/dusk_fury_chest.png"
+    "image": "assets/items/armor/chest/common/dusk_fury_chest.png"
   },
   "dusk_fury_legs": {
     "name": "Dusk Fury Legs",
@@ -660,7 +660,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/dusk_fury_legs.png"
+    "image": "assets/items/armor/legs/common/dusk_fury_legs.png"
   },
   "dusk_fury_gloves": {
     "name": "Dusk Fury Gloves",
@@ -677,7 +677,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/dusk_fury_gloves.png"
+    "image": "assets/items/armor/gloves/common/dusk_fury_gloves.png"
   },
   "dusk_fury_boots": {
     "name": "Dusk Fury Boots",
@@ -694,7 +694,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/dusk_fury_boots.png"
+    "image": "assets/items/armor/boots/common/dusk_fury_boots.png"
   },
   "dusk_fury_cape": {
     "name": "Dusk Fury Cape",
@@ -711,7 +711,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/dusk_fury_cape.png"
+    "image": "assets/items/armor/cape/common/dusk_fury_cape.png"
   },
   "dusk_fury_ring": {
     "name": "Dusk Fury Ring",
@@ -728,7 +728,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/dusk_fury_ring.png"
+    "image": "assets/items/armor/ring/common/dusk_fury_ring.png"
   },
   "dusk_fury_necklace": {
     "name": "Dusk Fury Necklace",
@@ -745,7 +745,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/dusk_fury_necklace.png"
+    "image": "assets/items/armor/necklace/common/dusk_fury_necklace.png"
   },
   "dusk_fury_aura": {
     "name": "Dusk Fury Aura",
@@ -762,7 +762,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/dusk_fury_aura.png"
+    "image": "assets/items/armor/aura/common/dusk_fury_aura.png"
   },
   "ashbourne_plate_helm": {
     "name": "Ashbourne Plate Helm",
@@ -779,7 +779,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/ashbourne_plate_helm.png"
+    "image": "assets/items/armor/helm/common/ashbourne_plate_helm.png"
   },
   "ashbourne_plate_chest": {
     "name": "Ashbourne Plate Chest",
@@ -796,7 +796,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/ashbourne_plate_chest.png"
+    "image": "assets/items/armor/chest/common/ashbourne_plate_chest.png"
   },
   "ashbourne_plate_legs": {
     "name": "Ashbourne Plate Legs",
@@ -813,7 +813,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/ashbourne_plate_legs.png"
+    "image": "assets/items/armor/legs/common/ashbourne_plate_legs.png"
   },
   "ashbourne_plate_gloves": {
     "name": "Ashbourne Plate Gloves",
@@ -830,7 +830,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/ashbourne_plate_gloves.png"
+    "image": "assets/items/armor/gloves/common/ashbourne_plate_gloves.png"
   },
   "ashbourne_plate_boots": {
     "name": "Ashbourne Plate Boots",
@@ -847,7 +847,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/ashbourne_plate_boots.png"
+    "image": "assets/items/armor/boots/common/ashbourne_plate_boots.png"
   },
   "ashbourne_plate_cape": {
     "name": "Ashbourne Plate Cape",
@@ -864,7 +864,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/ashbourne_plate_cape.png"
+    "image": "assets/items/armor/cape/common/ashbourne_plate_cape.png"
   },
   "ashbourne_plate_ring": {
     "name": "Ashbourne Plate Ring",
@@ -881,7 +881,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/ashbourne_plate_ring.png"
+    "image": "assets/items/armor/ring/common/ashbourne_plate_ring.png"
   },
   "ashbourne_plate_necklace": {
     "name": "Ashbourne Plate Necklace",
@@ -898,7 +898,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/ashbourne_plate_necklace.png"
+    "image": "assets/items/armor/necklace/common/ashbourne_plate_necklace.png"
   },
   "ashbourne_plate_aura": {
     "name": "Ashbourne Plate Aura",
@@ -915,7 +915,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/ashbourne_plate_aura.png"
+    "image": "assets/items/armor/aura/common/ashbourne_plate_aura.png"
   },
   "sentinel_ward_helm": {
     "name": "Sentinel Ward Helm",
@@ -932,7 +932,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/sentinel_ward_helm.png"
+    "image": "assets/items/armor/helm/common/sentinel_ward_helm.png"
   },
   "sentinel_ward_chest": {
     "name": "Sentinel Ward Chest",
@@ -949,7 +949,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/sentinel_ward_chest.png"
+    "image": "assets/items/armor/chest/common/sentinel_ward_chest.png"
   },
   "sentinel_ward_legs": {
     "name": "Sentinel Ward Legs",
@@ -966,7 +966,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/sentinel_ward_legs.png"
+    "image": "assets/items/armor/legs/common/sentinel_ward_legs.png"
   },
   "sentinel_ward_gloves": {
     "name": "Sentinel Ward Gloves",
@@ -983,7 +983,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/sentinel_ward_gloves.png"
+    "image": "assets/items/armor/gloves/common/sentinel_ward_gloves.png"
   },
   "sentinel_ward_boots": {
     "name": "Sentinel Ward Boots",
@@ -1000,7 +1000,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/sentinel_ward_boots.png"
+    "image": "assets/items/armor/boots/common/sentinel_ward_boots.png"
   },
   "sentinel_ward_cape": {
     "name": "Sentinel Ward Cape",
@@ -1017,7 +1017,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/sentinel_ward_cape.png"
+    "image": "assets/items/armor/cape/common/sentinel_ward_cape.png"
   },
   "sentinel_ward_ring": {
     "name": "Sentinel Ward Ring",
@@ -1034,7 +1034,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/sentinel_ward_ring.png"
+    "image": "assets/items/armor/ring/common/sentinel_ward_ring.png"
   },
   "sentinel_ward_necklace": {
     "name": "Sentinel Ward Necklace",
@@ -1051,7 +1051,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/sentinel_ward_necklace.png"
+    "image": "assets/items/armor/necklace/common/sentinel_ward_necklace.png"
   },
   "sentinel_ward_aura": {
     "name": "Sentinel Ward Aura",
@@ -1068,7 +1068,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/sentinel_ward_aura.png"
+    "image": "assets/items/armor/aura/common/sentinel_ward_aura.png"
   },
   "nightfall_raiders_helm": {
     "name": "Nightfall Raiders Helm",
@@ -1085,7 +1085,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/nightfall_raiders_helm.png"
+    "image": "assets/items/armor/helm/common/nightfall_raiders_helm.png"
   },
   "nightfall_raiders_chest": {
     "name": "Nightfall Raiders Chest",
@@ -1102,7 +1102,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/nightfall_raiders_chest.png"
+    "image": "assets/items/armor/chest/common/nightfall_raiders_chest.png"
   },
   "nightfall_raiders_legs": {
     "name": "Nightfall Raiders Legs",
@@ -1119,7 +1119,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/nightfall_raiders_legs.png"
+    "image": "assets/items/armor/legs/common/nightfall_raiders_legs.png"
   },
   "nightfall_raiders_gloves": {
     "name": "Nightfall Raiders Gloves",
@@ -1136,7 +1136,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/nightfall_raiders_gloves.png"
+    "image": "assets/items/armor/gloves/common/nightfall_raiders_gloves.png"
   },
   "nightfall_raiders_boots": {
     "name": "Nightfall Raiders Boots",
@@ -1153,7 +1153,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/nightfall_raiders_boots.png"
+    "image": "assets/items/armor/boots/common/nightfall_raiders_boots.png"
   },
   "nightfall_raiders_cape": {
     "name": "Nightfall Raiders Cape",
@@ -1170,7 +1170,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/nightfall_raiders_cape.png"
+    "image": "assets/items/armor/cape/common/nightfall_raiders_cape.png"
   },
   "nightfall_raiders_ring": {
     "name": "Nightfall Raiders Ring",
@@ -1187,7 +1187,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/nightfall_raiders_ring.png"
+    "image": "assets/items/armor/ring/common/nightfall_raiders_ring.png"
   },
   "nightfall_raiders_necklace": {
     "name": "Nightfall Raiders Necklace",
@@ -1204,7 +1204,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/nightfall_raiders_necklace.png"
+    "image": "assets/items/armor/necklace/common/nightfall_raiders_necklace.png"
   },
   "nightfall_raiders_aura": {
     "name": "Nightfall Raiders Aura",
@@ -1221,7 +1221,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/nightfall_raiders_aura.png"
+    "image": "assets/items/armor/aura/common/nightfall_raiders_aura.png"
   },
   "frostwolf_armor_helm": {
     "name": "Frostwolf Armor Helm",
@@ -1238,7 +1238,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/frostwolf_armor_helm.png"
+    "image": "assets/items/armor/helm/common/frostwolf_armor_helm.png"
   },
   "frostwolf_armor_chest": {
     "name": "Frostwolf Armor Chest",
@@ -1255,7 +1255,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/frostwolf_armor_chest.png"
+    "image": "assets/items/armor/chest/common/frostwolf_armor_chest.png"
   },
   "frostwolf_armor_legs": {
     "name": "Frostwolf Armor Legs",
@@ -1272,7 +1272,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/frostwolf_armor_legs.png"
+    "image": "assets/items/armor/legs/common/frostwolf_armor_legs.png"
   },
   "frostwolf_armor_gloves": {
     "name": "Frostwolf Armor Gloves",
@@ -1289,7 +1289,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/frostwolf_armor_gloves.png"
+    "image": "assets/items/armor/gloves/common/frostwolf_armor_gloves.png"
   },
   "frostwolf_armor_boots": {
     "name": "Frostwolf Armor Boots",
@@ -1306,7 +1306,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/frostwolf_armor_boots.png"
+    "image": "assets/items/armor/boots/common/frostwolf_armor_boots.png"
   },
   "frostwolf_armor_cape": {
     "name": "Frostwolf Armor Cape",
@@ -1323,7 +1323,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/frostwolf_armor_cape.png"
+    "image": "assets/items/armor/cape/common/frostwolf_armor_cape.png"
   },
   "frostwolf_armor_ring": {
     "name": "Frostwolf Armor Ring",
@@ -1340,7 +1340,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/frostwolf_armor_ring.png"
+    "image": "assets/items/armor/ring/common/frostwolf_armor_ring.png"
   },
   "frostwolf_armor_necklace": {
     "name": "Frostwolf Armor Necklace",
@@ -1357,7 +1357,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/frostwolf_armor_necklace.png"
+    "image": "assets/items/armor/necklace/common/frostwolf_armor_necklace.png"
   },
   "frostwolf_armor_aura": {
     "name": "Frostwolf Armor Aura",
@@ -1374,7 +1374,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/frostwolf_armor_aura.png"
+    "image": "assets/items/armor/aura/common/frostwolf_armor_aura.png"
   },
   "embersteel_guard_helm": {
     "name": "Embersteel Guard Helm",
@@ -1391,7 +1391,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/embersteel_guard_helm.png"
+    "image": "assets/items/armor/helm/common/embersteel_guard_helm.png"
   },
   "embersteel_guard_chest": {
     "name": "Embersteel Guard Chest",
@@ -1408,7 +1408,7 @@
       "strength": 0
     },
     "price": 150,
-    "image": "assets/items/gear/embersteel_guard_chest.png"
+    "image": "assets/items/armor/chest/common/embersteel_guard_chest.png"
   },
   "embersteel_guard_legs": {
     "name": "Embersteel Guard Legs",
@@ -1425,7 +1425,7 @@
       "strength": 0
     },
     "price": 120,
-    "image": "assets/items/gear/embersteel_guard_legs.png"
+    "image": "assets/items/armor/legs/common/embersteel_guard_legs.png"
   },
   "embersteel_guard_gloves": {
     "name": "Embersteel Guard Gloves",
@@ -1442,7 +1442,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/embersteel_guard_gloves.png"
+    "image": "assets/items/armor/gloves/common/embersteel_guard_gloves.png"
   },
   "embersteel_guard_boots": {
     "name": "Embersteel Guard Boots",
@@ -1459,7 +1459,7 @@
       "strength": 0
     },
     "price": 80,
-    "image": "assets/items/gear/embersteel_guard_boots.png"
+    "image": "assets/items/armor/boots/common/embersteel_guard_boots.png"
   },
   "embersteel_guard_cape": {
     "name": "Embersteel Guard Cape",
@@ -1476,7 +1476,7 @@
       "strength": 0
     },
     "price": 100,
-    "image": "assets/items/gear/embersteel_guard_cape.png"
+    "image": "assets/items/armor/cape/common/embersteel_guard_cape.png"
   },
   "embersteel_guard_ring": {
     "name": "Embersteel Guard Ring",
@@ -1493,7 +1493,7 @@
       "strength": 1
     },
     "price": 90,
-    "image": "assets/items/gear/embersteel_guard_ring.png"
+    "image": "assets/items/armor/ring/common/embersteel_guard_ring.png"
   },
   "embersteel_guard_necklace": {
     "name": "Embersteel Guard Necklace",
@@ -1510,7 +1510,7 @@
       "strength": 0
     },
     "price": 90,
-    "image": "assets/items/gear/embersteel_guard_necklace.png"
+    "image": "assets/items/armor/necklace/common/embersteel_guard_necklace.png"
   },
   "embersteel_guard_aura": {
     "name": "Embersteel Guard Aura",
@@ -1527,7 +1527,7 @@
       "strength": 1
     },
     "price": 150,
-    "image": "assets/items/gear/embersteel_guard_aura.png"
+    "image": "assets/items/armor/aura/common/embersteel_guard_aura.png"
   },
   "obsidian_blade": {
     "name": "Obsidian Blade",
@@ -1544,7 +1544,7 @@
       "strength": 2
     },
     "price": 250,
-    "image": "assets/items/weapons/obsidian_blade.png"
+    "image": "assets/items/weapons/common/obsidian_blade.png"
   },
   "obsidian_bow": {
     "name": "Obsidian Bow",
@@ -1561,7 +1561,7 @@
       "strength": 0
     },
     "price": 250,
-    "image": "assets/items/weapons/obsidian_bow.png"
+    "image": "assets/items/weapons/common/obsidian_bow.png"
   },
   "obsidian_staff": {
     "name": "Obsidian Staff",
@@ -1578,7 +1578,7 @@
       "strength": 0
     },
     "price": 250,
-    "image": "assets/items/weapons/obsidian_staff.png"
+    "image": "assets/items/weapons/common/obsidian_staff.png"
   },
   "steel_greatsword": {
     "name": "Steel Greatsword",
@@ -1595,7 +1595,7 @@
       "strength": 3
     },
     "price": 250,
-    "image": "assets/items/weapons/steel_greatsword.png"
+    "image": "assets/items/weapons/common/steel_greatsword.png"
   },
   "crimson_longbow": {
     "name": "Crimson Longbow",
@@ -1612,7 +1612,7 @@
       "strength": 0
     },
     "price": 250,
-    "image": "assets/items/weapons/crimson_longbow.png"
+    "image": "assets/items/weapons/common/crimson_longbow.png"
   },
   "dusk_scepter": {
     "name": "Dusk Scepter",
@@ -1629,7 +1629,7 @@
       "strength": 0
     },
     "price": 250,
-    "image": "assets/items/weapons/dusk_scepter.png"
+    "image": "assets/items/weapons/common/dusk_scepter.png"
   },
   "bread": {
     "name": "Bread",
