@@ -1,30 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bank & Gear - Cryptic Idle Worlds</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
   <style>
-    body { font-family: 'Share Tech Mono', monospace; background: url('assets/backgrounds/home2.png') no-repeat center center fixed; background-size: cover; color: #00ff99; padding: 20px; }
-    #save-bar { background-color: rgba(0, 0, 0, 0.6); padding: 10px; border-bottom: 2px solid #00ff99; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
-    .container-flex { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 80px; }
-    .box { background-color: rgba(0,0,0,0.6); border: 2px solid #00ff99; padding: 20px; max-width: 400px; flex: 1; min-width: 300px; }
-    .bank-box { transform: translateX(-20px); }
-    .gear-box { transform: translateX(20px); }
-    .grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-height: 600px; overflow-y: auto; }
-    .item { background: rgba(0,0,0,0.8); border: 1px solid #00ff99; padding: 10px; text-align: center; width: 100px; }
-    .item img { width: 48px; height: 48px; margin-bottom: 5px; }
-    .btn { background-color: rgba(0,0,0,0.8); color: #00ff99; border: 1px solid #00ff99; padding: 5px 10px; cursor: pointer; margin-top: 5px; }
-    h1 { text-align: center; margin: 100px 0 20px; }
-    .back-btn { display: block; text-align: center; margin: 20px auto 0; width: 150px; }
-    #skills-tab { background-color: rgba(0,0,0,0.6); border: 2px solid #00ff99; padding: 16px; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-    #global-skill-tracker { background: #111; padding: 10px; color: #fff; font-size: 14px; border-top: 2px solid #00ff99; margin-top: 20px; }
-    .skill-entry { margin-bottom: 8px; }
-    .skill-entry .xp-bar { background: #333; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 3px; }
-    .skill-entry .xp-bar div { height: 100%; background: #4caf50; }
-    .active-skill { background: #222; padding: 5px; border-left: 4px solid #4caf50; }
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: url('assets/backgrounds/home2.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ff99;
+      padding: 20px;
+    }
+    #save-bar {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-bottom: 2px solid #00ff99;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .container-flex {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 80px;
+    }
+    .box {
+      background-color: rgba(0,0,0,0.6);
+      border: 2px solid #00ff99;
+      padding: 20px;
+      max-width: 400px;
+      flex: 1;
+      min-width: 300px;
+      overflow-y: auto;
+      max-height: 600px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .item {
+      background: rgba(0,0,0,0.8);
+      border: 1px solid #00ff99;
+      padding: 10px;
+      text-align: center;
+      width: 100px;
+    }
+    .item img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 5px;
+    }
+    .btn {
+      background-color: rgba(0,0,0,0.8);
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    h1 {
+      text-align: center;
+      margin: 100px 0 20px;
+    }
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 20px auto 0;
+      width: 150px;
+    }
+    .skills-box {
+      background-color: rgba(0,0,0,0.6);
+      border: 2px solid #00ff99;
+      padding: 20px;
+      max-width: 400px;
+      flex: 1;
+      min-width: 300px;
+      overflow-y: auto;
+      max-height: 600px;
+    }
+    .skill-entry {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    .skill-entry .xp-bar-container {
+      width: 100%;
+      height: 10px;
+      background: #222;
+      margin-top: 5px;
+      border: 1px solid #00ff99;
+    }
+    .skill-entry .xp-bar {
+      height: 100%;
+      background: #00ff99;
+      width: 0%;
+    }
   </style>
 </head>
 <body>
@@ -45,14 +123,12 @@
       <h2>🛡️ Equipped Gear</h2>
       <div class="grid" id="gearGrid"></div>
     </div>
-  </div>
 
-  <div id="skills-tab">
-    <h3>🧠 Skill Levels</h3>
-    <ul id="combat-skill-tracker" style="list-style: none; padding: 0;"></ul>
+    <div class="box skills-box">
+      <h2>🧠 Skill Levels</h2>
+      <div id="skills-list"></div>
+    </div>
   </div>
-
-  <div id="global-skill-tracker"></div>
 
   <a href="home.html" class="btn back-btn">🏠 Back to Home</a>
 
@@ -65,11 +141,23 @@
   <script src="js/skillsSystem.js"></script>
   <script src="js/bank.js"></script>
   <script>
+    const skills = {
+      Attack: { level: 5, xp: 250, xpToNext: 500 },
+      Strength: { level: 3, xp: 100, xpToNext: 300 },
+      Defense: { level: 4, xp: 180, xpToNext: 400 },
+      Magic: { level: 2, xp: 50, xpToNext: 200 },
+      Woodcutting: { level: 7, xp: 500, xpToNext: 700 },
+      Mining: { level: 6, xp: 450, xpToNext: 650 },
+      // add more skills as needed
+    };
+
     async function renderBank() {
       await loadItemsData();
       const grid = document.getElementById('bankGrid');
       grid.innerHTML = '';
-      for (const itemId in itemsData) { addItemToBank(itemId, 1); }
+      for (const itemId in itemsData) {
+        addItemToBank(itemId, 1);
+      }
       const totalSlots = 500;
       const currentCount = Object.keys(bankInventory).length;
       for (let i = currentCount; i < totalSlots; i++) {
@@ -85,7 +173,7 @@
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = `
-          <img src="${item.image}" alt="${item.name}">
+          <img src="assets/items/${item.image}" alt="${item.name}" onerror="this.src='assets/items/default.png'">
           <div>${item.name}</div>
           <div>Qty: ${count}</div>
           ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}'); renderGear();">Equip</button>` : ''}
@@ -103,7 +191,7 @@
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = item ? `
-          <img src="${item.image}" alt="${item.name}">
+          <img src="assets/items/${item.image}" alt="${item.name}" onerror="this.src='assets/items/default.png'">
           <div>${item.name}</div>
           <button class="btn" onclick="unequipItem('${slot}'); renderGear();">Unequip</button>
         ` : `
@@ -112,6 +200,35 @@
           <div>(empty)</div>
         `;
         gearGrid.appendChild(div);
+      }
+    }
+
+    function renderSkills() {
+      const skillsList = document.getElementById('skills-list');
+      skillsList.innerHTML = '';
+      Object.entries(skills).forEach(([skillName, { level, xp, xpToNext }]) => {
+        const div = document.createElement('div');
+        div.className = 'skill-entry';
+        div.innerHTML = `
+          <strong>${skillName}</strong> (Level ${level})
+          <div class="xp-bar-container">
+            <div class="xp-bar" style="width: ${(xp / xpToNext) * 100}%"></div>
+          </div>
+          <small>${xp} / ${xpToNext} XP</small>
+        `;
+        skillsList.appendChild(div);
+      });
+    }
+
+    function gainXp(skill, amount) {
+      if (skills[skill]) {
+        skills[skill].xp += amount;
+        if (skills[skill].xp >= skills[skill].xpToNext) {
+          skills[skill].level++;
+          skills[skill].xp -= skills[skill].xpToNext;
+          skills[skill].xpToNext = Math.floor(skills[skill].xpToNext * 1.25);
+        }
+        renderSkills();
       }
     }
 
@@ -131,6 +248,7 @@
     setInterval(updateSaveTime, 1000);
     renderBank();
     renderGear();
+    renderSkills();
   </script>
 </body>
 </html>
