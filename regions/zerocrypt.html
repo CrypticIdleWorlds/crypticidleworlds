@@ -116,21 +116,18 @@
     </div>
   </div>
 
- <!-- ✅ Added all JS links -->
-  <script src="../js/achievementssystem.js"></script>
-  <script src="../js/bank.js"></script>
-  <script src="../js/combat.js"></script>
-  <script src="../js/combatlogsystem.js"></script>
-  <script src="../js/enemy-data.js"></script>
-  <script src="../js/items.js"></script>
-  <script src="../js/masterysystem.js"></script>
-  <script src="../js/offlineprogress.js"></script>
-  <script src="../js/skills.js"></script>
+  <!-- ✅ Global Skill Tracker -->
+  <div id="global-skill-tracker"></div>
+
+  <!-- ✅ Updated JS includes -->
+  <script src="../js/game.js"></script>
   <script src="../js/skillsystem.js"></script>
+  <script src="../js/combat.js"></script>
+  <script src="../js/offlineprogress.js"></script>
 
   <script>
     function saveProgress() {
-      localStorage.setItem("lastSave", Date.now());
+      saveGameData(); // ✅ Call the global save from game.js
       alert("Progress saved to the cloud!");
     }
 
@@ -146,6 +143,9 @@
 
     window.onload = () => {
       updateSaveTime();
+      if (typeof updateGlobalSkillUI === 'function') {
+        updateGlobalSkillUI();
+      }
     };
 
     function setRegion(regionName) {
@@ -154,3 +154,4 @@
   </script>
 </body>
 </html>
+
