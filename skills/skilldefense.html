@@ -49,7 +49,7 @@
     </div>
 
     <div class="region-main">
-      <h1>🏹 Train: Striker Protocol (Ranged)</h1>
+      <h1>🛡️ Train: Striker Protocol (Defense)</h1>
       <p>Select a region to begin training. Higher regions require higher combat levels.</p>
 
       <div class="region-container">
@@ -85,17 +85,14 @@
 
   <div id="global-skill-tracker"></div>
 
-  <script src="../js/items.js"></script>
-  <script src="../js/masterySystem.js"></script>
-  <script src="../js/achievementsSystem.js"></script>
-  <script src="../js/combatLogSystem.js"></script>
-  <script src="../js/offlineProgress.js"></script>
-  <script src="../js/skills.js"></script>
+  <!-- ✅ Updated JS includes -->
+  <script src="../js/game.js"></script>
   <script src="../js/skillsSystem.js"></script>
+  <script src="../js/offlineProgress.js"></script>
 
   <script>
     function saveProgress() {
-      localStorage.setItem("lastSave", Date.now());
+      saveGameData(); // ✅ Hooked into full save
       alert("Progress saved to the cloud!");
     }
 
@@ -156,6 +153,9 @@
       lockRegions();
       updateSkillLevels();
       updateSaveTime();
+      if (typeof updateGlobalSkillUI === 'function') {
+        updateGlobalSkillUI();
+      }
     };
   </script>
 </body>
