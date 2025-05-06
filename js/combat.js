@@ -203,6 +203,19 @@ function mapSkillName(style) {
   return 'Attack';
 }
 
+// ✅ Re-added: heal function
+function eatFood() {
+  const healAmount = 5;
+  if (playerHP < 100) {
+    playerHP += healAmount;
+    if (playerHP > 100) playerHP = 100;
+    document.getElementById("player-hp").innerText = playerHP;
+    log(`🍞 You ate food and healed ${healAmount} HP.`);
+  } else {
+    log(`❌ Your HP is already full.`);
+  }
+}
+
 window.onload = () => {
   initCombat();
   updateSkillTracker();
