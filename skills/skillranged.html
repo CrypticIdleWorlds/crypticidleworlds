@@ -85,17 +85,14 @@
 
   <div id="global-skill-tracker"></div>
 
-  <script src="../js/items.js"></script>
-  <script src="../js/masterySystem.js"></script>
-  <script src="../js/achievementsSystem.js"></script>
-  <script src="../js/combatLogSystem.js"></script>
-  <script src="../js/offlineProgress.js"></script>
-  <script src="../js/skills.js"></script>
+  <!-- ✅ Updated JS includes -->
+  <script src="../js/game.js"></script>
   <script src="../js/skillsSystem.js"></script>
+  <script src="../js/offlineProgress.js"></script>
 
   <script>
     function saveProgress() {
-      localStorage.setItem("lastSave", Date.now());
+      saveGameData(); // ✅ Full save hook
       alert("Progress saved to the cloud!");
     }
 
@@ -156,6 +153,9 @@
       lockRegions();
       updateSkillLevels();
       updateSaveTime();
+      if (typeof updateGlobalSkillUI === 'function') {
+        updateGlobalSkillUI(); // ✅ Live skill tracker update
+      }
     };
   </script>
 </body>
