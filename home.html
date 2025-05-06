@@ -64,7 +64,7 @@
       border-top: 2px solid #00ff99;
     }
     .skill-entry {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .xp-bar {
       width: 100%;
@@ -161,19 +161,24 @@
 
   <!-- Logic -->
   <script>
-    const defaultSkills = {
-      attack: { xp: 0, level: 1 },
-      strength: { xp: 0, level: 1 },
-      defense: { xp: 0, level: 1 },
-      magic: { xp: 0, level: 1 },
-      ranged: { xp: 0, level: 1 },
-      slayer: { xp: 0, level: 1 },
-      cryptomining: { xp: 0, level: 1 },
-      datafishing: { xp: 0, level: 1 },
-      codecraft: { xp: 0, level: 1 },
-      forgenetics: { xp: 0, level: 1 },
-      system_hacking: { xp: 0, level: 1 }
+    const skillsConfig = {
+      attack: { displayName: 'Melee Combat', icon: 'assets/skills/attack.png' },
+      strength: { displayName: 'Power Strike', icon: 'assets/skills/strength.png' },
+      defense: { displayName: 'Shield Mastery', icon: 'assets/skills/defense.png' },
+      magic: { displayName: 'Arcane Arts', icon: 'assets/skills/magic.png' },
+      ranged: { displayName: 'Ranged Tactics', icon: 'assets/skills/ranged.png' },
+      slayer: { displayName: 'Slayer', icon: 'assets/skills/slayer.png' },
+      cryptomining: { displayName: 'Cryptomining', icon: 'assets/skills/cryptomining.png' },
+      datafishing: { displayName: 'Datafishing', icon: 'assets/skills/datafishing.png' },
+      codecraft: { displayName: 'Codecraft', icon: 'assets/skills/codecraft.png' },
+      forgenetics: { displayName: 'Forgeneering', icon: 'assets/skills/forgenetics.png' },
+      system_hacking: { displayName: 'System Hacking', icon: 'assets/skills/system_hacking.png' }
     };
+
+    const defaultSkills = {};
+    Object.keys(skillsConfig).forEach(id => {
+      defaultSkills[id] = { xp: 0, level: 1 };
+    });
 
     const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
     const xpTable = Array(100).fill(0).map((_, level) => {
@@ -204,7 +209,7 @@
           for (let i = 1; i <= 99; i++) {
             if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
               skillData.system_hacking.level = i;
-              triggerLevelUpMessage("system hacking", i);
+              triggerLevelUpMessage("system_hacking", i);
             }
           }
           localStorage.setItem("skillData", JSON.stringify(skillData));
@@ -215,9 +220,9 @@
 
     function triggerLevelUpMessage(skill, level) {
       const msg = document.getElementById("level-up-popup");
-      msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
+      msg.innerText = `You are now level ${level} in ${skillsConfig[skill].displayName}!`;
       msg.style.animation = 'none';
-      msg.offsetHeight; // force reflow
+      msg.offsetHeight;
       msg.style.animation = null;
     }
 
@@ -240,14 +245,25 @@
       box.scrollTop = box.scrollHeight;
     }
 
-    function renderSkillUI(skills, containerId) {
+    function renderSkillUI(skills, containerId, isCombat = false) {
       const container = document.getElementById(containerId);
       container.innerHTML = '';
-      Object.entries(skills).forEach(([name, data]) => {
+
+      if (isCombat) {
+        const combatBtn = document.createElement('button');
+        combatBtn.textContent = '⚔️ Enter Combat';
+        combatBtn.onclick = () => window.location.href = 'combat.html';
+        combatBtn.style.marginBottom = '10px';
+        container.appendChild(combatBtn);
+      }
+
+      Object.entries(skills).forEach(([id, data]) => {
+        const config = skillsConfig[id];
         const li = document.createElement('li');
         li.className = 'skill-entry';
         li.innerHTML = `
-          <strong>${name.replace('_', ' ')}</strong> (Level ${data.level})
+          <img src="${config.icon}" alt="${config.displayName}" style="width:18px;vertical-align:middle;margin-right:6px;">
+          <strong>${config.displayName}</strong> (Level ${data.level})
           <div class="xp-bar">
             <div style="width: ${(data.xp / (xpTable[data.level + 1] || 100)) * 100}%"></div>
           </div>
@@ -260,8 +276,18 @@
     window.onload = () => {
       loadUserName();
       restoreOfflineXP();
-      renderSkillUI(skillData, "combat-skills");
-      renderSkillUI(skillData, "noncombat-skills");
+
+      const combatIds = ['attack', 'strength', 'defense', 'magic', 'ranged', 'slayer'];
+      const nonCombatIds = Object.keys(skillData).filter(id => !combatIds.includes(id));
+
+      const combatSkills = {};
+      const nonCombatSkills = {};
+      combatIds.forEach(id => { combatSkills[id] = skillData[id]; });
+      nonCombatIds.forEach(id => { nonCombatSkills[id] = skillData[id]; });
+
+      renderSkillUI(combatSkills, "combat-skills", true);
+      renderSkillUI(nonCombatSkills, "noncombat-skills");
+
       setInterval(updateSaveTimer, 1000);
     };
   </script>
