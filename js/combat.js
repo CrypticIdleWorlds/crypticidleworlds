@@ -79,13 +79,13 @@ function initCombat() {
   document.getElementById("enemy-name").innerText = enemy.name;
 
   const imgElement = document.getElementById("enemy-image");
-  imgElement.src = enemy.image;
+  imgElement.src = '/' + enemy.image;  // ✅ Absolute path for consistent loading
 
   imgElement.onerror = () => {
     if (!imgElement.dataset.fallbackUsed) {
       console.warn(`[Image Missing] Could not load ${enemy.image}, using fallback.`);
       imgElement.dataset.fallbackUsed = "true";
-      imgElement.src = 'assets/monsters/default_enemy.png';
+      imgElement.src = '/assets/monsters/default_enemy.png';
     }
   };
 
@@ -104,7 +104,7 @@ function updateSkillTracker() {
     const percent = Math.min(100, Math.floor((xp / xpToNext) * 100));
     const li = document.createElement('li');
     li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
-      <img src='assets/skills/${skill.toLowerCase()}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
+      <img src='/assets/skills/${skill.toLowerCase()}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
       ${skill} — Lv. ${level} (${percent}%)</a>`;
     container.appendChild(li);
   }
@@ -151,7 +151,7 @@ function startBattle() {
       enemyHP = freshEnemy.hp;
       document.getElementById("enemy-hp").innerText = enemyHP;
       document.getElementById("enemy-name").innerText = enemy.name;
-      document.getElementById("enemy-image").src = enemy.image;
+      document.getElementById("enemy-image").src = '/' + enemy.image;
 
       log(`🔄 ${enemy.name} respawned!`);
       justRespawned = true;
@@ -203,7 +203,7 @@ function mapSkillName(style) {
   return 'Attack';
 }
 
-// ✅ Re-added: heal function
+// ✅ Make eatFood and stopBattle global for inline buttons
 function eatFood() {
   const healAmount = 5;
   if (playerHP < 100) {
@@ -221,3 +221,7 @@ window.onload = () => {
   updateSkillTracker();
   setInterval(updateSaveTimer, 1000);
 };
+
+// Make food + stopBattle globally available for HTML onclick
+window.eatFood = eatFood;
+window.stopBattle = stopBattle;
