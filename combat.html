@@ -105,6 +105,18 @@
       0% { opacity: 1; }
       100% { opacity: 0; }
     }
+    .xp-bar {
+      width: 100%;
+      height: 10px;
+      background: #222;
+      margin: 5px 0;
+      border: 1px solid #00ff99;
+      position: relative;
+    }
+    .xp-bar div {
+      height: 100%;
+      background: #00ff99;
+    }
   </style>
 </head>
 <body>
@@ -113,7 +125,9 @@
     <button onclick="saveProgress()">💾 Cloud Save</button>
   </div>
 
-  <h1>⚔️ Combat Mode <button onclick="window.location.href='home.html'" class="btn" style="float:right">🛑 Escape</button></h1>
+  <h1>⚔️ Combat Mode 
+    <button onclick="window.location.href='home.html'" class="btn" style="float:right">🛑 Escape</button>
+  </h1>
 
   <div id="combat-area">
     <div id="combat-style-panel">
@@ -240,7 +254,6 @@
 
     setInterval(updateSaveTime, 1000);
 
-    // ✅ Merged load event so it doesn't overwrite combat.js onload
     window.addEventListener('load', () => {
       updateSaveTime();
       renderCombatSkills();
