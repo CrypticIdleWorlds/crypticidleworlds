@@ -1,15 +1,5 @@
 // skillsSystem.js
 
-// Define your non-combat skills
-const skills = {
-    slayer: { xp: 0, level: 1, active: false },
-    cryptomining: { xp: 0, level: 1, active: false },
-    datafishing: { xp: 0, level: 1, active: false },
-    codecraft: { xp: 0, level: 1, active: false },
-    forgentics: { xp: 0, level: 1, active: false },
-    systemHacking: { xp: 0, level: 1, active: false },
-};
-
 // Skill mechanics configuration (creative + unique)
 const skillConfigs = {
     cryptomining: {
@@ -43,32 +33,37 @@ const skillConfigs = {
     }
 };
 
+// Track active skills (instead of a full local skills object)
+const activeSkills = {};
+
 // Start training a skill
 function startSkill(skill) {
-    if (!skills[skill] || skills[skill].active) return;
-    skills[skill].active = true;
+    if (!playerSkills[skill] || activeSkills[skill]) return;
+    activeSkills[skill] = true;
     logSkillEvent(`${capitalize(skill)} training started.`);
     trainSkill(skill);
 }
 
 // Stop training a skill
 function stopSkill(skill) {
-    if (!skills[skill]) return;
-    skills[skill].active = false;
+    if (!playerSkills[skill]) return;
+    activeSkills[skill] = false;
     logSkillEvent(`${capitalize(skill)} training stopped.`);
 }
 
 // Core training loop
 function trainSkill(skill) {
-    if (!skills[skill].active) return;
+    if (!activeSkills[skill]) return;
     const cfg = skillConfigs[skill];
     if (!cfg) return;
 
     setTimeout(() => {
-        if (!skills[skill].active) return;
+        if (!activeSkills[skill]) return;
 
-        // Award XP and item
-        skills[skill].xp += cfg.xpPerAction;
+        // ✅ Award XP globally
+        addXP(skill, cfg.xpPerAction);
+
+        // Award item to inventory
         if (window.playerInventory) {
             if (!playerInventory[cfg.itemGained]) playerInventory[cfg.itemGained] = 0;
             playerInventory[cfg.itemGained]++;
@@ -92,11 +87,11 @@ function updateGlobalSkillUI() {
     const tracker = document.getElementById('global-skill-tracker');
     if (!tracker) return;
 
-    tracker.innerHTML = Object.keys(skills).map(skill => {
-        const s = skills[skill];
+    tracker.innerHTML = Object.keys(skillConfigs).map(skill => {
+        const s = playerSkills[skill];
         const percent = getXpPercent(s.xp, s.level);
         return `
-            <div class="skill-entry ${s.active ? 'active-skill' : ''}">
+            <div class="skill-entry ${activeSkills[skill] ? 'active-skill' : ''}">
                 <strong>${capitalize(skill)}</strong>: Level ${s.level} - ${percent}% to next level
                 <div class="xp-bar"><div style="width:${percent}%"></div></div>
             </div>
@@ -109,11 +104,13 @@ function capitalize(s) {
     return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-// Calculate XP percent (basic placeholder logic)
+// ✅ Real XP percent based on XP table
 function getXpPercent(xp, level) {
-    const nextLevelXp = (level + 1) * 100; // Example curve
-    const currentLevelXp = level * 100;
-    return Math.min(100, ((xp - currentLevelXp) / (nextLevelXp - currentLevelXp)) * 100).toFixed(1);
+    if (!window.xpTable || xpTable.length === 0) return 0;
+    const currentLevelXP = xpTable.find(x => x.level === level)?.xp || 0;
+    const nextLevelXP = xpTable.find(x => x.level === level + 1)?.xp || currentLevelXP;
+    const percent = ((xp - currentLevelXP) / (nextLevelXP - currentLevelXP)) * 100;
+    return Math.min(100, Math.max(0, percent)).toFixed(1);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
