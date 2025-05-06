@@ -13,6 +13,7 @@ let enemyHP = 0;
 let playerHP = 100;
 let isBattling = false;
 let battleInterval;  // ✅ GLOBAL loop handler
+let justRespawned = false;  // ✅ FLAG to prevent instant re-kill
 
 function getParam(param) {
   return new URLSearchParams(window.location.search).get(param);
@@ -83,9 +84,9 @@ function initCombat() {
 function updateSkillTracker() {
   const container = document.getElementById('combat-skill-tracker');
   container.innerHTML = '';
-  for (const skill in playerSkills) {
-    const level = playerSkills[skill].level;
-    const xp = playerSkills[skill].xp;
+  for (const skill in playerData.skills) {   // ✅ FIXED: use playerData.skills
+    const level = playerData.skills[skill].level;
+    const xp = playerData.skills[skill].xp;
     const nextLevelXP = (window.xpTable || []).find(x => x.level === level + 1)?.xp || xp;
     const percent = Math.min(100, Math.floor((xp / nextLevelXP) * 100));
     const li = document.createElement('li');
@@ -106,13 +107,19 @@ function startBattle() {
   if (isBattling) return;
   isBattling = true;
 
-  battleInterval = setInterval(() => {  // ✅ GLOBAL battle loop now
+  battleInterval = setInterval(() => {
     const selectedMidBattle = document.querySelector('input[name="combatStyle"]:checked');
 
     if (!selectedMidBattle) {
       log('⚠️ Battle paused: No combat style selected.');
       stopBattle();
       alert("⚠️ Please choose a combat style to continue battling!");
+      return;
+    }
+
+    // ✅ SKIP 1 cycle after respawn to prevent insta-kill
+    if (justRespawned) {
+      justRespawned = false;
       return;
     }
 
@@ -128,6 +135,7 @@ function startBattle() {
       enemyHP = enemy.hp;
       document.getElementById("enemy-hp").innerText = enemyHP;
       log(`🔄 ${enemy.name} respawned!`);
+      justRespawned = true;  // ✅ mark for skip next loop
     } else {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
