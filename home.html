@@ -55,7 +55,6 @@
       100% { opacity: 0; }
     }
     .hidden { display: none; }
-    /* Global skill tracker styles */
     #global-skill-tracker {
       background: #111;
       padding: 10px;
@@ -142,7 +141,6 @@
     </main>
   </div>
 
-  <!-- Global skill tracker -->
   <div id="global-skill-tracker"></div>
 
   <div id="terminal-log" style="padding:10px;background:#000;border-top:2px solid #00ff99;height:120px;overflow-y:auto;font-size:12px;">
@@ -150,7 +148,6 @@
   </div>
   <div id="level-up-popup" class="level-up-message"></div>
 
-  <!-- New JS includes -->
   <script src="js/items.js"></script>
   <script src="js/masterySystem.js"></script>
   <script src="js/achievementsSystem.js"></script>
@@ -159,7 +156,6 @@
   <script src="js/skills.js"></script>
   <script src="js/skillsSystem.js"></script>
 
-  <!-- Logic -->
   <script>
     const skillsConfig = {
       attack: { displayName: 'Melee Combat', icon: 'assets/skills/attack.png' },
@@ -252,7 +248,7 @@
       if (isCombat) {
         const combatBtn = document.createElement('button');
         combatBtn.textContent = '⚔️ Enter Combat';
-        combatBtn.onclick = () => window.location.href = 'skills/skillattack.html'; // ✅ changed to region page
+        combatBtn.onclick = () => window.location.href = 'skills/skillattack.html'; // ✅ updated path
         combatBtn.style.marginBottom = '10px';
         container.appendChild(combatBtn);
       }
