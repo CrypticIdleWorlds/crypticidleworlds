@@ -1,8 +1,5 @@
 window.enemies = {
-  ...
-};
-
-  "ashborn_revenant": {
+    "ashborn_revenant": {
     "name": "Ashborn Revenant",
     "type": "monster",
     "image": "assets/monsters/ashborn_revenant.png",
