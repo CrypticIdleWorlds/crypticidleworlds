@@ -19,7 +19,7 @@
       margin: 0;
     }
     .login-container {
-      background-color: transparent; /* fully transparent box */
+      background-color: transparent;
       padding: 40px;
       border: 2px solid #00ff99;
       width: 320px;
@@ -33,7 +33,7 @@
       width: 100%;
       margin: 10px 0;
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.8); /* keep inputs/buttons dark */
+      background-color: rgba(0, 0, 0, 0.8);
       color: #00ff99;
       border: 1px solid #00ff99;
     }
@@ -58,6 +58,20 @@
   </div>
 
   <script>
+    const defaultSkills = {
+      attack: { xp: 0, level: 1 },
+      strength: { xp: 0, level: 1 },
+      defense: { xp: 0, level: 1 },
+      magic: { xp: 0, level: 1 },
+      ranged: { xp: 0, level: 1 },
+      slayer: { xp: 0, level: 1 },
+      cryptomining: { xp: 0, level: 1 },
+      datafishing: { xp: 0, level: 1 },
+      codecraft: { xp: 0, level: 1 },
+      forgenetics: { xp: 0, level: 1 },
+      system_hacking: { xp: 0, level: 1 }
+    };
+
     function startGame() {
       const name = document.getElementById('displayName').value.trim();
       if (!name) {
@@ -66,28 +80,16 @@
       }
       localStorage.setItem('displayName', name);
       if (!localStorage.getItem('skillData')) {
-        localStorage.setItem('skillData', JSON.stringify({
-          attack: { xp: 0, level: 1 },
-          strength: { xp: 0, level: 1 },
-          defense: { xp: 0, level: 1 },
-          magic: { xp: 0, level: 1 },
-          ranged: { xp: 0, level: 1 },
-          slayer: { xp: 0, level: 1 },
-          cryptomining: { xp: 0, level: 1 },
-          datafishing: { xp: 0, level: 1 },
-          codecraft: { xp: 0, level: 1 },
-          forgenetics: { xp: 0, level: 1 },
-          system_hacking: { xp: 0, level: 1 }
-        }));
+        localStorage.setItem('skillData', JSON.stringify(defaultSkills));
       }
       window.location.href = 'home.html';
     }
 
     function exportSave() {
-      const skillData = localStorage.getItem('skillData');
-      const displayName = localStorage.getItem('displayName');
-      const save = JSON.stringify({ skillData, displayName });
-      const blob = new Blob([save], { type: 'application/json' });
+      const skillData = JSON.parse(localStorage.getItem('skillData') || '{}');
+      const displayName = localStorage.getItem('displayName') || '';
+      const saveData = { skillData, displayName };
+      const blob = new Blob([JSON.stringify(saveData)], { type: 'application/json' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
       link.download = 'cryptic_save.json';
@@ -101,8 +103,12 @@
       reader.onload = (e) => {
         try {
           const data = JSON.parse(e.target.result);
-          if (data.skillData) localStorage.setItem('skillData', data.skillData);
-          if (data.displayName) localStorage.setItem('displayName', data.displayName);
+          if (data.skillData) {
+            localStorage.setItem('skillData', JSON.stringify(data.skillData));
+          }
+          if (data.displayName) {
+            localStorage.setItem('displayName', data.displayName);
+          }
           alert('Save loaded! Reloading...');
           window.location.href = 'home.html';
         } catch {
