@@ -1,4 +1,7 @@
-const enemies = {
+window.enemies = {
+  ...
+};
+
   "ashborn_revenant": {
     "name": "Ashborn Revenant",
     "type": "monster",
