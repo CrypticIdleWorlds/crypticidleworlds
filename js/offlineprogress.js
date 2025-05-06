@@ -3,8 +3,8 @@
 // CONFIG: Set your baseline XP gain rate and loot table per second here
 const OFFLINE_XP_PER_SECOND = 2; // Example: 2 XP per second idle
 const OFFLINE_LOOT_TABLE = [
-  { name: 'Gold Coins', perSecond: 1 }, // 1 coin per second
-  { name: 'Ashfang Scale', perSecond: 0.01 }, // 1 every ~100 sec
+    { name: 'Gold Coins', perSecond: 1 }, // 1 coin per second
+    { name: 'Ashfang Scale', perSecond: 0.01 }, // 1 every ~100 sec
 ];
 
 function saveLastActiveTime() {
@@ -68,12 +68,15 @@ function showOfflineProgressSummary(progress) {
 document.addEventListener('DOMContentLoaded', () => {
     const progress = getOfflineProgress();
     if (progress) {
-        // Apply XP
-        if (window.playerSkills) {
-            playerSkills.combat.xp += progress.totalXpGained;
-        }
+        // ✅ Apply XP evenly across combat skills
+        const combatSkills = ['attack', 'strength', 'defense', 'magic', 'ranged'];
+        const xpPerSkill = Math.floor(progress.totalXpGained / combatSkills.length);
 
-        // Apply loot
+        combatSkills.forEach(skill => {
+            addXP(skill, xpPerSkill);
+        });
+
+        // ✅ Apply loot
         if (window.playerInventory) {
             progress.lootGained.forEach(item => {
                 if (!playerInventory[item.name]) {
@@ -83,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Show popup
+        // ✅ Show popup
         showOfflineProgressSummary(progress);
     }
 });
