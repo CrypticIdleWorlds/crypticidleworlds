@@ -56,12 +56,8 @@ function initCombat() {
 
   const imgElement = document.getElementById("enemy-image");
 
-  // ✅ Auto-fix the path if needed
-  if (enemy.image.startsWith('monsters/')) {
-      imgElement.src = 'assets/' + enemy.image;  // Patch the path dynamically
-  } else {
-      imgElement.src = enemy.image;
-  }
+  // ✅ SIMPLIFIED: just use the exact path from your data
+  imgElement.src = enemy.image;
 
   // 🛡️ Fallback if image is missing (only triggers once)
   imgElement.onerror = () => {
@@ -94,25 +90,32 @@ function updateSkillTracker() {
 }
 
 function startBattle() {
+  // ✅ Check if a combat style is picked first
+  const selected = document.querySelector('input[name="combatStyle"]:checked');
+  if (!selected) {
+    alert("Please choose a combat style before starting the battle!");
+    return;
+  }
+
   if (isBattling) return;
   isBattling = true;
 
   const loop = setInterval(() => {
-   if (playerHP <= 0) {
-  log('[DEFEAT] You died. Redirecting...');
-  clearInterval(loop);
-  isBattling = false;
-  setTimeout(() => window.location.href = 'home.html', 2000);
-} else if (enemyHP <= 0) {
-  log(`[VICTORY] ${enemy.name} defeated.`);
-  const xpAmount = enemy.xp || 10;
-  addXP(selectedStyle, xpAmount);
-  updateSkillTracker();
-  enemyHP = enemy.hp;  // RESET enemy HP
-  document.getElementById("enemy-hp").innerText = enemyHP;
-  log(`🔄 ${enemy.name} respawned!`);
-}
- else {
+    if (playerHP <= 0) {
+      log('[DEFEAT] You died. Redirecting...');
+      clearInterval(loop);
+      isBattling = false;
+      setTimeout(() => window.location.href = 'home.html', 2000);
+    } else if (enemyHP <= 0) {
+      log(`[VICTORY] ${enemy.name} defeated.`);
+      const xpAmount = enemy.xp || 10;
+      addXP(selectedStyle, xpAmount);
+      updateSkillTracker();
+      enemyHP = enemy.hp;  // RESET enemy HP
+      document.getElementById("enemy-hp").innerText = enemyHP;
+      log(`🔄 ${enemy.name} respawned!`);
+      // ✅ Loop keeps running automatically
+    } else {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
       let dmgToPlayer = 0;
