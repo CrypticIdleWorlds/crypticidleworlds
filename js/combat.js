@@ -44,6 +44,14 @@ function updateSaveTimer() {
   document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
 }
 
+function saveProgress(showAlert = false) {
+  localStorage.setItem('playerData', JSON.stringify(playerData));
+  localStorage.setItem("lastSave", Date.now());
+  if (showAlert) {
+    alert("Progress saved to the cloud!");
+  }
+}
+
 function initCombat() {
   const enemyKey = getParam("enemy");
   if (!enemyKey || !enemies[enemyKey]) {
@@ -90,10 +98,9 @@ function updateSkillTracker() {
 }
 
 function startBattle() {
-  // ✅ Check if a combat style is picked first
   const selected = document.querySelector('input[name="combatStyle"]:checked');
   if (!selected) {
-    alert("Please choose a combat style before starting the battle!");
+    alert("⚠️ Please choose a combat style before starting the battle!");
     return;
   }
 
@@ -101,6 +108,16 @@ function startBattle() {
   isBattling = true;
 
   const loop = setInterval(() => {
+    // ✅ Check if combat style is still selected mid-battle
+    const selectedMidBattle = document.querySelector('input[name="combatStyle"]:checked');
+    if (!selectedMidBattle) {
+      log('⚠️ Battle paused: No combat style selected.');
+      clearInterval(loop);
+      isBattling = false;
+      alert("⚠️ Please choose a combat style to continue battling!");
+      return;
+    }
+
     if (playerHP <= 0) {
       log('[DEFEAT] You died. Redirecting...');
       clearInterval(loop);
