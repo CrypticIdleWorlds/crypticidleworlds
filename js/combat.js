@@ -3,7 +3,7 @@ let selectedStyle = null;
 document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
   radio.addEventListener('change', (e) => {
     selectedStyle = e.target.value;
-    log(`[STYLE] Selected ${selectedStyle}`);
+    log([STYLE] Selected ${selectedStyle});
   });
 });
 
@@ -40,7 +40,7 @@ function log(msg) {
 
 function floatText(target, text, type) {
   const el = document.createElement("div");
-  el.className = `damage ${type}`;
+  el.className = damage ${type};
   el.innerText = text;
   target.appendChild(el);
   setTimeout(() => el.remove(), 1000);
@@ -48,7 +48,7 @@ function floatText(target, text, type) {
 
 function triggerLevelUpMessage(skill, level) {
   const msg = document.getElementById("level-up-popup");
-  msg.innerText = `You are now level ${level} in ${skill.replace('_', ' ')}!`;
+  msg.innerText = You are now level ${level} in ${skill.replace('_', ' ')}!;
   msg.style.animation = 'none';
   msg.offsetHeight;
   msg.style.animation = null;
@@ -57,7 +57,7 @@ function triggerLevelUpMessage(skill, level) {
 function updateSaveTimer() {
   const now = Date.now();
   const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
-  document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
+  document.getElementById("last-save-time").innerText = Time since last save: ${elapsed}s;
 }
 
 function saveProgress(showAlert = false) {
@@ -71,7 +71,7 @@ function saveProgress(showAlert = false) {
 function initCombat() {
   const enemyKey = getParam("enemy");
   if (!enemyKey || !enemies[enemyKey]) {
-    log(`[ERROR] Enemy data not found for key: ${enemyKey}`);
+    log([ERROR] Enemy data not found for key: ${enemyKey});
     return;
   }
   enemy = enemies[enemyKey];
@@ -83,7 +83,7 @@ function initCombat() {
 
   imgElement.onerror = () => {
     if (!imgElement.dataset.fallbackUsed) {
-      console.warn(`[Image Missing] Could not load ${enemy.image}, using fallback.`);
+      console.warn([Image Missing] Could not load ${enemy.image}, using fallback.);
       imgElement.dataset.fallbackUsed = "true";
       imgElement.src = 'assets/monsters/default_enemy.png';
     }
@@ -91,7 +91,7 @@ function initCombat() {
 
   document.getElementById("enemy-hp").innerText = enemyHP;
   document.getElementById("player-hp").innerText = playerHP;
-  log(`[ENEMY] Encountered ${enemy.name} with ${enemy.hp} HP.`);
+  log([ENEMY] Encountered ${enemy.name} with ${enemy.hp} HP.);
 }
 
 function updateSkillTracker() {
@@ -103,9 +103,9 @@ function updateSkillTracker() {
     const xpToNext = playerData.skills[skill].xpToNext;
     const percent = Math.min(100, Math.floor((xp / xpToNext) * 100));
     const li = document.createElement('li');
-    li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
+    li.innerHTML = <a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
       <img src='assets/skills/${skill.toLowerCase()}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
-      ${skill} — Lv. ${level} (${percent}%)</a>`;
+      ${skill} — Lv. ${level} (${percent}%)</a>;
     container.appendChild(li);
   }
 }
@@ -140,7 +140,7 @@ function startBattle() {
       stopBattle();
       setTimeout(() => window.location.href = 'home.html', 2000);
     } else if (enemyHP <= 0) {
-      log(`[VICTORY] ${enemy.name} defeated.`);
+      log([VICTORY] ${enemy.name} defeated.);
       const xpAmount = enemy.xp || 10;
       addXP(selectedMidBattle.value, xpAmount);
       updateSkillTracker();
@@ -153,7 +153,7 @@ function startBattle() {
       document.getElementById("enemy-name").innerText = enemy.name;
       document.getElementById("enemy-image").src = enemy.image;
 
-      log(`🔄 ${enemy.name} respawned!`);
+      log(🔄 ${enemy.name} respawned!);
       justRespawned = true;
     } else {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
@@ -166,9 +166,9 @@ function startBattle() {
       playerHP -= dmgToPlayer;
       document.getElementById("enemy-hp").innerText = Math.max(enemyHP, 0);
       document.getElementById("player-hp").innerText = Math.max(playerHP, 0);
-      floatText(document.getElementById("enemy-box"), `-${dmgToEnemy}`, "enemy");
+      floatText(document.getElementById("enemy-box"), -${dmgToEnemy}, "enemy");
       if (dmgToPlayer > 0) {
-        floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
+        floatText(document.getElementById("player-box"), -${dmgToPlayer}, "player");
       }
     }
   }, (enemy.attackSpeed || 1) * 600);
@@ -210,9 +210,9 @@ function eatFood() {
     playerHP += healAmount;
     if (playerHP > 100) playerHP = 100;
     document.getElementById("player-hp").innerText = playerHP;
-    log(`🍞 You ate food and healed ${healAmount} HP.`);
+    log(🍞 You ate food and healed ${healAmount} HP.);
   } else {
-    log(`❌ Your HP is already full.`);
+    log(❌ Your HP is already full.);
   }
 }
 
@@ -220,9 +220,4 @@ window.onload = () => {
   initCombat();
   updateSkillTracker();
   setInterval(updateSaveTimer, 1000);
-};
-
-// ✅ Make eatFood accessible from inline HTML onclick
-window.eatFood = eatFood;
-
 };
