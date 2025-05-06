@@ -221,3 +221,8 @@ window.onload = () => {
   updateSkillTracker();
   setInterval(updateSaveTimer, 1000);
 };
+
+// ✅ Make eatFood accessible from inline HTML onclick
+window.eatFood = eatFood;
+
+};
