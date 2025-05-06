@@ -98,27 +98,21 @@ function startBattle() {
   isBattling = true;
 
   const loop = setInterval(() => {
-    if (enemyHP <= 0 || playerHP <= 0) {
-      if (playerHP <= 0) {
-        log('[DEFEAT] You died. Redirecting...');
-        clearInterval(loop);
-        isBattling = false;
-        setTimeout(() => window.location.href = 'home.html', 2000);
-        return;
-      }
-      log(`[VICTORY] ${enemy.name} defeated.`);
-
-      const xpAmount = enemy.xp || 10;  // fallback XP if enemy.xp is missing
-
-      // ✅ Add XP using the new global addXP()
-      addXP(selectedStyle, xpAmount);
-
-      updateSkillTracker();
-      enemyHP = enemy.hp;
-      document.getElementById("enemy-hp").innerText = enemyHP;
-      isBattling = false;
-      startBattle();  // auto-loop
-    } else {
+   if (playerHP <= 0) {
+  log('[DEFEAT] You died. Redirecting...');
+  clearInterval(loop);
+  isBattling = false;
+  setTimeout(() => window.location.href = 'home.html', 2000);
+} else if (enemyHP <= 0) {
+  log(`[VICTORY] ${enemy.name} defeated.`);
+  const xpAmount = enemy.xp || 10;
+  addXP(selectedStyle, xpAmount);
+  updateSkillTracker();
+  enemyHP = enemy.hp;  // RESET enemy HP
+  document.getElementById("enemy-hp").innerText = enemyHP;
+  log(`🔄 ${enemy.name} respawned!`);
+}
+ else {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
       let dmgToPlayer = 0;
