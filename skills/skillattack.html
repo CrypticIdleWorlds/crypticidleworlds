@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Train: Striker Protocol (Attack)</title>
+  <title>Train: Striker Protocol (Ranged)</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
@@ -85,17 +85,14 @@
 
   <div id="global-skill-tracker"></div>
 
-  <script src="../js/items.js"></script>
-  <script src="../js/masterySystem.js"></script>
-  <script src="../js/achievementsSystem.js"></script>
-  <script src="../js/combatLogSystem.js"></script>
-  <script src="../js/offlineProgress.js"></script>
-  <script src="../js/skills.js"></script>
+  <!-- ✅ Updated JS includes -->
+  <script src="../js/game.js"></script>
   <script src="../js/skillsSystem.js"></script>
+  <script src="../js/offlineProgress.js"></script>
 
   <script>
     function saveProgress() {
-      localStorage.setItem("lastSave", Date.now());
+      saveGameData(); // ✅ Hooked into your full global save
       alert("Progress saved to the cloud!");
     }
 
@@ -156,6 +153,9 @@
       lockRegions();
       updateSkillLevels();
       updateSaveTime();
+      if (typeof updateGlobalSkillUI === 'function') {
+        updateGlobalSkillUI();
+      }
     };
   </script>
 </body>
