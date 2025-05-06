@@ -16,13 +16,28 @@ let playerEquipment = {
 
 // Load items.json and cache it
 async function loadItemsData() {
-  const res = await fetch('data/items.json');
-  itemsData = await res.json();
+  try {
+    const res = await fetch('data/items.json');
+    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    itemsData = await res.json();
+    console.log('Items data loaded:', itemsData);
+  } catch (err) {
+    console.error('Failed to load items.json:', err);
+    itemsData = {};
+  }
 
-  // Try to load equipped gear from localStorage
+  // Load equipped gear after items are ready
   const saved = localStorage.getItem('playerEquipment');
   if (saved) {
-    playerEquipment = JSON.parse(saved);
+    try {
+      const parsed = JSON.parse(saved);
+      if (typeof parsed === 'object') {
+        playerEquipment = parsed;
+        console.log('Loaded equipped gear:', playerEquipment);
+      }
+    } catch (e) {
+      console.warn('Failed to parse playerEquipment:', e);
+    }
   }
 }
 
@@ -40,18 +55,24 @@ function equipItem(itemId) {
   }
 
   const slot = item.slot;
+  if (!slot) {
+    console.error(`Item ${itemId} is missing a slot property.`);
+    return;
+  }
   if (!playerEquipment.hasOwnProperty(slot)) {
-    console.error('Invalid slot:', slot);
+    console.error(`Invalid slot: ${slot} for item ${itemId}`);
     return;
   }
 
   playerEquipment[slot] = itemId;
+  console.log(`Equipped ${item.name} (${itemId}) to ${slot}`);
   saveEquippedGear();
 }
 
 // Unequip an item
 function unequipItem(slot) {
   if (playerEquipment.hasOwnProperty(slot)) {
+    console.log(`Unequipped item from ${slot}`);
     playerEquipment[slot] = null;
     saveEquippedGear();
   }
@@ -88,6 +109,11 @@ function getEquippedStats() {
 
   return total;
 }
+
+// Expose to window (optional but useful for debugging)
+window.playerEquipment = playerEquipment;
+window.getItem = getItem;
+window.getEquippedStats = getEquippedStats;
 
 // Call this on page load for any page using items.js
 loadItemsData();
