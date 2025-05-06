@@ -104,7 +104,7 @@ function updateSkillTracker() {
     const percent = Math.min(100, Math.floor((xp / xpToNext) * 100));
     const li = document.createElement('li');
     li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
-      <img src='assets/skills/${skill}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
+      <img src='assets/skills/${skill.toLowerCase()}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
       ${skill} — Lv. ${level} (${percent}%)</a>`;
     container.appendChild(li);
   }
@@ -145,7 +145,7 @@ function startBattle() {
       addXP(selectedMidBattle.value, xpAmount);
       updateSkillTracker();
 
-      // FULL reset of monster
+      // FULL reset of monster after respawn
       const freshEnemy = enemies[getParam("enemy")];
       enemy = { ...freshEnemy };
       enemyHP = freshEnemy.hp;
@@ -179,7 +179,6 @@ function stopBattle() {
   isBattling = false;
 }
 
-// ✅ XP handler
 function addXP(style, amount) {
   const skillName = mapSkillName(style);
   if (playerData.skills[skillName]) {
@@ -195,7 +194,6 @@ function addXP(style, amount) {
   }
 }
 
-// ✅ Map style -> skill name
 function mapSkillName(style) {
   if (style === 'attack') return 'Attack';
   if (style === 'strength') return 'Strength';
