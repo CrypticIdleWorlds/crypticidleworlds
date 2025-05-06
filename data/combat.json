@@ -1,0 +1,39 @@
+{
+  "combat_styles": {
+    "attack": {
+      "id": "attack",
+      "name": "Striker Protocol",
+      "description": "Focused on precision strikes that boost your Attack level.",
+      "xpMultiplier": 4.0
+    },
+    "strength": {
+      "id": "strength",
+      "name": "Force Module",
+      "description": "Crushing power strikes to train your Strength stat.",
+      "xpMultiplier": 4.0
+    },
+    "defense": {
+      "id": "defense",
+      "name": "Barrier Matrix",
+      "description": "Defensive stance to train your Defense skill and reduce damage taken.",
+      "xpMultiplier": 4.0
+    },
+    "magic": {
+      "id": "magic",
+      "name": "Neurohex",
+      "description": "Utilizes advanced spellcraft to boost your Magic stat.",
+      "xpMultiplier": 4.0
+    },
+    "ranged": {
+      "id": "ranged",
+      "name": "Synapsis BowLine",
+      "description": "Fires from afar, boosting your Ranged skill.",
+      "xpMultiplier": 4.0
+    }
+  },
+  "xp_distribution": {
+    "damage_xp": "damage * xpMultiplier",
+    "osrs_style": true,
+    "note": "Each point of damage dealt awards 4 XP by default, matching RuneScape’s XP model."
+  }
+}
