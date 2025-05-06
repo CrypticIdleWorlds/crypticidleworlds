@@ -1,18 +1,3 @@
-// XP table (same as RuneScape style)
-const xpTable = Array(100).fill(0).map((_, level) => {
-  let xp = 0;
-  for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-  return Math.floor(xp / 4);
-});
-
-let skillData = JSON.parse(localStorage.getItem("skillData")) || {
-  attack: { xp: 0, level: 1 },
-  strength: { xp: 0, level: 1 },
-  defense: { xp: 0, level: 1 },
-  magic: { xp: 0, level: 1 },
-  ranged: { xp: 0, level: 1 }
-};
-
 let selectedStyle = 'attack';
 document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
   radio.addEventListener('change', (e) => {
@@ -53,40 +38,6 @@ function triggerLevelUpMessage(skill, level) {
   msg.style.animation = null;
 }
 
-function grantXP(style, xp) {
-  if (style.includes('_')) {
-    const split = style.split('_');
-    split.forEach(s => {
-      skillData[s].xp += Math.floor(xp / split.length);
-      log(`[XP] +${Math.floor(xp / split.length)} ${s} XP`);
-      for (let lvl = 1; lvl <= 99; lvl++) {
-        if (skillData[s].xp >= xpTable[lvl] && skillData[s].level < lvl) {
-          skillData[s].level = lvl;
-          log(`[LEVEL UP] ${s} is now Lv. ${lvl}!`);
-          triggerLevelUpMessage(s, lvl);
-        }
-      }
-    });
-  } else {
-    skillData[style].xp += xp;
-    log(`[XP] +${xp} ${style} XP`);
-    for (let lvl = 1; lvl <= 99; lvl++) {
-      if (skillData[style].xp >= xpTable[lvl] && skillData[style].level < lvl) {
-        skillData[style].level = lvl;
-        log(`[LEVEL UP] ${style} is now Lv. ${lvl}!`);
-        triggerLevelUpMessage(style, lvl);
-      }
-    }
-  }
-}
-
-function saveProgress() {
-  localStorage.setItem("skillData", JSON.stringify(skillData));
-  localStorage.setItem("lastSave", Date.now());
-  lastSaveTimestamp = Date.now();
-  log("[SAVE] Progress saved.");
-}
-
 function updateSaveTimer() {
   const now = Date.now();
   const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
@@ -105,12 +56,12 @@ function initCombat() {
 
   const imgElement = document.getElementById("enemy-image");
 
-// ✅ Auto-fix the path if needed
-if (enemy.image.startsWith('monsters/')) {
-    imgElement.src = 'assets/' + enemy.image;  // Patch the path dynamically
-} else {
-    imgElement.src = enemy.image;
-}
+  // ✅ Auto-fix the path if needed
+  if (enemy.image.startsWith('monsters/')) {
+      imgElement.src = 'assets/' + enemy.image;  // Patch the path dynamically
+  } else {
+      imgElement.src = enemy.image;
+  }
 
   // 🛡️ Fallback if image is missing (only triggers once)
   imgElement.onerror = () => {
@@ -129,11 +80,11 @@ if (enemy.image.startsWith('monsters/')) {
 function updateSkillTracker() {
   const container = document.getElementById('combat-skill-tracker');
   container.innerHTML = '';
-  for (const skill in skillData) {
-    const level = skillData[skill].level;
-    const xp = skillData[skill].xp;
-    const nextXP = xpTable[level + 1] || xpTable[99];
-    const percent = Math.min(100, Math.floor((xp / nextXP) * 100));
+  for (const skill in playerSkills) {
+    const level = playerSkills[skill].level;
+    const xp = playerSkills[skill].xp;
+    const nextLevelXP = (window.xpTable || []).find(x => x.level === level + 1)?.xp || xp;
+    const percent = Math.min(100, Math.floor((xp / nextLevelXP) * 100));
     const li = document.createElement('li');
     li.innerHTML = `<a href='skill${skill}.html' style='color:#00ff99;text-decoration:none;'>
       <img src='assets/skills/${skill}.png' width='18' style='vertical-align:middle;margin-right:4px;'>
@@ -145,7 +96,7 @@ function updateSkillTracker() {
 function startBattle() {
   if (isBattling) return;
   isBattling = true;
-  
+
   const loop = setInterval(() => {
     if (enemyHP <= 0 || playerHP <= 0) {
       if (playerHP <= 0) {
@@ -156,13 +107,12 @@ function startBattle() {
         return;
       }
       log(`[VICTORY] ${enemy.name} defeated.`);
-      const xpMap = enemy.xpDrop || { attack: enemy.xp };
-      for (const skill in xpMap) {
-        if (xpMap[skill] > 0) {
-          grantXP(skill, xpMap[skill]);
-        }
-      }
-      localStorage.setItem("skillData", JSON.stringify(skillData));
+
+      const xpAmount = enemy.xp || 10;  // fallback XP if enemy.xp is missing
+
+      // ✅ Add XP using the new global addXP()
+      addXP(selectedStyle, xpAmount);
+
       updateSkillTracker();
       enemyHP = enemy.hp;
       document.getElementById("enemy-hp").innerText = enemyHP;
@@ -172,8 +122,8 @@ function startBattle() {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
       let dmgToPlayer = 0;
-      if (hitChance < (enemy.accuracy || 0.5)) {  // Added default accuracy if missing
-        dmgToPlayer = Math.floor(Math.random() * (enemy.maxHit || 5));  // Added default maxHit if missing
+      if (hitChance < (enemy.accuracy || 0.5)) {  // Default accuracy if missing
+        dmgToPlayer = Math.floor(Math.random() * (enemy.maxHit || 5));  // Default maxHit if missing
       }
       enemyHP -= dmgToEnemy;
       playerHP -= dmgToPlayer;
@@ -187,7 +137,7 @@ function startBattle() {
   }, (enemy.attackSpeed || 1) * 600);  // Default attack speed if missing
 }
 
-// 🚀 Initialize everything (no fetch, use enemy-data.js)
+// 🚀 Initialize everything
 window.onload = () => {
   initCombat();
   updateSkillTracker();
