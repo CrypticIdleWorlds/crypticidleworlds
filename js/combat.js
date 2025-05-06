@@ -12,6 +12,7 @@ let enemy = null;
 let enemyHP = 0;
 let playerHP = 100;
 let isBattling = false;
+let battleInterval;  // ✅ GLOBAL loop handler
 
 function getParam(param) {
   return new URLSearchParams(window.location.search).get(param);
@@ -45,7 +46,6 @@ function updateSaveTimer() {
   document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
 }
 
-// ✅ Save function now takes a flag to only alert when you manually save
 function saveProgress(showAlert = false) {
   localStorage.setItem('playerData', JSON.stringify(playerData));
   localStorage.setItem("lastSave", Date.now());
@@ -106,27 +106,23 @@ function startBattle() {
   if (isBattling) return;
   isBattling = true;
 
-  const loop = setInterval(() => {
+  battleInterval = setInterval(() => {  // ✅ GLOBAL battle loop now
     const selectedMidBattle = document.querySelector('input[name="combatStyle"]:checked');
 
-    // ✅ STOP if no combat style mid-battle
     if (!selectedMidBattle) {
       log('⚠️ Battle paused: No combat style selected.');
-      clearInterval(loop);
-      isBattling = false;
+      stopBattle();
       alert("⚠️ Please choose a combat style to continue battling!");
       return;
     }
 
     if (playerHP <= 0) {
       log('[DEFEAT] You died. Redirecting...');
-      clearInterval(loop);
-      isBattling = false;
+      stopBattle();
       setTimeout(() => window.location.href = 'home.html', 2000);
     } else if (enemyHP <= 0) {
       log(`[VICTORY] ${enemy.name} defeated.`);
       const xpAmount = enemy.xp || 10;
-      // ✅ Use the LATEST selected style dynamically:
       addXP(selectedMidBattle.value, xpAmount);
       updateSkillTracker();
       enemyHP = enemy.hp;
@@ -149,6 +145,12 @@ function startBattle() {
       }
     }
   }, (enemy.attackSpeed || 1) * 600);
+}
+
+// ✅ Add stopBattle so you can stop the loop cleanly
+function stopBattle() {
+  clearInterval(battleInterval);
+  isBattling = false;
 }
 
 // 🚀 Initialize everything
