@@ -154,7 +154,10 @@
   <script src="js/bank.js"></script>
 
   <script>
+    // Fallback init if missing
     let skills = JSON.parse(localStorage.getItem('playerSkills')) || {};
+    let bankInventory = window.bankInventory || {};
+    let playerEquipment = window.playerEquipment || {};
 
     if (Object.keys(skills).length === 0) {
       skills = {
@@ -168,7 +171,9 @@
     }
 
     async function renderBank() {
-      await loadItemsData();
+      if (typeof loadItemsData === 'function') {
+        await loadItemsData();
+      }
       const grid = document.getElementById('bankGrid');
       grid.innerHTML = '';
 
@@ -176,30 +181,24 @@
       let filledSlots = 0;
 
       for (const itemId in bankInventory) {
-        const item = getItem(itemId);
+        const item = getItem(itemId) || { name: 'Unknown', image: 'default.png', type: 'unknown' };
         const count = bankInventory[itemId];
 
         const div = document.createElement('div');
         div.className = 'item';
 
-        if (item) {
-          div.innerHTML = `
-            <img src="assets/items/${item.image || 'default.png'}" alt="${item.name}" onerror="this.src='assets/items/default.png'">
-            <div>${item.name}</div>
-            <div>Qty: ${count}</div>
-            ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}'); renderGear();">Equip</button>` : ''}
-          `;
-        } else {
-          div.innerHTML = `
-            <img src="assets/items/default.png" alt="Unknown">
-            <div>Unknown Item</div>
-            <div>Qty: ${count}</div>
-          `;
-        }
+        div.innerHTML = `
+          <img src="assets/items/${item.image || 'default.png'}" alt="${item.name}" onerror="this.src='assets/items/default.png'">
+          <div>${item.name}</div>
+          <div>Qty: ${count}</div>
+          ${item.type !== 'consumable' ? `<button class="btn" onclick="equipItem('${itemId}'); renderGear();">Equip</button>` : ''}
+        `;
+
         grid.appendChild(div);
         filledSlots++;
       }
 
+      // Fill empty slots
       for (let i = filledSlots; i < totalSlots; i++) {
         const div = document.createElement('div');
         div.className = 'item';
