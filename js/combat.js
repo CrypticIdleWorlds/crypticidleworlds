@@ -1,4 +1,5 @@
-let selectedStyle = 'attack';
+// ✅ Setup radio buttons & selectedStyle tracker
+let selectedStyle = null;
 document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
   radio.addEventListener('change', (e) => {
     selectedStyle = e.target.value;
@@ -44,6 +45,7 @@ function updateSaveTimer() {
   document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
 }
 
+// ✅ Save function now takes a flag to only alert when you manually save
 function saveProgress(showAlert = false) {
   localStorage.setItem('playerData', JSON.stringify(playerData));
   localStorage.setItem("lastSave", Date.now());
@@ -63,16 +65,13 @@ function initCombat() {
   document.getElementById("enemy-name").innerText = enemy.name;
 
   const imgElement = document.getElementById("enemy-image");
-
-  // ✅ SIMPLIFIED: just use the exact path from your data
   imgElement.src = enemy.image;
 
-  // 🛡️ Fallback if image is missing (only triggers once)
   imgElement.onerror = () => {
     if (!imgElement.dataset.fallbackUsed) {
       console.warn(`[Image Missing] Could not load ${enemy.image}, using fallback.`);
       imgElement.dataset.fallbackUsed = "true";
-      imgElement.src = 'assets/monsters/default_enemy.png';  // Fallback image location
+      imgElement.src = 'assets/monsters/default_enemy.png';
     }
   };
 
@@ -108,8 +107,9 @@ function startBattle() {
   isBattling = true;
 
   const loop = setInterval(() => {
-    // ✅ Check if combat style is still selected mid-battle
     const selectedMidBattle = document.querySelector('input[name="combatStyle"]:checked');
+
+    // ✅ STOP if no combat style mid-battle
     if (!selectedMidBattle) {
       log('⚠️ Battle paused: No combat style selected.');
       clearInterval(loop);
@@ -126,18 +126,18 @@ function startBattle() {
     } else if (enemyHP <= 0) {
       log(`[VICTORY] ${enemy.name} defeated.`);
       const xpAmount = enemy.xp || 10;
-      addXP(selectedStyle, xpAmount);
+      // ✅ Use the LATEST selected style dynamically:
+      addXP(selectedMidBattle.value, xpAmount);
       updateSkillTracker();
-      enemyHP = enemy.hp;  // RESET enemy HP
+      enemyHP = enemy.hp;
       document.getElementById("enemy-hp").innerText = enemyHP;
       log(`🔄 ${enemy.name} respawned!`);
-      // ✅ Loop keeps running automatically
     } else {
       const dmgToEnemy = Math.floor(Math.random() * 10 + 5);
       const hitChance = Math.random();
       let dmgToPlayer = 0;
-      if (hitChance < (enemy.accuracy || 0.5)) {  // Default accuracy if missing
-        dmgToPlayer = Math.floor(Math.random() * (enemy.maxHit || 5));  // Default maxHit if missing
+      if (hitChance < (enemy.accuracy || 0.5)) {
+        dmgToPlayer = Math.floor(Math.random() * (enemy.maxHit || 5));
       }
       enemyHP -= dmgToEnemy;
       playerHP -= dmgToPlayer;
@@ -148,7 +148,7 @@ function startBattle() {
         floatText(document.getElementById("player-box"), `-${dmgToPlayer}`, "player");
       }
     }
-  }, (enemy.attackSpeed || 1) * 600);  // Default attack speed if missing
+  }, (enemy.attackSpeed || 1) * 600);
 }
 
 // 🚀 Initialize everything
