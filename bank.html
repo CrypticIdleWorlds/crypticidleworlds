@@ -47,6 +47,17 @@
       gap: 15px;
       justify-content: center;
     }
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "head body legs"
+        "hands feet cape"
+        "neck ring aura"
+        "weapon weapon weapon";
+      gap: 10px;
+      justify-items: center;
+    }
     .item {
       background: rgba(0,0,0,0.8);
       border: 1px solid #00ff99;
@@ -121,7 +132,7 @@
 
     <div class="box gear-box">
       <h2>🛡️ Equipped Gear</h2>
-      <div class="grid" id="gearGrid"></div>
+      <div class="gear-grid" id="gearGrid"></div>
     </div>
 
     <div class="box skills-box">
@@ -143,10 +154,8 @@
   <script src="js/bank.js"></script>
 
   <script>
-    // LOAD PLAYER SKILLS
     let skills = JSON.parse(localStorage.getItem('playerSkills')) || {};
 
-    // FALLBACK if no save yet
     if (Object.keys(skills).length === 0) {
       skills = {
         Attack: { level: 1, xp: 0, xpToNext: 100 },
@@ -163,16 +172,12 @@
       const grid = document.getElementById('bankGrid');
       grid.innerHTML = '';
 
-      console.log('BANK INVENTORY:', bankInventory);
-
       const totalSlots = 500;
       let filledSlots = 0;
 
       for (const itemId in bankInventory) {
         const item = getItem(itemId);
         const count = bankInventory[itemId];
-
-        console.log('RENDERING ITEM:', itemId, item);
 
         const div = document.createElement('div');
         div.className = 'item';
@@ -191,7 +196,6 @@
             <div>Qty: ${count}</div>
           `;
         }
-
         grid.appendChild(div);
         filledSlots++;
       }
@@ -207,13 +211,14 @@
     function renderGear() {
       const gearGrid = document.getElementById('gearGrid');
       gearGrid.innerHTML = '';
-      const slots = ['head', 'body', 'legs', 'hands', 'feet', 'cape', 'ring', 'neck', 'aura', 'weapon'];
+      const slots = ['head', 'body', 'legs', 'hands', 'feet', 'cape', 'neck', 'ring', 'aura', 'weapon'];
 
       slots.forEach(slot => {
         const itemId = playerEquipment[slot];
         const item = itemId ? getItem(itemId) : null;
         const div = document.createElement('div');
         div.className = 'item';
+        div.style.gridArea = slot;
 
         if (item) {
           div.innerHTML = `
@@ -248,19 +253,6 @@
         `;
         skillsList.appendChild(div);
       });
-    }
-
-    function gainXp(skill, amount) {
-      if (skills[skill]) {
-        skills[skill].xp += amount;
-        if (skills[skill].xp >= skills[skill].xpToNext) {
-          skills[skill].level++;
-          skills[skill].xp -= skills[skill].xpToNext;
-          skills[skill].xpToNext = Math.floor(skills[skill].xpToNext * 1.25);
-        }
-        localStorage.setItem('playerSkills', JSON.stringify(skills));
-        renderSkills();
-      }
     }
 
     function saveProgress() {
