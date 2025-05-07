@@ -1,7 +1,7 @@
-// bank.js
+// bank.js (updated for unifiedSaveManager)
 
 import playerData from './playerData.js';
-import saveManager from './saveManager.js';
+import unifiedSaveManager from './unifiedSaveManager.js';
 import uiUpdater from './uiUpdater.js';
 
 // Initialize bank if not present
@@ -20,7 +20,7 @@ function addItemToBank(itemId, quantity = 1) {
     } else {
         playerData.inventory.items[itemId] = quantity;
     }
-    saveManager.save();
+    unifiedSaveManager.save();
     uiUpdater.updateInventory();
 }
 
@@ -32,7 +32,7 @@ function removeItemFromBank(itemId, quantity = 1) {
     if (playerData.inventory.items[itemId] <= 0) {
         delete playerData.inventory.items[itemId];
     }
-    saveManager.save();
+    unifiedSaveManager.save();
     uiUpdater.updateInventory();
 }
 
@@ -53,3 +53,4 @@ export {
     getBankItemCount,
     getAllBankItems
 };
+
