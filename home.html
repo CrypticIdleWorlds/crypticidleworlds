@@ -195,4 +195,58 @@
       magic: { displayName: 'Magic', icon: 'assets/skills/magic.png' },
       ranged: { displayName: 'Ranged', icon: 'assets/skills/ranged.png' },
       slayer: { displayName: 'Slayer', icon: 'assets/skills/slayer.png' },
-      cryptomining: { displayName: 'Cryptomining', icon: 'assets/skill
+      cryptomining: { displayName: 'Cryptomining', icon: 'assets/skills/cryptomining.png' },
+      datafishing: { displayName: 'Datafishing', icon: 'assets/skills/datafishing.png' },
+      codecraft: { displayName: 'Codecraft', icon: 'assets/skills/codecraft.png' },
+      forgenetics: { displayName: 'Forgeneering', icon: 'assets/skills/forgenetics.png' },
+      system_hacking: { displayName: 'System Hacking', icon: 'assets/skills/system_hacking.png' }
+    };
+
+    const defaultSkills = {};
+    Object.keys(skillsConfig).forEach(id => {
+      defaultSkills[id] = { xp: 0, level: 1 };
+    });
+
+    let skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
+    const xpTable = Array(100).fill(0).map((_, level) => {
+      let xp = 0;
+      for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
+      return Math.floor(xp / 4);
+    });
+
+    function togglePanel(id) {
+      document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
+      document.getElementById(id).classList.remove("hidden");
+    }
+
+    function saveProgress() {
+      localStorage.setItem("skillData", JSON.stringify(skillData));
+      localStorage.setItem("lastSave", Date.now());
+    }
+
+    function renderAllSkills(skills, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+
+      Object.entries(skills).forEach(([id, data]) => {
+        const config = skillsConfig[id];
+        const li = document.createElement('li');
+        li.className = 'skill-entry';
+        li.innerHTML = `
+          <img src="${config.icon}" alt="${config.displayName}">
+          <strong>${config.displayName}</strong> Lv. ${data.level}
+        `;
+        container.appendChild(li);
+      });
+    }
+
+    window.onload = () => {
+      const lastSave = localStorage.getItem("lastSave");
+      if (lastSave) {
+        document.getElementById("last-save-time").innerText = `Time since last save: ${Math.floor((Date.now() - lastSave) / 1000)}s`;
+      }
+      renderAllSkills(skillData, "all-skills-list");
+    };
+  </script>
+</body>
+</html>
