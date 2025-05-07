@@ -1224,3 +1224,4 @@ window.enemies = {
     "level": 134
   }
 };
+export default enemies;
