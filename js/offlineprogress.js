@@ -1,10 +1,13 @@
-// offlineProgress.js
+// offlineProgress.js (updated for unifiedSaveManager)
 
-// CONFIG: Set your baseline XP gain rate and loot table per second here
-const OFFLINE_XP_PER_SECOND = 2; // Example: 2 XP per second idle
+import unifiedSaveManager from './unifiedSaveManager.js';
+import playerData from './playerData.js';
+import uiUpdater from './uiUpdater.js';
+
+const OFFLINE_XP_PER_SECOND = 2;
 const OFFLINE_LOOT_TABLE = [
-    { name: 'Gold Coins', perSecond: 1 }, // 1 coin per second
-    { name: 'Ashfang Scale', perSecond: 0.01 }, // 1 every ~100 sec
+    { name: 'Gold Coins', perSecond: 1 },
+    { name: 'Ashfang Scale', perSecond: 0.01 }
 ];
 
 function saveLastActiveTime() {
@@ -17,12 +20,10 @@ function getOfflineProgress() {
 
     const msAway = Date.now() - parseInt(lastActive);
     const secondsAway = Math.floor(msAway / 1000);
-    if (secondsAway < 10) return null; // Ignore super short times
+    if (secondsAway < 10) return null;
 
-    // XP calculation
     const totalXpGained = secondsAway * OFFLINE_XP_PER_SECOND;
 
-    // Loot calculation
     const lootGained = OFFLINE_LOOT_TABLE.map(item => {
         const qty = Math.floor(secondsAway * item.perSecond);
         return qty > 0 ? { name: item.name, amount: qty } : null;
@@ -31,7 +32,7 @@ function getOfflineProgress() {
     return {
         secondsAway,
         totalXpGained,
-        lootGained,
+        lootGained
     };
 }
 
@@ -60,36 +61,32 @@ function showOfflineProgressSummary(progress) {
 
     document.body.appendChild(container);
 
-    // Auto-remove after 10 seconds
     setTimeout(() => container.remove(), 10000);
 }
 
-// MAIN: Run on page load
 document.addEventListener('DOMContentLoaded', () => {
     const progress = getOfflineProgress();
     if (progress) {
-        // ✅ Apply XP evenly across combat skills
         const combatSkills = ['attack', 'strength', 'defense', 'magic', 'ranged'];
         const xpPerSkill = Math.floor(progress.totalXpGained / combatSkills.length);
 
         combatSkills.forEach(skill => {
-            addXP(skill, xpPerSkill);
+            if (playerData.skills[skill]) {
+                playerData.skills[skill].xp += xpPerSkill;
+            }
         });
 
-        // ✅ Apply loot
-        if (window.playerInventory) {
-            progress.lootGained.forEach(item => {
-                if (!playerInventory[item.name]) {
-                    playerInventory[item.name] = 0;
-                }
-                playerInventory[item.name] += item.amount;
-            });
-        }
+        progress.lootGained.forEach(item => {
+            if (!playerData.inventory.items[item.name]) {
+                playerData.inventory.items[item.name] = 0;
+            }
+            playerData.inventory.items[item.name] += item.amount;
+        });
 
-        // ✅ Show popup
+        unifiedSaveManager.save();
+        uiUpdater.updateAll();
         showOfflineProgressSummary(progress);
     }
 });
 
-// Save on unload
 window.addEventListener('beforeunload', saveLastActiveTime);
