@@ -31,11 +31,13 @@ const progressManager = (() => {
   function load() {
     const saved = JSON.parse(localStorage.getItem('playerData'));
     playerData = saved ? saved : structuredClone(defaultData);
+    console.log('[LOAD] Player data loaded.');
   }
 
   function save() {
     playerData.lastSave = Date.now();
     localStorage.setItem('playerData', JSON.stringify(playerData));
+    console.log('[SAVE] Player data saved.');
   }
 
   function addXP(skill, amount) {
@@ -45,7 +47,7 @@ const progressManager = (() => {
     while (playerData.skills[skill].level < xpTable.length &&
            playerData.skills[skill].xp >= xpTable[playerData.skills[skill].level]) {
       playerData.skills[skill].level++;
-      console.log(`[LEVEL UP] ${skill} is now level ${playerData.skills[skill].level}`);
+      console.log(`[LEVEL UP] ${skill} reached level ${playerData.skills[skill].level}`);
     }
 
     save();
@@ -54,6 +56,7 @@ const progressManager = (() => {
   function addItem(item, qty = 1) {
     if (!playerData.bankInventory[item]) playerData.bankInventory[item] = 0;
     playerData.bankInventory[item] += qty;
+    console.log(`[ITEM ADDED] ${qty}x ${item}`);
     save();
   }
 
@@ -70,8 +73,8 @@ const progressManager = (() => {
 
   function syncUI(renderFunction) {
     setInterval(() => {
-      load(); // re-pull latest from storage
-      renderFunction(playerData); // pass data to page UI
+      load(); // Refresh from localStorage
+      renderFunction(playerData); // Custom render hook per page
       const el = document.getElementById('last-save-time');
       if (el) el.innerText = `Time since last save: ${getElapsedSinceLastSave()}s`;
     }, 1000);
@@ -84,6 +87,6 @@ const progressManager = (() => {
     addItem,
     startAutoSave,
     syncUI,
-    getData: () => playerData // for direct read access
+    getData: () => playerData // direct read access if needed
   };
 })();
