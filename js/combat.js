@@ -1,9 +1,9 @@
 // combat.js (updated for unifiedSaveManager)
 
-import playerData from './playerData.js';
-import unifiedSaveManager from './unifiedSaveManager.js';
-import uiUpdater from './uiUpdater.js';
-import enemies from './enemy-data.js';
+import playerData from '.js/playerData.js';
+import unifiedSaveManager from '.js/unifiedSaveManager.js';
+import uiUpdater from '.js/uiUpdater.js';
+import enemies from '.js/enemy-data.js';
 
 let selectedStyle = null;
 document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
