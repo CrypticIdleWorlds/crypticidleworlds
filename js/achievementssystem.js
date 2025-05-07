@@ -1,7 +1,7 @@
-// achievementsSystem.js
+// achievementsSystem.js (updated for unifiedSaveManager)
 
 import playerData from './playerData.js';
-import saveManager from './saveManager.js';
+import unifiedSaveManager from './unifiedSaveManager.js';
 import uiUpdater from './uiUpdater.js';
 
 // Define your achievements list inside playerData (if not already)
@@ -46,7 +46,7 @@ function unlockAchievement(ach) {
     // OPTIONAL: Add reward logic here
     // Example: playerData.inventory.gold += 10000;
 
-    saveManager.save();
+    unifiedSaveManager.save();
     updateAchievementsUI();
 }
 
