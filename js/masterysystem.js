@@ -1,17 +1,20 @@
-// masterySystem.js
+// masterySystem.js (updated for unifiedSaveManager)
 
-// CONFIG: Define base mastery XP rate (e.g., 10% of main XP)
+import unifiedSaveManager from './unifiedSaveManager.js';
+import uiUpdater from './uiUpdater.js';
+import playerData from './playerData.js';
+
 const MASTERY_XP_MULTIPLIER = 0.1;
 
-// Example: Define mastery data structure for each skill
-window.masteryData = {
-    woodcutting: { xp: 0, level: 1 },
-    mining: { xp: 0, level: 1 },
-    combat: { xp: 0, level: 1 },
-    // Add other skills here
-};
+if (!playerData.mastery) {
+    playerData.mastery = {
+        woodcutting: { xp: 0, level: 1 },
+        mining: { xp: 0, level: 1 },
+        combat: { xp: 0, level: 1 }
+        // Add other skills here
+    };
+}
 
-// Level thresholds (basic example: you can make this more complex)
 function getMasteryLevel(xp) {
     if (xp >= 13034431) return 99;
     if (xp >= 61512) return 50;
@@ -25,46 +28,45 @@ function getMasteryLevel(xp) {
 }
 
 function addMasteryXp(skill, amount) {
-    if (!masteryData[skill]) return;
+    if (!playerData.mastery[skill]) return;
 
-    masteryData[skill].xp += amount;
-    const newLevel = getMasteryLevel(masteryData[skill].xp);
+    playerData.mastery[skill].xp += amount;
+    const newLevel = getMasteryLevel(playerData.mastery[skill].xp);
 
-    if (newLevel > masteryData[skill].level) {
-        masteryData[skill].level = newLevel;
+    if (newLevel > playerData.mastery[skill].level) {
+        playerData.mastery[skill].level = newLevel;
         alert(`Mastery Level Up! ${skill} reached Mastery Level ${newLevel}`);
 
-        // OPTIONAL: Apply perk here based on level
-        // Example: if (newLevel === 25) grantPerk(skill, '+5% yield');
+        // OPTIONAL: Apply perk or bonus here
     }
 
-    // Update mastery bar UI if exists
     updateMasteryUI(skill);
+    unifiedSaveManager.save();
 }
 
 function gainSkillXp(skill, baseXp) {
-    // Add main XP (you probably already have this)
-    if (window.playerSkills && window.playerSkills[skill]) {
-        playerSkills[skill].xp += baseXp;
+    if (playerData.skills[skill]) {
+        playerData.skills[skill].xp += baseXp;
     }
 
-    // Add mastery XP
     const masteryXp = baseXp * MASTERY_XP_MULTIPLIER;
     addMasteryXp(skill, masteryXp);
+    uiUpdater.updateSkills();
 }
 
 function updateMasteryUI(skill) {
     const masteryBar = document.getElementById(`${skill}-mastery-bar`);
     if (masteryBar) {
-        const level = masteryData[skill].level;
-        const xp = masteryData[skill].xp;
+        const level = playerData.mastery[skill].level;
+        const xp = playerData.mastery[skill].xp;
         masteryBar.textContent = `Mastery Lvl ${level} (${xp} XP)`;
     }
 }
 
-// Initialize mastery bars on page load
 document.addEventListener('DOMContentLoaded', () => {
-    for (const skill in masteryData) {
+    for (const skill in playerData.mastery) {
         updateMasteryUI(skill);
     }
 });
+
+export { addMasteryXp, gainSkillXp, updateMasteryUI };
