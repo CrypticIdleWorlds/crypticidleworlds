@@ -26,17 +26,11 @@ const progressManager = (() => {
     return Math.floor(xp / 4);
   });
 
-  let playerData = {};
-
-  function load() {
-    const saved = JSON.parse(localStorage.getItem('playerData'));
-    playerData = saved ? saved : structuredClone(defaultData);
-    console.log('[LOAD] Player data loaded.');
-  }
+  let playerData = unifiedSaveManager.getPlayerData();
 
   function save() {
     playerData.lastSave = Date.now();
-    localStorage.setItem('playerData', JSON.stringify(playerData));
+    unifiedSaveManager.savePlayerData(playerData);
     console.log('[SAVE] Player data saved.');
   }
 
@@ -73,20 +67,19 @@ const progressManager = (() => {
 
   function syncUI(renderFunction) {
     setInterval(() => {
-      load(); // Refresh from localStorage
-      renderFunction(playerData); // Custom render hook per page
+      playerData = unifiedSaveManager.getPlayerData(); // Refresh from unified save
+      renderFunction(playerData);
       const el = document.getElementById('last-save-time');
       if (el) el.innerText = `Time since last save: ${getElapsedSinceLastSave()}s`;
     }, 1000);
   }
 
   return {
-    load,
     save,
     addXP,
     addItem,
     startAutoSave,
     syncUI,
-    getData: () => playerData // direct read access if needed
+    getData: () => playerData
   };
 })();
