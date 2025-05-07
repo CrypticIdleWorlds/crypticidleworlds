@@ -1,11 +1,13 @@
-// uiUpdater.js
+// ✅ Updated uiUpdater.js
+// This version pulls from the unified save system (unifiedSaveManager.js)
 
-import playerData from './playerData.js';
+import { loadGameState, updatePlayerStat, getInventory, getEquipment } from './unifiedSaveManager.js';
 
 const uiUpdater = {
     updateSkills() {
-        for (const skill in playerData.skills) {
-            const skillObj = playerData.skills[skill];
+        const gameState = loadGameState();
+        for (const skill in gameState.skills) {
+            const skillObj = gameState.skills[skill];
             const skillElement = document.getElementById(`${skill}-info`);
             if (skillElement) {
                 skillElement.textContent = `Level ${skillObj.level} | XP: ${skillObj.xp}`;
@@ -14,17 +16,19 @@ const uiUpdater = {
     },
 
     updateInventory() {
+        const inventory = getInventory();
         const inventoryElement = document.getElementById('inventory-info');
         if (inventoryElement) {
-            inventoryElement.textContent = `Gold: ${playerData.inventory.gold} | Items: ${playerData.inventory.items.length}`;
+            inventoryElement.textContent = `Gold: ${inventory.gold} | Items: ${inventory.items.length}`;
         }
     },
 
     updateEquipment() {
+        const equipment = getEquipment();
         const equipmentElement = document.getElementById('equipment-info');
         if (equipmentElement) {
-            const weapon = playerData.equipment.weapon || 'None';
-            const armor = playerData.equipment.armor || 'None';
+            const weapon = equipment.weapon || 'None';
+            const armor = equipment.armor || 'None';
             equipmentElement.textContent = `Weapon: ${weapon} | Armor: ${armor}`;
         }
     },
