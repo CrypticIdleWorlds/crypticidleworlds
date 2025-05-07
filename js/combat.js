@@ -1,11 +1,10 @@
-// combat.js
+// combat.js (updated for unifiedSaveManager)
 
 import playerData from './playerData.js';
-import saveManager from './saveManager.js';
+import unifiedSaveManager from './unifiedSaveManager.js';
 import uiUpdater from './uiUpdater.js';
 import enemies from './enemy-data.js';
 
-// ✅ Setup radio buttons & selectedStyle tracker
 let selectedStyle = null;
 document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
     radio.addEventListener('change', (e) => {
@@ -174,7 +173,7 @@ function addXP(style, amount) {
             triggerLevelUpMessage(skillName, playerData.skills[skillName].level);
         }
 
-        saveManager.save();
+        unifiedSaveManager.save();
         uiUpdater.updateSkills();
     }
 }
@@ -201,7 +200,7 @@ function eatFood() {
 }
 
 window.onload = () => {
-    saveManager.load();
+    unifiedSaveManager.load();
     initCombat();
     updateSkillTracker();
     setInterval(updateSaveTimer, 1000);
