@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Train: Striker Protocol </title>
+  <title>Train: Striker Protocol</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <style>
@@ -32,7 +32,7 @@
 <body>
   <div id="save-bar">
     <span id="last-save-time">Time since last save: 0s</span>
-    <button onclick="saveProgress()">💾 Cloud Save</button>
+    <button onclick="progressManager.save()">💾 Cloud Save</button>
   </div>
 
   <div id="main-content">
@@ -49,7 +49,7 @@
     </div>
 
     <div class="region-main">
-      <h1> Train: Striker Protocol </h1>
+      <h1>Train: Striker Protocol</h1>
       <p>Select a region to begin training. Higher regions require higher combat levels.</p>
 
       <div class="region-container">
@@ -86,26 +86,9 @@
   <div id="global-skill-tracker"></div>
 
   <!-- ✅ Updated JS includes -->
-  <script src="../js/game.js"></script>
-  <script src="../js/skillsSystem.js"></script>
-  <script src="../js/offlineProgress.js"></script>
+  <script src="../js/progressManager.js"></script>
 
   <script>
-    function saveProgress() {
-      saveGameData(); // ✅ Hooked into your full global save
-      alert("Progress saved to the cloud!");
-    }
-
-    function updateSaveTime() {
-      const lastSave = localStorage.getItem("lastSave");
-      if (lastSave) {
-        const seconds = Math.floor((Date.now() - lastSave) / 1000);
-        document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
-      }
-    }
-
-    setInterval(updateSaveTime, 1000);
-
     function getCombatLevel(data) {
       const attack = data.attack?.level || 1;
       const strength = data.strength?.level || 1;
@@ -121,9 +104,8 @@
       return Math.floor(base + Math.max(melee, range, mage));
     }
 
-    function lockRegions() {
-      const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
-      const level = getCombatLevel(skillData);
+    function lockRegions(data) {
+      const level = getCombatLevel(data.skills);
       if (level < 30) disableRegion("wraithmarsh");
       if (level < 70) disableRegion("cyberspire");
       if (level < 100) disableRegion("zerocrypt");
@@ -139,23 +121,36 @@
       }
     }
 
-    function updateSkillLevels() {
-      const skillData = JSON.parse(localStorage.getItem("skillData")) || {};
-      document.getElementById("level-combat").textContent = getCombatLevel(skillData);
-      document.getElementById("level-attack").textContent = skillData.attack?.level || 1;
-      document.getElementById("level-strength").textContent = skillData.strength?.level || 1;
-      document.getElementById("level-defense").textContent = skillData.defense?.level || 1;
-      document.getElementById("level-magic").textContent = skillData.magic?.level || 1;
-      document.getElementById("level-ranged").textContent = skillData.ranged?.level || 1;
+    function updateSkillLevels(data) {
+      document.getElementById("level-combat").textContent = getCombatLevel(data.skills);
+      document.getElementById("level-attack").textContent = data.skills.attack?.level || 1;
+      document.getElementById("level-strength").textContent = data.skills.strength?.level || 1;
+      document.getElementById("level-defense").textContent = data.skills.defense?.level || 1;
+      document.getElementById("level-magic").textContent = data.skills.magic?.level || 1;
+      document.getElementById("level-ranged").textContent = data.skills.ranged?.level || 1;
+    }
+
+    function updateSaveTime() {
+      const lastSave = progressManager.getLastSaveTime();
+      const seconds = Math.floor((Date.now() - lastSave) / 1000);
+      document.getElementById("last-save-time").textContent = `Time since last save: ${seconds}s`;
     }
 
     window.onload = () => {
-      lockRegions();
-      updateSkillLevels();
-      updateSaveTime();
-      if (typeof updateGlobalSkillUI === 'function') {
-        updateGlobalSkillUI();
-      }
+      progressManager.load();
+      progressManager.startAutoSave();
+
+      const data = progressManager.getData();
+      lockRegions(data);
+      updateSkillLevels(data);
+
+      setInterval(() => {
+        const refreshedData = progressManager.getData();
+        updateSkillLevels(refreshedData);
+        updateSaveTime();
+      }, 5000);
+
+      setInterval(updateSaveTime, 1000);
     };
   </script>
 </body>
