@@ -7,7 +7,7 @@ document.querySelectorAll('input[name="combatStyle"]').forEach(radio => {
   });
 });
 
-// ✅ PLAYER DATA added
+// ✅ PLAYER DATA synced to localStorage
 let playerData = JSON.parse(localStorage.getItem('playerData')) || {
   skills: {
     Attack: { level: 1, xp: 0, xpToNext: 100 },
@@ -63,6 +63,7 @@ function updateSaveTimer() {
 function saveProgress(showAlert = false) {
   localStorage.setItem('playerData', JSON.stringify(playerData));
   localStorage.setItem("lastSave", Date.now());
+  lastSaveTimestamp = Date.now();
   if (showAlert) {
     alert("Progress saved to the cloud!");
   }
@@ -79,7 +80,7 @@ function initCombat() {
   document.getElementById("enemy-name").innerText = enemy.name;
 
   const imgElement = document.getElementById("enemy-image");
-  imgElement.src = '/' + enemy.image;  // ✅ Absolute path for consistent loading
+  imgElement.src = '/' + enemy.image;
 
   imgElement.onerror = () => {
     if (!imgElement.dataset.fallbackUsed) {
@@ -143,9 +144,7 @@ function startBattle() {
       log(`[VICTORY] ${enemy.name} defeated.`);
       const xpAmount = enemy.xp || 10;
       addXP(selectedMidBattle.value, xpAmount);
-      updateSkillTracker();
 
-      // FULL reset of monster after respawn
       const freshEnemy = enemies[getParam("enemy")];
       enemy = { ...freshEnemy };
       enemyHP = freshEnemy.hp;
@@ -189,7 +188,9 @@ function addXP(style, amount) {
       playerData.skills[skillName].xpToNext = Math.floor(playerData.skills[skillName].xpToNext * 1.25);
       triggerLevelUpMessage(skillName, playerData.skills[skillName].level);
     }
-    saveProgress();
+
+    // ✅ Always save after XP change
+    localStorage.setItem('playerData', JSON.stringify(playerData));
     updateSkillTracker();
   }
 }
@@ -203,7 +204,6 @@ function mapSkillName(style) {
   return 'Attack';
 }
 
-// ✅ Make eatFood and stopBattle global for inline buttons
 function eatFood() {
   const healAmount = 5;
   if (playerHP < 100) {
@@ -222,6 +222,5 @@ window.onload = () => {
   setInterval(updateSaveTimer, 1000);
 };
 
-// Make food + stopBattle globally available for HTML onclick
 window.eatFood = eatFood;
 window.stopBattle = stopBattle;
