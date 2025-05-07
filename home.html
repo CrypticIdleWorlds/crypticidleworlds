@@ -14,8 +14,74 @@
       background-size: cover !important;
       color: #00ff99 !important;
     }
-    #content-area, #top-menu, #skills-tab, .skill-row, #terminal-log, #inventory, #save-bar, #main-panel {
-      background-color: rgba(0, 0, 0, 0.55) !important;
+    #game-container {
+      display: flex;
+      height: 100vh;
+    }
+    #skills-tab {
+      width: 220px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-right: 2px solid #00ff99;
+      padding: 12px;
+      overflow-y: auto;
+    }
+    #skills-tab h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #00ffaa;
+      padding-bottom: 4px;
+    }
+    .skill-entry {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 6px;
+      padding: 4px;
+      background: rgba(15, 15, 15, 0.6);
+      border: 1px solid #00ff99;
+    }
+    .skill-entry img {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+    .skill-entry strong {
+      flex-grow: 1;
+    }
+    #main-panel {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+    #top-menu {
+      background-color: #111;
+      border-bottom: 2px solid #00ff99;
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+    }
+    #top-menu button {
+      background-color: #000;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    #content-area {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    .panel {
+      display: none;
+    }
+    .panel.active,
+    .panel:not(.hidden) {
+      display: block;
+    }
+    .hidden {
+      display: none;
     }
     .bank-grid {
       display: flex;
@@ -36,6 +102,14 @@
       width: 48px;
       height: auto;
     }
+    #terminal-log {
+      padding: 10px;
+      background: #000;
+      border-top: 2px solid #00ff99;
+      height: 120px;
+      overflow-y: auto;
+      font-size: 12px;
+    }
     .level-up-message {
       position: fixed;
       top: 40%;
@@ -54,34 +128,6 @@
       0% { opacity: 1; }
       100% { opacity: 0; }
     }
-    .hidden { display: none; }
-    #global-skill-tracker {
-      background: #111;
-      padding: 10px;
-      color: #fff;
-      font-size: 14px;
-      border-top: 2px solid #00ff99;
-    }
-    .skill-entry {
-      margin-bottom: 10px;
-    }
-    .xp-bar {
-      width: 100%;
-      height: 10px;
-      background: #222;
-      margin-top: 5px;
-      border: 1px solid #00ff99;
-      position: relative;
-    }
-    .xp-bar div {
-      height: 100%;
-      background: #00ff99;
-    }
-    .active-skill {
-      background: #222;
-      padding: 5px;
-      border-left: 4px solid #4caf50;
-    }
   </style>
 </head>
 <body>
@@ -93,16 +139,8 @@
 
   <div id="game-container">
     <aside id="skills-tab">
-      <h2>Welcome, <span id="user-name"></span></h2>
-      <h3>Skills</h3>
-      <div class="skill-section">
-        <h4>Combat</h4>
-        <ul id="combat-skills"></ul>
-      </div>
-      <div class="skill-section">
-        <h4>Non-Combat</h4>
-        <ul id="noncombat-skills"></ul>
-      </div>
+      <h3>🧠 Skills</h3>
+      <ul id="all-skills-list" style="list-style: none; padding: 0;"></ul>
     </aside>
 
     <main id="main-panel">
@@ -113,13 +151,10 @@
       </nav>
 
       <section id="content-area">
-        <div id="bank" class="panel">
+        <div id="bank" class="panel active">
           <h2>🏦 Bank</h2>
-          <p>Your stored items will appear here.</p>
           <div class="bank-grid">
             <div class="bank-slot"><img src="assets/items/consumables/bread.png" alt="Bread"></div>
-            <div class="bank-slot"></div>
-            <div class="bank-slot"></div>
             <div class="bank-slot"></div>
             <div class="bank-slot"></div>
             <div class="bank-slot"></div>
@@ -128,26 +163,22 @@
 
         <div id="skills" class="panel hidden">
           <h2>Train Your Skills</h2>
-          <p>Select a skill below to begin training:</p>
           <button onclick="location.href='skills/skillhacking.html'">System Hacking</button>
-          <button onclick="location.href='skills/skillwoodcutting.html'">Datafishing</button>
         </div>
 
         <div id="inventory" class="panel hidden">
           <h2>Inventory</h2>
-          <p>Your gear and items will be displayed here.</p>
         </div>
       </section>
     </main>
   </div>
 
-  <div id="global-skill-tracker"></div>
-
-  <div id="terminal-log" style="padding:10px;background:#000;border-top:2px solid #00ff99;height:120px;overflow-y:auto;font-size:12px;">
+  <div id="terminal-log">
     [LOG] Welcome to Cryptic Idle Worlds.<br />
   </div>
   <div id="level-up-popup" class="level-up-message"></div>
 
+  <!-- Scripts -->
   <script src="js/items.js"></script>
   <script src="js/masterySystem.js"></script>
   <script src="js/achievementsSystem.js"></script>
@@ -164,129 +195,4 @@
       magic: { displayName: 'Magic', icon: 'assets/skills/magic.png' },
       ranged: { displayName: 'Ranged', icon: 'assets/skills/ranged.png' },
       slayer: { displayName: 'Slayer', icon: 'assets/skills/slayer.png' },
-      cryptomining: { displayName: 'Cryptomining', icon: 'assets/skills/cryptomining.png' },
-      datafishing: { displayName: 'Datafishing', icon: 'assets/skills/datafishing.png' },
-      codecraft: { displayName: 'Codecraft', icon: 'assets/skills/codecraft.png' },
-      forgenetics: { displayName: 'Forgeneering', icon: 'assets/skills/forgenetics.png' },
-      system_hacking: { displayName: 'System Hacking', icon: 'assets/skills/system_hacking.png' }
-    };
-
-    const defaultSkills = {};
-    Object.keys(skillsConfig).forEach(id => {
-      defaultSkills[id] = { xp: 0, level: 1 };
-    });
-
-    const skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
-    const xpTable = Array(100).fill(0).map((_, level) => {
-      let xp = 0;
-      for (let i = 1; i < level; i++) xp += Math.floor(i + 300 * Math.pow(2, i / 7));
-      return Math.floor(xp / 4);
-    });
-
-    let lastSaveTimestamp = parseInt(localStorage.getItem("lastSave")) || Date.now();
-
-    function togglePanel(id) {
-      document.querySelectorAll(".panel").forEach(p => p.classList.add("hidden"));
-      document.getElementById(id).classList.remove("hidden");
-    }
-
-    function loadUserName() {
-      const name = localStorage.getItem("displayName") || "Player";
-      document.getElementById("user-name").textContent = name;
-    }
-
-    function restoreOfflineXP() {
-      const lastLogin = localStorage.getItem("lastLogin");
-      const now = Date.now();
-      if (lastLogin) {
-        const minutes = Math.floor((now - parseInt(lastLogin)) / 60000);
-        if (minutes > 0) {
-          skillData.system_hacking.xp += minutes;
-          for (let i = 1; i <= 99; i++) {
-            if (skillData.system_hacking.xp >= xpTable[i] && skillData.system_hacking.level < i) {
-              skillData.system_hacking.level = i;
-              triggerLevelUpMessage("system_hacking", i);
-            }
-          }
-          localStorage.setItem("skillData", JSON.stringify(skillData));
-        }
-      }
-      localStorage.setItem("lastLogin", now);
-    }
-
-    function triggerLevelUpMessage(skill, level) {
-      const msg = document.getElementById("level-up-popup");
-      msg.innerText = `You are now level ${level} in ${skillsConfig[skill].displayName}!`;
-      msg.style.animation = 'none';
-      msg.offsetHeight;
-      msg.style.animation = null;
-    }
-
-    function saveProgress() {
-      localStorage.setItem("skillData", JSON.stringify(skillData));
-      localStorage.setItem("lastSave", Date.now());
-      lastSaveTimestamp = Date.now();
-      log("[SAVE] Progress saved.");
-    }
-
-    function updateSaveTimer() {
-      const now = Date.now();
-      const elapsed = Math.floor((now - lastSaveTimestamp) / 1000);
-      document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
-    }
-
-    function log(msg) {
-      const box = document.getElementById("terminal-log");
-      box.innerHTML += msg + "<br>";
-      box.scrollTop = box.scrollHeight;
-    }
-
-    function renderSkillUI(skills, containerId, isCombat = false) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = '';
-
-      if (isCombat) {
-        const combatBtn = document.createElement('button');
-        combatBtn.textContent = '⚔️ Enter Combat';
-        combatBtn.onclick = () => window.location.href = 'skills/skillattack.html'; // ✅ updated path
-        combatBtn.style.marginBottom = '10px';
-        container.appendChild(combatBtn);
-      }
-
-      Object.entries(skills).forEach(([id, data]) => {
-        const config = skillsConfig[id];
-        const li = document.createElement('li');
-        li.className = 'skill-entry';
-        li.innerHTML = `
-          <img src="${config.icon}" alt="${config.displayName}" style="width:18px;vertical-align:middle;margin-right:6px;">
-          <strong>${config.displayName}</strong> (Level ${data.level})
-          <div class="xp-bar">
-            <div style="width: ${(data.xp / (xpTable[data.level + 1] || 100)) * 100}%"></div>
-          </div>
-          <small>${data.xp} XP</small>
-        `;
-        container.appendChild(li);
-      });
-    }
-
-    window.onload = () => {
-      loadUserName();
-      restoreOfflineXP();
-
-      const combatIds = ['attack', 'strength', 'defense', 'magic', 'ranged', 'slayer'];
-      const nonCombatIds = Object.keys(skillData).filter(id => !combatIds.includes(id));
-
-      const combatSkills = {};
-      const nonCombatSkills = {};
-      combatIds.forEach(id => { combatSkills[id] = skillData[id]; });
-      nonCombatIds.forEach(id => { nonCombatSkills[id] = skillData[id]; });
-
-      renderSkillUI(combatSkills, "combat-skills", true);
-      renderSkillUI(nonCombatSkills, "noncombat-skills");
-
-      setInterval(updateSaveTimer, 1000);
-    };
-  </script>
-</body>
-</html>
-
+      cryptomining: { displayName: 'Cryptomining', icon: 'assets/skill
