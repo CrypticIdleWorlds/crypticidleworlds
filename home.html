@@ -114,7 +114,7 @@
 <body>
   <div style="background:#000;padding:10px;border-bottom:2px solid #00ff99;">
     <span id="last-save-time">Time since last save: 0s</span>
-    <button onclick="saveProgress()" style="float:right;">💾 Save</button>
+    <button onclick="progressManager.save()" style="float:right;">💾 Save</button>
     <button onclick="location.href='bank.html'" style="margin-left:10px;">🏦 Bank</button>
     <button onclick="window.location.href='skills/skillattack.html'" style="margin-left:10px;">⚔️ Enter Combat</button>
   </div>
@@ -153,66 +153,29 @@
   <script src="js/offlineProgress.js"></script>
   <script src="js/skills.js"></script>
   <script src="js/skillsSystem.js"></script>
+  <script src="js/progressManager.js"></script>
 
   <script>
-    const skillsConfig = {
-      attack: { displayName: 'Attack', icon: 'assets/skills/attack.png' },
-      strength: { displayName: 'Strength', icon: 'assets/skills/strength.png' },
-      defense: { displayName: 'Defense', icon: 'assets/skills/defense.png' },
-      magic: { displayName: 'Magic', icon: 'assets/skills/magic.png' },
-      ranged: { displayName: 'Ranged', icon: 'assets/skills/ranged.png' },
-      slayer: { displayName: 'Slayer', icon: 'assets/skills/slayer.png' },
-      cryptomining: { displayName: 'Cryptomining', icon: 'assets/skills/cryptomining.png' },
-      datafishing: { displayName: 'Datafishing', icon: 'assets/skills/datafishing.png' },
-      codecraft: { displayName: 'Codecraft', icon: 'assets/skills/codecraft.png' },
-      forgenetics: { displayName: 'Forgeneering', icon: 'assets/skills/forgenetics.png' },
-      system_hacking: { displayName: 'System Hacking', icon: 'assets/skills/system_hacking.png' }
-    };
-
-    const defaultSkills = {};
-    Object.keys(skillsConfig).forEach(id => {
-      defaultSkills[id] = { xp: 0, level: 1 };
-    });
-
-    let skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
-
-    function saveProgress() {
-      localStorage.setItem("skillData", JSON.stringify(skillData));
-      localStorage.setItem("lastSave", Date.now());
-    }
-
-    function renderAllSkills(skills, containerId) {
-      const container = document.getElementById(containerId);
+    function renderAllSkills(data) {
+      const container = document.getElementById('all-skills-list');
       container.innerHTML = '';
 
-      Object.entries(skills).forEach(([id, data]) => {
-        const config = skillsConfig[id];
-        const percentToNext = ((data.xp / ((data.level + 1) * 100)) * 100).toFixed(1);
+      Object.entries(data.skills).forEach(([id, skill]) => {
+        const percentToNext = ((skill.xp / ((skill.level + 1) * 100)) * 100).toFixed(1);
         const li = document.createElement('li');
         li.className = 'skill-entry';
         li.innerHTML = `
-          <img src="${config.icon}" alt="${config.displayName}">
-          <strong>${config.displayName}</strong> Lv. ${data.level} (${percentToNext}%)
+          <img src="assets/skills/${id}.png" alt="${id}">
+          <strong>${id}</strong> Lv. ${skill.level} (${percentToNext}%)
         `;
         container.appendChild(li);
       });
     }
 
-    function updateSaveTimer() {
-      const lastSave = parseInt(localStorage.getItem("lastSave")) || Date.now();
-      const now = Date.now();
-      const elapsed = Math.floor((now - lastSave) / 1000);
-      document.getElementById("last-save-time").innerText = `Time since last save: ${elapsed}s`;
-    }
-
     window.onload = () => {
-      renderAllSkills(skillData, "all-skills-list");
-      updateSaveTimer();
-      setInterval(updateSaveTimer, 1000);
-      setInterval(() => {
-        skillData = JSON.parse(localStorage.getItem("skillData")) || defaultSkills;
-        renderAllSkills(skillData, "all-skills-list");
-      }, 5000); // Refresh skill data every 5 seconds
+      progressManager.load();
+      progressManager.startAutoSave();
+      progressManager.syncUI(renderAllSkills);
     };
   </script>
 </body>
