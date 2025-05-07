@@ -1,7 +1,7 @@
-// combatLogSystem.js
+// combatLogSystem.js (updated for unifiedSaveManager)
 
 import playerData from './playerData.js';
-import saveManager from './saveManager.js';
+import unifiedSaveManager from './unifiedSaveManager.js';
 import uiUpdater from './uiUpdater.js';
 
 const combatLog = [];
@@ -68,7 +68,6 @@ function lootDrop(loot) {
     loot.forEach(item => {
         logCombatEvent(`Looted: ${item.name} x${item.amount}`);
 
-        // OPTIONAL: Add loot to player inventory
         if (playerData.inventory.items[item.id]) {
             playerData.inventory.items[item.id] += item.amount;
         } else {
@@ -76,14 +75,13 @@ function lootDrop(loot) {
         }
     });
 
-    saveManager.save();
+    unifiedSaveManager.save();
     uiUpdater.updateInventory();
 }
 
-// Example: after battle ends
 function onBattleEnd(summaryData) {
     showBattleSummary(summaryData);
-    saveManager.save();
+    unifiedSaveManager.save();
     uiUpdater.updateAll();
 }
 
