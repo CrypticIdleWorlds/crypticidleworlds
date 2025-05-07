@@ -1,5 +1,7 @@
 // progressManager.js
 
+import unifiedSaveManager from './unifiedSaveManager.js';
+
 const progressManager = (() => {
   const defaultData = {
     skills: {
@@ -67,11 +69,65 @@ const progressManager = (() => {
 
   function syncUI(renderFunction) {
     setInterval(() => {
-      playerData = unifiedSaveManager.getPlayerData(); // Refresh from unified save
+      playerData = unifiedSaveManager.getPlayerData();
       renderFunction(playerData);
       const el = document.getElementById('last-save-time');
       if (el) el.innerText = `Time since last save: ${getElapsedSinceLastSave()}s`;
     }, 1000);
+  }
+
+  function getXpTable() {
+    return xpTable;
+  }
+
+  function getSkillList() {
+    return {
+      attack: 'Striker Protocol',
+      strength: 'Force Module',
+      defense: 'Barrier Matrix',
+      magic: 'Neurohex',
+      ranged: 'Synapsis Bowline',
+      slayer: 'Slayer',
+      cryptomining: 'Cryptomining',
+      datafishing: 'Datafishing',
+      codecraft: 'Codecraft',
+      forgenetics: 'Forgentics',
+      system_hacking: 'System Hacking'
+    };
+  }
+
+  function getSkillConfigs() {
+    return {
+      cryptomining: {
+        actionTime: 5,
+        itemGained: 'Crypto Coin',
+        xpPerAction: 20,
+      },
+      datafishing: {
+        actionTime: 4,
+        itemGained: 'Data Packet',
+        xpPerAction: 15,
+      },
+      codecraft: {
+        actionTime: 6,
+        itemGained: 'Script Module',
+        xpPerAction: 25,
+      },
+      forgenetics: {
+        actionTime: 8,
+        itemGained: 'Forged Keycard',
+        xpPerAction: 30,
+      },
+      system_hacking: {
+        actionTime: 10,
+        itemGained: 'Exploit Kit',
+        xpPerAction: 35,
+      },
+      slayer: {
+        actionTime: 0,
+        xpPerAction: 50,
+      }
+    };
   }
 
   return {
@@ -80,6 +136,9 @@ const progressManager = (() => {
     addItem,
     startAutoSave,
     syncUI,
-    getData: () => playerData
+    getData: () => playerData,
+    getXpTable,
+    getSkillList,
+    getSkillConfigs
   };
 })();
