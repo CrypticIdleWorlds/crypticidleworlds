@@ -7,20 +7,23 @@ const playerData = {
         defense: { xp: 0, level: 1 },
         magic: { xp: 0, level: 1 },
         ranged: { xp: 0, level: 1 },
-        // Add any additional skills here
+        // Add additional skills here as needed, matching your game’s design
     },
     inventory: {
-        items: [],
+        items: [],    // Array of item IDs or names
         gold: 0
     },
     equipment: {
-        weapon: null,
+        weapon: null,        // Could store item IDs or full item objects
         armor: null,
         accessories: []
     },
     settings: {
         sound: true,
         notifications: true
+    },
+    achievements: {
+        unlocked: []
     },
     lastSave: Date.now()
 };
