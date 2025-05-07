@@ -17,12 +17,12 @@ const skillConfigs = {
         itemGained: 'Script Module',
         xpPerAction: 25,
     },
-    forgentics: {
+    forgenetics: {  // ✅ fixed name typo here
         actionTime: 8,
         itemGained: 'Forged Keycard',
         xpPerAction: 30,
     },
-    systemHacking: {
+    system_hacking: {
         actionTime: 10,
         itemGained: 'Exploit Kit',
         xpPerAction: 35,
@@ -33,8 +33,16 @@ const skillConfigs = {
     }
 };
 
-// Track active skills (instead of a full local skills object)
+// Active skill trackers
 const activeSkills = {};
+
+// Load or initialize playerSkills from localStorage
+let playerSkills = JSON.parse(localStorage.getItem('skillData')) || {};
+Object.keys(skillConfigs).forEach(skill => {
+    if (!playerSkills[skill]) {
+        playerSkills[skill] = { xp: 0, level: 1 };
+    }
+});
 
 // Start training a skill
 function startSkill(skill) {
@@ -60,7 +68,6 @@ function trainSkill(skill) {
     setTimeout(() => {
         if (!activeSkills[skill]) return;
 
-        // ✅ Award XP globally
         addXP(skill, cfg.xpPerAction);
 
         // Award item to inventory
@@ -77,7 +84,22 @@ function trainSkill(skill) {
     }, cfg.actionTime * 1000);
 }
 
-// Logging skill events
+// Add XP + handle level-ups
+function addXP(skill, amount) {
+    const s = playerSkills[skill];
+    s.xp += amount;
+
+    for (let i = s.level; i < xpTable.length; i++) {
+        if (s.xp >= xpTable[i]) {
+            s.level = i + 1;
+        }
+    }
+
+    // ✅ Save immediately so other pages see the change
+    localStorage.setItem('skillData', JSON.stringify(playerSkills));
+}
+
+// Logging
 function logSkillEvent(message) {
     console.log(`[Skill Log] ${message}`);
 }
@@ -99,20 +121,20 @@ function updateGlobalSkillUI() {
     }).join('');
 }
 
-// Utility to capitalize skill names
+// Capitalize utility
 function capitalize(s) {
-    return s.charAt(0).toUpperCase() + s.slice(1);
+    return s.charAt(0).toUpperCase() + s.slice(1).replace('_', ' ');
 }
 
-// ✅ Real XP percent based on XP table
+// Calculate XP percent based on xpTable
 function getXpPercent(xp, level) {
-    if (!window.xpTable || xpTable.length === 0) return 0;
-    const currentLevelXP = xpTable.find(x => x.level === level)?.xp || 0;
-    const nextLevelXP = xpTable.find(x => x.level === level + 1)?.xp || currentLevelXP;
+    const currentLevelXP = xpTable[level - 1] || 0;
+    const nextLevelXP = xpTable[level] || currentLevelXP + 100;
     const percent = ((xp - currentLevelXP) / (nextLevelXP - currentLevelXP)) * 100;
     return Math.min(100, Math.max(0, percent)).toFixed(1);
 }
 
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateGlobalSkillUI();
 });
