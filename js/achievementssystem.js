@@ -1,31 +1,37 @@
 // achievementsSystem.js
 
-// Define your achievements list
-const achievements = [
-    { id: 'chop_1000_logs', name: 'Lumberjack', desc: 'Chop 1000 logs', completed: false },
-    { id: 'kill_500_mobs', name: 'Beast Slayer', desc: 'Defeat 500 monsters', completed: false },
-    { id: 'earn_1m_gold', name: 'Gold Digger', desc: 'Earn 1,000,000 gold', completed: false },
-    { id: 'reach_lvl_50_combat', name: 'Warlord', desc: 'Reach level 50 Combat', completed: false },
-    // Add more achievements here
-];
+import playerData from './playerData.js';
+import saveManager from './saveManager.js';
+import uiUpdater from './uiUpdater.js';
+
+// Define your achievements list inside playerData (if not already)
+if (!playerData.achievements) {
+    playerData.achievements = [
+        { id: 'chop_1000_logs', name: 'Lumberjack', desc: 'Chop 1000 logs', completed: false },
+        { id: 'kill_500_mobs', name: 'Beast Slayer', desc: 'Defeat 500 monsters', completed: false },
+        { id: 'earn_1m_gold', name: 'Gold Digger', desc: 'Earn 1,000,000 gold', completed: false },
+        { id: 'reach_lvl_50_combat', name: 'Warlord', desc: 'Reach level 50 Combat', completed: false }
+        // Add more achievements here
+    ];
+}
 
 // Function to check all achievements
 function checkAchievements() {
-    achievements.forEach(ach => {
+    playerData.achievements.forEach(ach => {
         if (ach.completed) return;
 
         switch (ach.id) {
             case 'chop_1000_logs':
-                if (playerStats.logsChopped >= 1000) unlockAchievement(ach);
+                if (playerData.stats?.logsChopped >= 1000) unlockAchievement(ach);
                 break;
             case 'kill_500_mobs':
-                if (playerStats.mobsKilled >= 500) unlockAchievement(ach);
+                if (playerData.stats?.mobsKilled >= 500) unlockAchievement(ach);
                 break;
             case 'earn_1m_gold':
-                if (playerStats.goldEarned >= 1000000) unlockAchievement(ach);
+                if (playerData.inventory.gold >= 1000000) unlockAchievement(ach);
                 break;
             case 'reach_lvl_50_combat':
-                if (playerSkills.combat.level >= 50) unlockAchievement(ach);
+                if (playerData.skills.combat.level >= 50) unlockAchievement(ach);
                 break;
             // Add more cases here
         }
@@ -38,8 +44,9 @@ function unlockAchievement(ach) {
     alert(`Achievement Unlocked: ${ach.name}! - ${ach.desc}`);
 
     // OPTIONAL: Add reward logic here
-    // Example: playerInventory['Gold Coins'] += 10000;
+    // Example: playerData.inventory.gold += 10000;
 
+    saveManager.save();
     updateAchievementsUI();
 }
 
@@ -48,7 +55,7 @@ function updateAchievementsUI() {
     const container = document.getElementById('achievements-list');
     if (!container) return;
 
-    container.innerHTML = achievements.map(ach => `
+    container.innerHTML = playerData.achievements.map(ach => `
         <div class="achievement ${ach.completed ? 'completed' : ''}">
             <h4>${ach.name}</h4>
             <p>${ach.desc}</p>
@@ -57,7 +64,9 @@ function updateAchievementsUI() {
     `).join('');
 }
 
-// Hook into XP gain and other events
+// Hook into page load to render achievements
 document.addEventListener('DOMContentLoaded', () => {
     updateAchievementsUI();
 });
+
+export { checkAchievements, updateAchievementsUI };
