@@ -1,6 +1,9 @@
 // combatLogSystem.js
 
-// Combat log array to keep recent entries
+import playerData from './playerData.js';
+import saveManager from './saveManager.js';
+import uiUpdater from './uiUpdater.js';
+
 const combatLog = [];
 
 // Log a combat event
@@ -64,10 +67,32 @@ function enemyAttack(enemy, damage) {
 function lootDrop(loot) {
     loot.forEach(item => {
         logCombatEvent(`Looted: ${item.name} x${item.amount}`);
+
+        // OPTIONAL: Add loot to player inventory
+        if (playerData.inventory.items[item.id]) {
+            playerData.inventory.items[item.id] += item.amount;
+        } else {
+            playerData.inventory.items[item.id] = item.amount;
+        }
     });
+
+    saveManager.save();
+    uiUpdater.updateInventory();
 }
 
 // Example: after battle ends
 function onBattleEnd(summaryData) {
     showBattleSummary(summaryData);
+    saveManager.save();
+    uiUpdater.updateAll();
 }
+
+export {
+    logCombatEvent,
+    updateCombatLogUI,
+    showBattleSummary,
+    playerAttack,
+    enemyAttack,
+    lootDrop,
+    onBattleEnd
+};
